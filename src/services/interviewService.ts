@@ -25,6 +25,17 @@ type InterviewSessionRow = {
   created_at: string;
 };
 
+type AdminStatsRpcPayload = Partial<AdminStats> & {
+  average_score?: number;
+  daily_activity?: Record<string, number>;
+  difficulty_counts?: Record<string, number>;
+  includesAiInterviews?: boolean;
+  includes_ai_interviews?: boolean;
+  top_domains?: { domain: string; count: number }[];
+  total_interviews?: number;
+  total_users?: number;
+};
+
 function mergeCountRecords(
   base: Record<string, number>,
   extra: Record<string, number>,
@@ -51,6 +62,31 @@ function mergeDomainCounts(
   return Object.entries(counts)
     .map(([domain, count]) => ({ domain, count }))
     .sort((a, b) => b.count - a.count || a.domain.localeCompare(b.domain));
+}
+
+function isMissingRpcError(error: { code?: string; message?: string } | null | undefined) {
+  return Boolean(
+    error &&
+      (error.code === 'PGRST202' ||
+        error.code === '42883' ||
+        /function .*admin_platform_stats|could not find the function/i.test(error.message || '')),
+  );
+}
+
+function normalizeAdminStatsPayload(payload: unknown): AdminStats & { includesAiInterviews: boolean } {
+  const stats = (Array.isArray(payload) ? payload[0] : payload || {}) as AdminStatsRpcPayload;
+
+  return {
+    averageScore: stats.averageScore ?? stats.average_score ?? 0,
+    dailyActivity: stats.dailyActivity ?? stats.daily_activity ?? {},
+    difficultyCounts: stats.difficultyCounts ?? stats.difficulty_counts ?? {},
+    includesAiInterviews: Boolean(
+      stats.includesAiInterviews ?? stats.includes_ai_interviews ?? false,
+    ),
+    topDomains: stats.topDomains ?? stats.top_domains ?? [],
+    totalInterviews: stats.totalInterviews ?? stats.total_interviews ?? 0,
+    totalUsers: stats.totalUsers ?? stats.total_users ?? 0,
+  };
 }
 
 class InterviewService {
@@ -195,13 +231,26 @@ class InterviewService {
       async () => {
         const { data, error } = await supabase.rpc('admin_platform_stats');
 
-        assertNoError(error, 'Unable to load platform statistics.');
+        if (!isMissingRpcError(error)) {
+          assertNoError(error, 'Unable to load platform statistics.');
+        }
 
-        const stats = (data || {}) as Partial<AdminStats>;
+        const stats = normalizeAdminStatsPayload(data);
+
+        if (stats.includesAiInterviews) {
+          return {
+            averageScore: stats.averageScore,
+            dailyActivity: stats.dailyActivity,
+            difficultyCounts: stats.difficultyCounts,
+            topDomains: stats.topDomains,
+            totalInterviews: stats.totalInterviews,
+            totalUsers: stats.totalUsers,
+          };
+        }
 
         const aiStats = await aiInterviewStatsService.getCompletedStats();
-        const manualTotalInterviews = stats.totalInterviews || 0;
-        const manualAverageScore = stats.averageScore || 0;
+        const manualTotalInterviews = stats.totalInterviews;
+        const manualAverageScore = stats.averageScore;
         const totalInterviews = manualTotalInterviews + aiStats.totalInterviews;
         const averageScore =
           totalInterviews > 0
@@ -213,14 +262,14 @@ class InterviewService {
 
         return {
           averageScore,
-          dailyActivity: mergeCountRecords(stats.dailyActivity || {}, aiStats.dailyActivity),
+          dailyActivity: mergeCountRecords(stats.dailyActivity, aiStats.dailyActivity),
           difficultyCounts: mergeCountRecords(
-            stats.difficultyCounts || {},
+            stats.difficultyCounts,
             aiStats.difficultyCounts,
           ),
-          topDomains: mergeDomainCounts(stats.topDomains || [], aiStats.topDomains),
+          topDomains: mergeDomainCounts(stats.topDomains, aiStats.topDomains),
           totalInterviews,
-          totalUsers: stats.totalUsers || 0,
+          totalUsers: stats.totalUsers,
         };
       },
     );
