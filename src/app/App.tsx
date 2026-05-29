@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { RouterProvider } from 'react-router';
 import { Toaster } from 'sonner';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { SplashScreen } from './components/SplashScreen';
 import { AuthProvider } from './contexts/AuthContext';
 import { SettingsProvider } from './contexts/SettingsContext';
@@ -38,6 +39,7 @@ export default function App() {
             style: { borderRadius: '12px', fontSize: '14px' },
           }}
         />
+        <SpeedInsights />
       </SettingsProvider>
     </AuthProvider>
   );
