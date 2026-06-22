@@ -28,7 +28,7 @@ export function AppLogo({ variant, className }: AppLogoProps) {
     <img
       src={variantMap[variant]}
       alt={APP_NAME}
-      className={cx(defaultSize, 'object-contain', className)}
+      className={cx(defaultSize, 'object-contain bg-transparent', className)}
     />
   );
 }

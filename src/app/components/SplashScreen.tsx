@@ -24,7 +24,7 @@ export function SplashScreen({ type }: SplashScreenProps) {
         <img
           src={splashLogo}
           alt={APP_NAME}
-          className="mx-auto h-auto w-full max-w-[260px] object-contain drop-shadow-[0_0_32px_rgba(59,130,246,0.28)]"
+          className="mx-auto h-auto w-full max-w-[260px] bg-transparent object-contain drop-shadow-[0_0_32px_rgba(59,130,246,0.28)]"
         />
         <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.42em] text-cyan-100/92">
           {APP_TAGLINE}
