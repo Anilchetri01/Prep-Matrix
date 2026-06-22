@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { RouterProvider } from 'react-router';
 import { Toaster } from 'sonner';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { SplashScreen } from './components/SplashScreen';
 import { AuthProvider } from './contexts/AuthContext';
 import { SettingsProvider } from './contexts/SettingsContext';
@@ -19,26 +20,66 @@ export default function App() {
     return () => window.clearTimeout(timeoutId);
   }, []);
 
-  if (isAppLoading) {
-    return <SplashScreen type="initial" />;
-  }
-
   return (
-    <AuthProvider>
-      <SettingsProvider>
-        <RouterProvider router={router} />
-        {/* Global toast notifications */}
-        <Toaster
-          position="top-right"
-          richColors
-          closeButton
-          expand={false}
-          duration={4000}
-          toastOptions={{
-            style: { borderRadius: '12px', fontSize: '14px' },
-          }}
+    <HelmetProvider>
+      <Helmet>
+        <title>PrepMatrix</title>
+        <meta
+          name="description"
+          content="PrepMatrix is an AI-powered interview preparation platform that helps you prepare smarter, perform better, and get hired across 97+ professional career domains."
         />
-      </SettingsProvider>
-    </AuthProvider>
+        <link rel="canonical" href="https://prep-matrix-lime.vercel.app" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="PrepMatrix" />
+        <meta
+          property="og:description"
+          content="PrepMatrix is an AI-powered interview preparation platform that helps you prepare smarter, perform better, and get hired across 97+ professional career domains."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://prep-matrix-lime.vercel.app" />
+        <meta
+          property="og:image"
+          content="https://prep-matrix-lime.vercel.app/og-image.png"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="PrepMatrix" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="PrepMatrix" />
+        <meta
+          name="twitter:description"
+          content="PrepMatrix is an AI-powered interview preparation platform that helps you prepare smarter, perform better, and get hired across 97+ professional career domains."
+        />
+        <meta
+          name="twitter:image"
+          content="https://prep-matrix-lime.vercel.app/og-image.png"
+        />
+      </Helmet>
+
+      {isAppLoading ? (
+        <SplashScreen type="initial" />
+      ) : (
+        <AuthProvider>
+          <SettingsProvider>
+            <RouterProvider router={router} />
+            {/* Global toast notifications */}
+            <Toaster
+              position="top-right"
+              richColors
+              closeButton
+              expand={false}
+              duration={4000}
+              toastOptions={{
+                style: { borderRadius: '12px', fontSize: '14px' },
+              }}
+            />
+          </SettingsProvider>
+        </AuthProvider>
+      )}
+    </HelmetProvider>
   );
 }
+
