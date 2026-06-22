@@ -1,11 +1,12 @@
 import { LoaderCircle } from 'lucide-react';
 
-import splashLogo from '../../assets/branding/splash-logo.png';
 import {
   APP_INITIALIZING_MESSAGE,
   APP_NAME,
   APP_TAGLINE,
 } from '../constants/branding';
+
+const splashLogo = '/splash-logo.png';
 
 interface SplashScreenProps {
   type: 'initial';

@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { LoaderCircle } from 'lucide-react';
 
-import splashLogo from '../../assets/branding/splash-logo.png';
 import {
   APP_INTERVIEW_PREPARING_MESSAGE,
   APP_NAME,
   APP_TAGLINE,
 } from '../constants/branding';
+
+const splashLogo = '/splash-logo.png';
 
 interface InterviewLaunchOverlayProps {
   visible: boolean;

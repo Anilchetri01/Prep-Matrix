@@ -1,8 +1,9 @@
 import { format } from 'date-fns';
 import { jsPDF } from 'jspdf';
 
-import logoIconLight from '../../../../assets/branding/logo-icon-light.png';
 import { APP_NAME } from '../../../constants/branding';
+
+const logoIconLight = '/logo-icon-light.png';
 import type { AIInterviewSession } from '../types';
 
 const PAGE_WIDTH = 210;

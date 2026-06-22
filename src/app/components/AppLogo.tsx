@@ -1,7 +1,3 @@
-import logoFull from '../../assets/branding/logo-full.png';
-import logoFullLight from '../../assets/branding/logo-full-light.png';
-import logoIconDark from '../../assets/branding/logo-icon-dark.png';
-import logoIconLight from '../../assets/branding/logo-icon-light.png';
 import { useSettings } from '../contexts/SettingsContext';
 import { APP_NAME } from '../constants/branding';
 
@@ -15,6 +11,11 @@ interface AppLogoProps {
 function cx(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
+
+const logoFull = '/logo-full.png';
+const logoFullLight = '/logo-full-light.png';
+const logoIconDark = '/logo-icon-dark.png';
+const logoIconLight = '/logo-icon-light.png';
 
 export function AppLogo({ variant, className }: AppLogoProps) {
   const { settings } = useSettings();
