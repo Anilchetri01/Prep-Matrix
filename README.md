@@ -48,7 +48,7 @@ PrepMatrix solves the common problem of scattered interview preparation by combi
 
 ## Features
 
-| Feature | Description |
+| Feature | Description 
 | --- | --- |
 | 🤖 **AI Interview Mode** | Generate AI-assisted interview sessions and feedback using Gemini AI. |
 | 🧠 **Manual Interview Mode** | Practice curated domain-specific questions without relying on AI generation. |
