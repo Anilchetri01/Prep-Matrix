@@ -58,34 +58,34 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
     : 'border-sky-200 bg-sky-50 text-sky-700';
 
   return (
-    <div className="space-y-5">
-      <div className="grid gap-4 md:grid-cols-3">
+    <div className="min-w-0 space-y-5">
+      <div className="grid min-w-0 gap-4 md:grid-cols-3">
         {metrics.map((metric) => (
-          <div key={metric.label} className={`rounded-2xl border p-4 backdrop-blur-xl ${metricCardClass}`}>
+          <div key={metric.label} className={`min-w-0 rounded-2xl border p-3.5 backdrop-blur-xl sm:p-4 ${metricCardClass}`}>
             <div className={`mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl ${metric.iconClass}`}>
               <metric.icon className="h-5 w-5" />
             </div>
-            <p className={`text-xs uppercase tracking-[0.24em] ${mutedTextClass}`}>
+            <p className={`break-words text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em] ${mutedTextClass}`}>
               {metric.label}
             </p>
-            <p className="mt-1.5 text-xl font-semibold sm:text-2xl">{metric.value}</p>
+            <p className="mt-1.5 break-words text-xl font-semibold sm:text-2xl">{metric.value}</p>
           </div>
         ))}
       </div>
 
-      <div className={`rounded-2xl border p-5 backdrop-blur-xl ${panelClass}`}>
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
+      <div className={`min-w-0 rounded-2xl border p-4 backdrop-blur-xl sm:p-5 ${panelClass}`}>
+        <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div className="min-w-0">
             <h3 className="text-lg font-semibold sm:text-xl">Session Breakdown</h3>
-            <p className={`text-sm ${mutedTextClass}`}>
+            <p className={`break-all text-sm sm:break-words ${mutedTextClass}`}>
               {session.resumeFileName} / {format(new Date(session.createdAt), 'MMM dd, yyyy hh:mm a')}
             </p>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex min-w-0 flex-wrap gap-2">
             {session.analysis.skills.slice(0, 6).map((skill) => (
               <span
                 key={skill}
-                className={`rounded-full border px-3 py-1 text-xs font-medium ${accentChipClass}`}
+                className={`max-w-full break-words rounded-full border px-3 py-1 text-xs font-medium ${accentChipClass}`}
               >
                 {skill}
               </span>
@@ -97,14 +97,14 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
           {session.answers.map((answer, index) => (
             <div
               key={answer.questionId}
-              className={`rounded-2xl border p-4 ${
+              className={`min-w-0 rounded-2xl border p-3.5 sm:p-4 ${
                 isDarkMode
                   ? 'border-white/8 bg-slate-950/35'
                   : 'border-slate-200/80 bg-slate-50/85'
               }`}
             >
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                <div className="space-y-2">
+              <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div className="min-w-0 space-y-2">
                   <div
                     className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium ${
                       isDarkMode
@@ -115,10 +115,10 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
                     <MessageSquareQuote className="h-3.5 w-3.5" />
                     Question {index + 1}
                   </div>
-                  <h4 className="text-base font-semibold">{answer.questionText}</h4>
+                  <h4 className="break-words text-base font-semibold">{answer.questionText}</h4>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2 sm:justify-end">
                   <span
                     className={`rounded-full px-3 py-1 text-xs font-semibold ${
                       isDarkMode
@@ -140,42 +140,42 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
                 </div>
               </div>
 
-              <div className="mt-4 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+              <div className="mt-4 grid min-w-0 gap-4 lg:grid-cols-[1.1fr_0.9fr]">
                 <div
-                  className={`rounded-2xl border p-4 ${
+                  className={`min-w-0 rounded-2xl border p-3.5 sm:p-4 ${
                     isDarkMode
                       ? 'border-white/8 bg-white/5'
                       : 'border-slate-200/80 bg-white/90'
                   }`}
                 >
-                  <p className={`text-xs uppercase tracking-[0.24em] ${mutedTextClass}`}>Answer</p>
-                  <p className="mt-2 text-sm leading-6">{answer.answer}</p>
+                  <p className={`text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em] ${mutedTextClass}`}>Answer</p>
+                  <p className="mt-2 break-words text-sm leading-6">{answer.answer}</p>
                 </div>
 
-                <div className="space-y-3">
+                <div className="min-w-0 space-y-3">
                   <div
-                    className={`rounded-2xl border p-4 ${
+                    className={`min-w-0 rounded-2xl border p-3.5 sm:p-4 ${
                       isDarkMode
                         ? 'border-white/8 bg-white/5'
                         : 'border-slate-200/80 bg-white/90'
                     }`}
                   >
-                    <p className={`text-xs uppercase tracking-[0.24em] ${mutedTextClass}`}>
+                    <p className={`text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em] ${mutedTextClass}`}>
                       Feedback
                     </p>
-                    <p className="mt-2 text-sm leading-6">{answer.feedback}</p>
+                    <p className="mt-2 break-words text-sm leading-6">{answer.feedback}</p>
                   </div>
 
-                  <div className="grid gap-3 md:grid-cols-2">
+                  <div className="grid min-w-0 gap-3 md:grid-cols-2">
                     <div
-                      className={`rounded-2xl border p-4 ${
+                      className={`min-w-0 rounded-2xl border p-3.5 sm:p-4 ${
                         isDarkMode
                           ? 'border-emerald-400/12 bg-emerald-500/8'
                           : 'border-emerald-100 bg-emerald-50'
                       }`}
                     >
                       <p
-                        className={`text-xs uppercase tracking-[0.24em] ${
+                        className={`text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em] ${
                           isDarkMode ? 'text-emerald-100/70' : 'text-emerald-700/80'
                         }`}
                       >
@@ -185,7 +185,7 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
                         {answer.strengths.map((strength) => (
                           <p
                             key={strength}
-                            className={`text-sm ${isDarkMode ? 'text-emerald-50/85' : 'text-emerald-800'}`}
+                            className={`break-words text-sm ${isDarkMode ? 'text-emerald-50/85' : 'text-emerald-800'}`}
                           >
                             {strength}
                           </p>
@@ -194,14 +194,14 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
                     </div>
 
                     <div
-                      className={`rounded-2xl border p-4 ${
+                      className={`min-w-0 rounded-2xl border p-3.5 sm:p-4 ${
                         isDarkMode
                           ? 'border-amber-400/12 bg-amber-500/8'
                           : 'border-amber-100 bg-amber-50'
                       }`}
                     >
                       <p
-                        className={`text-xs uppercase tracking-[0.24em] ${
+                        className={`text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em] ${
                           isDarkMode ? 'text-amber-100/70' : 'text-amber-700/80'
                         }`}
                       >
@@ -211,7 +211,7 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
                         {answer.improvements.map((item) => (
                           <p
                             key={item}
-                            className={`text-sm ${isDarkMode ? 'text-amber-50/85' : 'text-amber-800'}`}
+                            className={`break-words text-sm ${isDarkMode ? 'text-amber-50/85' : 'text-amber-800'}`}
                           >
                             {item}
                           </p>

@@ -82,8 +82,8 @@ export function CameraPreview({ isDarkMode, status, stream }: CameraPreviewProps
       : 'border-slate-200 bg-white text-slate-600';
 
   return (
-    <div className={`relative overflow-hidden rounded-[24px] border ${frameClass}`}>
-      <div className={`aspect-[16/10] min-h-[300px] bg-gradient-to-br md:min-h-[360px] lg:min-h-[440px] xl:min-h-[500px] ${stageClass}`}>
+    <div className={`relative min-w-0 max-w-full overflow-hidden rounded-[24px] border ${frameClass}`}>
+      <div className={`aspect-[16/10] min-h-[190px] bg-gradient-to-br sm:min-h-[300px] md:min-h-[360px] lg:min-h-[440px] xl:min-h-[500px] ${stageClass}`}>
         <video
           ref={videoRef}
           autoPlay
@@ -96,7 +96,7 @@ export function CameraPreview({ isDarkMode, status, stream }: CameraPreviewProps
 
         {status !== 'live' && (
           <div
-            className={`absolute inset-0 flex flex-col items-center justify-center gap-2.5 px-6 text-center ${overlayTextClass}`}
+            className={`absolute inset-0 flex flex-col items-center justify-center gap-2.5 px-4 text-center sm:px-6 ${overlayTextClass}`}
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.12),transparent_46%)]" />
             <div
@@ -114,13 +114,13 @@ export function CameraPreview({ isDarkMode, status, stream }: CameraPreviewProps
               )}
             </div>
             <div className="space-y-1">
-              <p className="text-sm font-semibold">
+              <p className="break-words text-sm font-semibold">
                 {status === 'requesting' && 'Requesting camera access'}
                 {status === 'idle' && 'Camera ready'}
                 {status === 'denied' && 'Camera permission blocked'}
                 {status === 'error' && 'Camera unavailable'}
               </p>
-              <p className={`text-xs ${overlaySubtleTextClass}`}>
+              <p className={`break-words text-xs ${overlaySubtleTextClass}`}>
                 {status === 'requesting' && 'Approve the browser prompt to start your live preview.'}
                 {status === 'idle' && 'The camera will activate as soon as the interview begins.'}
                 {status === 'denied' &&
@@ -134,7 +134,7 @@ export function CameraPreview({ isDarkMode, status, stream }: CameraPreviewProps
       </div>
 
       <div
-        className={`absolute left-3 top-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold backdrop-blur ${statusBadgeClass}`}
+        className={`absolute left-3 top-3 inline-flex max-w-[calc(100%-1.5rem)] items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold backdrop-blur ${statusBadgeClass}`}
       >
         <span
           className={`h-2 w-2 rounded-full ${

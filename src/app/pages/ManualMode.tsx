@@ -126,31 +126,31 @@ export function ManualMode() {
     <div className="min-h-screen bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-white">
       <Navbar />
 
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-        <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-6">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-3xl">
-              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-700 dark:border-indigo-400/20 dark:bg-indigo-400/10 dark:text-indigo-200">
+      <main className="mx-auto w-full max-w-7xl px-3 py-5 sm:px-6 lg:px-8 lg:py-8">
+        <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-6">
+          <div className="flex min-w-0 flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div className="min-w-0 max-w-3xl">
+              <div className="mb-3 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-indigo-700 dark:border-indigo-400/20 dark:bg-indigo-400/10 dark:text-indigo-200 sm:tracking-[0.18em]">
                 <Shuffle className="h-3.5 w-3.5" />
                 Manual Mode
               </div>
-              <h1 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
+              <h1 className="break-words text-2xl font-bold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
                 Curated interview practice across every career path.
               </h1>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300 sm:text-base">
+              <p className="mt-3 max-w-2xl break-words text-sm leading-6 text-slate-600 dark:text-slate-300 sm:text-base">
                 Choose a question count, difficulty, and professional domain. Each session uses randomized, non-repeating questions from the standardized manual question bank.
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-2 rounded-xl border border-slate-200 bg-slate-50 p-2 dark:border-white/10 dark:bg-slate-950/60 sm:min-w-[320px]">
+            <div className="grid w-full grid-cols-1 gap-2 rounded-xl border border-slate-200 bg-slate-50 p-2 dark:border-white/10 dark:bg-slate-950/60 sm:min-w-[320px] sm:grid-cols-3 lg:w-auto">
               {[
                 { label: 'Domains', value: DOMAINS.length },
                 { label: 'Per Level', value: MAX_QUESTIONS_PER_LEVEL },
                 { label: 'Session Max', value: 20 },
               ].map((item) => (
-                <div key={item.label} className="rounded-lg bg-white p-3 text-center shadow-sm dark:bg-white/5">
+                <div key={item.label} className="min-w-0 rounded-lg bg-white p-3 text-center shadow-sm dark:bg-white/5">
                   <p className="text-xl font-bold text-slate-950 dark:text-white">{item.value}</p>
-                  <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                  <p className="mt-0.5 break-words text-[11px] font-medium uppercase leading-tight tracking-wide text-slate-500 dark:text-slate-400">
                     {item.label}
                   </p>
                 </div>
@@ -159,9 +159,9 @@ export function ManualMode() {
           </div>
         </section>
 
-        <section className="mt-6 grid gap-6 lg:grid-cols-[360px_minmax(0,1fr)]">
-          <aside className="space-y-4">
-            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900/80">
+        <section className="mt-5 grid min-w-0 gap-5 lg:mt-6 lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-6">
+          <aside className="min-w-0 space-y-4">
+            <div className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
               <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
                 <CheckCircle2 className="h-4 w-4 text-indigo-500" />
                 Session Setup
@@ -209,7 +209,7 @@ export function ManualMode() {
                               : 'border-slate-200 bg-white hover:border-indigo-300 dark:border-white/10 dark:bg-white/5'
                           }`}
                         >
-                          <div className="flex gap-3">
+                          <div className="flex min-w-0 gap-3">
                             <span
                               className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${
                                 active
@@ -219,11 +219,11 @@ export function ManualMode() {
                             >
                               <Icon className="h-4 w-4" />
                             </span>
-                            <span>
-                              <span className="block text-sm font-bold text-slate-950 dark:text-white">
+                            <span className="min-w-0">
+                              <span className="block break-words text-sm font-bold text-slate-950 dark:text-white">
                                 {meta.title}
                               </span>
-                              <span className="mt-0.5 block text-xs leading-5 text-slate-500 dark:text-slate-400">
+                              <span className="mt-0.5 block break-words text-xs leading-5 text-slate-500 dark:text-slate-400">
                                 {meta.description}
                               </span>
                             </span>
@@ -236,18 +236,18 @@ export function ManualMode() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900/80">
+            <div className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
               <p className="text-sm font-semibold text-slate-900 dark:text-white">Selected Interview</p>
-              <div className="mt-4 rounded-xl bg-slate-50 p-4 dark:bg-slate-950/60">
+              <div className="mt-4 min-w-0 rounded-xl bg-slate-50 p-4 dark:bg-slate-950/60">
                 {selectedDomainDetails ? (
-                  <div>
-                    <div className="mb-3 inline-flex h-11 min-w-11 items-center justify-center rounded-xl bg-indigo-600 px-3 text-sm font-bold text-white">
+                  <div className="min-w-0">
+                    <div className="mb-3 inline-flex h-11 min-w-11 max-w-full items-center justify-center rounded-xl bg-indigo-600 px-3 text-sm font-bold text-white">
                       {selectedDomainDetails.icon}
                     </div>
-                    <p className="text-lg font-bold text-slate-950 dark:text-white">
+                    <p className="break-words text-lg font-bold text-slate-950 dark:text-white">
                       {selectedDomainDetails.name}
                     </p>
-                    <p className="mt-1 line-clamp-3 text-sm leading-5 text-slate-600 dark:text-slate-300">
+                    <p className="mt-1 line-clamp-3 break-words text-sm leading-5 text-slate-600 dark:text-slate-300">
                       {selectedDomainDetails.description}
                     </p>
                   </div>
@@ -269,19 +269,19 @@ export function ManualMode() {
             </div>
           </aside>
 
-          <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
+          <section className="min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
             <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-              <div>
+              <div className="min-w-0">
                 <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
                   <Filter className="h-4 w-4 text-indigo-500" />
                   Browse Domains
                 </div>
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                <p className="mt-1 break-words text-sm text-slate-500 dark:text-slate-400">
                   {filteredDomains.length} domains available for the selected filters.
                 </p>
               </div>
 
-              <div className="relative w-full xl:max-w-sm">
+              <div className="relative w-full min-w-0 xl:max-w-sm">
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
                 <input
                   type="text"
@@ -293,12 +293,12 @@ export function ManualMode() {
               </div>
             </div>
 
-            <div className="mt-4 flex gap-2 overflow-x-auto pb-2">
+            <div className="mt-4 flex flex-wrap gap-2">
               {DOMAIN_CATEGORIES.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => handleCategoryChange(category.id)}
-                  className={`whitespace-nowrap rounded-xl border px-3.5 py-2 text-sm font-semibold transition-colors ${
+                  className={`min-w-0 rounded-xl border px-3 py-2 text-left text-sm font-semibold leading-snug transition-colors sm:px-3.5 ${
                     selectedCategory === category.id
                       ? 'border-indigo-500 bg-indigo-600 text-white'
                       : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-indigo-300 dark:border-white/10 dark:bg-white/5 dark:text-slate-200'
@@ -310,7 +310,7 @@ export function ManualMode() {
               ))}
             </div>
 
-            <div className="mt-4 grid max-h-[42rem] grid-cols-1 gap-3 overflow-y-auto p-1 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-4 grid max-h-[42rem] min-w-0 grid-cols-1 gap-3 overflow-y-auto p-1 sm:grid-cols-2 xl:grid-cols-3">
               {filteredDomains.map((domain) => {
                 const active = selectedDomain === domain.id;
 
@@ -318,7 +318,7 @@ export function ManualMode() {
                   <button
                     key={domain.id}
                     onClick={() => setSelectedDomain(domain.id)}
-                    className={`min-h-[142px] rounded-xl border p-4 text-left transition-all ${
+                    className={`min-h-[142px] w-full min-w-0 rounded-xl border p-3.5 text-left transition-all sm:p-4 ${
                       active
                         ? 'border-indigo-500 bg-indigo-50 shadow-md shadow-indigo-500/10 dark:bg-indigo-500/15'
                         : 'border-slate-200 bg-white hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md dark:border-white/10 dark:bg-white/5'
@@ -326,7 +326,7 @@ export function ManualMode() {
                   >
                     <div className="flex items-start gap-3">
                       <span
-                        className={`inline-flex h-10 min-w-10 items-center justify-center rounded-lg px-2.5 text-sm font-bold ${
+                        className={`inline-flex h-10 min-w-10 shrink-0 items-center justify-center rounded-lg px-2.5 text-sm font-bold ${
                           active
                             ? 'bg-indigo-600 text-white'
                             : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200'
@@ -334,11 +334,11 @@ export function ManualMode() {
                       >
                         {domain.icon}
                       </span>
-                      <span className="min-w-0">
-                        <span className="block text-[17px] font-semibold leading-snug text-slate-950 dark:text-white">
+                      <span className="min-w-0 flex-1">
+                        <span className="block break-words text-[17px] font-semibold leading-snug text-slate-950 dark:text-white">
                           {domain.name}
                         </span>
-                        <span className="mt-1.5 line-clamp-3 block text-[13px] leading-5 text-slate-600 dark:text-slate-300">
+                        <span className="mt-1.5 line-clamp-3 block break-words text-[13px] leading-5 text-slate-600 dark:text-slate-300">
                           {domain.description}
                         </span>
                       </span>

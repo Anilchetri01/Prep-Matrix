@@ -250,16 +250,16 @@ export function AIInterviewPage() {
         : 'absolute inset-0 bg-[radial-gradient(circle_at_15%_12%,rgba(14,165,233,0.10),transparent_24%),radial-gradient(circle_at_85%_4%,rgba(99,102,241,0.10),transparent_24%),radial-gradient(circle_at_50%_90%,rgba(148,163,184,0.08),transparent_28%)]',
       section:
         isDarkMode
-          ? 'rounded-2xl border border-white/10 bg-slate-900/70 shadow-[0_24px_60px_rgba(2,6,23,0.28)] backdrop-blur-xl'
-          : 'rounded-2xl border border-white/80 bg-white/78 shadow-[0_20px_56px_rgba(15,23,42,0.08)] backdrop-blur-xl',
+          ? 'min-w-0 max-w-full overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-[0_24px_60px_rgba(2,6,23,0.28)] backdrop-blur-xl'
+          : 'min-w-0 max-w-full overflow-hidden rounded-2xl border border-white/80 bg-white/78 shadow-[0_20px_56px_rgba(15,23,42,0.08)] backdrop-blur-xl',
       panel:
         isDarkMode
-          ? 'rounded-2xl border border-white/8 bg-slate-950/40 shadow-lg shadow-slate-950/15'
-          : 'rounded-2xl border border-slate-200/80 bg-slate-50/90 shadow-sm',
+          ? 'min-w-0 max-w-full rounded-2xl border border-white/8 bg-slate-950/40 shadow-lg shadow-slate-950/15'
+          : 'min-w-0 max-w-full rounded-2xl border border-slate-200/80 bg-slate-50/90 shadow-sm',
       surface:
         isDarkMode
-          ? 'rounded-2xl border border-white/8 bg-white/5'
-          : 'rounded-2xl border border-slate-200/80 bg-white/90',
+          ? 'min-w-0 max-w-full rounded-2xl border border-white/8 bg-white/5'
+          : 'min-w-0 max-w-full rounded-2xl border border-slate-200/80 bg-white/90',
       title: isDarkMode ? 'text-white' : 'text-slate-900',
       body: isDarkMode ? 'text-slate-300/80' : 'text-slate-600',
       muted: isDarkMode ? 'text-slate-400' : 'text-slate-500',
@@ -281,8 +281,8 @@ export function AIInterviewPage() {
         : 'bg-indigo-50 text-indigo-700',
       featureCard:
         isDarkMode
-          ? 'flex h-full min-h-[150px] flex-col items-start rounded-2xl border border-white/10 bg-white/6 p-4'
-          : 'flex h-full min-h-[150px] flex-col items-start rounded-2xl border border-slate-200/80 bg-white/88 p-4',
+          ? 'flex h-full min-h-[132px] min-w-0 max-w-full flex-col items-start rounded-2xl border border-white/10 bg-white/6 p-3.5 sm:min-h-[150px] sm:p-4'
+          : 'flex h-full min-h-[132px] min-w-0 max-w-full flex-col items-start rounded-2xl border border-slate-200/80 bg-white/88 p-3.5 sm:min-h-[150px] sm:p-4',
     }),
     [isDarkMode],
   );
@@ -1154,7 +1154,7 @@ export function AIInterviewPage() {
   const mainContainerClasses =
     phase === 'interview'
       ? 'relative flex min-h-screen flex-col'
-      : 'mx-auto flex max-w-7xl flex-col gap-5 px-4 py-7 sm:px-6 lg:px-8';
+      : 'mx-auto flex w-full max-w-7xl flex-col gap-5 px-3 py-5 sm:px-6 sm:py-7 lg:px-8';
 
   if (loading) {
     return (
@@ -1171,28 +1171,28 @@ export function AIInterviewPage() {
       <div className="relative z-10">
         {showApplicationChrome && <Navbar />}
         <main className={mainContainerClasses}>
-          <section className={cx(theme.section, 'p-5 sm:p-6')}>
+          <section className={cx(theme.section, 'p-4 sm:p-6')}>
             <div className="flex flex-col gap-5">
-              <div className="max-w-2xl">
+              <div className="min-w-0 max-w-2xl">
                 <div
                   className={cx(
-                    'mb-3 inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.26em]',
+                    'mb-3 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] sm:px-3.5 sm:tracking-[0.26em]',
                     theme.chip,
                   )}
                 >
                   <Sparkles className="h-3.5 w-3.5" />
                   Resume-based mode
                 </div>
-                <h1 className={cx('text-2xl font-semibold tracking-tight sm:text-3xl lg:text-[2rem]', theme.title)}>
+                <h1 className={cx('break-words text-2xl font-semibold tracking-tight sm:text-3xl lg:text-[2rem]', theme.title)}>
                   Interviews shaped around your experience
                 </h1>
-                <p className={cx('mt-3 max-w-xl text-sm leading-6 sm:text-[15px]', theme.body)}>
+                <p className={cx('mt-3 max-w-xl break-words text-sm leading-6 sm:text-[15px]', theme.body)}>
                   Upload your resume to unlock tailored questions, a focused practice space, and
                   intelligent feedback that feels polished and purposeful.
                 </p>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="grid min-w-0 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
                 {heroHighlights.map((item) => (
                   <div key={item.label} className={theme.featureCard}>
                     <div
@@ -1203,11 +1203,11 @@ export function AIInterviewPage() {
                     >
                       <item.icon className="h-4 w-4" />
                     </div>
-                    <p className={cx('mt-3 text-[11px] uppercase tracking-[0.22em]', theme.muted)}>
+                    <p className={cx('mt-3 break-words text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.22em]', theme.muted)}>
                       {item.label}
                     </p>
                     <p
-                      className={cx('mt-1.5 text-[13px] leading-5', theme.subtle)}
+                      className={cx('mt-1.5 break-words text-[13px] leading-5', theme.subtle)}
                       style={{
                         display: '-webkit-box',
                         overflow: 'hidden',
@@ -1224,28 +1224,28 @@ export function AIInterviewPage() {
           </section>
 
           {(phase === 'setup' || phase === 'ready') && (
-            <section className={cx(theme.section, 'p-5 sm:p-6')}>
+            <section className={cx(theme.section, 'p-4 sm:p-6')}>
               <div className="mb-5 flex flex-col gap-2">
-                <p className={cx('text-xs uppercase tracking-[0.24em]', theme.muted)}>Section 2</p>
-                <h2 className={cx('text-2xl font-semibold', theme.title)}>Interview setup</h2>
-                <p className={cx('max-w-2xl text-sm leading-6', theme.body)}>
+                <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>Section 2</p>
+                <h2 className={cx('text-xl font-semibold sm:text-2xl', theme.title)}>Interview setup</h2>
+                <p className={cx('max-w-2xl break-words text-sm leading-6', theme.body)}>
                   Fine-tune the session, upload your resume, and prepare a guided interview
                   tailored to your background.
                 </p>
               </div>
 
-              <div className="grid gap-5 lg:grid-cols-[minmax(0,1.9fr)_minmax(380px,1fr)] lg:items-start">
+              <div className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1.9fr)_minmax(320px,1fr)] lg:items-start xl:grid-cols-[minmax(0,1.9fr)_minmax(380px,1fr)]">
                 <div className={cx(theme.panel, 'h-full p-4 sm:p-5')}>
-                  <div className="mb-4 flex items-center justify-between gap-3">
-                    <div>
-                      <p className={cx('text-xs uppercase tracking-[0.24em]', theme.muted)}>
+                  <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="min-w-0">
+                      <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>
                         Camera preview
                       </p>
-                      <h3 className={cx('mt-1 text-lg font-semibold', theme.title)}>
+                      <h3 className={cx('mt-1 break-words text-lg font-semibold', theme.title)}>
                         Ready when you are
                       </h3>
                     </div>
-                    <span className={cx('rounded-full border px-3 py-1 text-xs', theme.neutralChip)}>
+                    <span className={cx('w-fit max-w-full rounded-full border px-3 py-1 text-xs', theme.neutralChip)}>
                       {formatCameraStatus(cameraStatus)}
                     </span>
                   </div>
@@ -1257,11 +1257,11 @@ export function AIInterviewPage() {
                   />
 
                   <div className={cx('mt-3 rounded-2xl border p-3.5', theme.outlineButton)}>
-                    <div className="flex items-center gap-2">
+                    <div className="flex min-w-0 items-center gap-2">
                       <span className="h-2.5 w-2.5 rounded-full bg-sky-400/80" />
-                      <p className={cx('text-sm font-semibold', theme.title)}>{cameraSummaryTitle}</p>
+                      <p className={cx('min-w-0 break-words text-sm font-semibold', theme.title)}>{cameraSummaryTitle}</p>
                     </div>
-                    <p className={cx('mt-1.5 text-sm leading-6', theme.body)}>
+                    <p className={cx('mt-1.5 break-words text-sm leading-6', theme.body)}>
                       {cameraSummaryBody}
                     </p>
                   </div>
@@ -1279,7 +1279,7 @@ export function AIInterviewPage() {
                               disabled={preparing}
                               onClick={() => setDifficulty(option)}
                               className={cx(
-                                'inline-flex h-14 min-w-0 items-center justify-center rounded-2xl border px-3 text-center text-[13px] font-semibold capitalize whitespace-nowrap transition disabled:cursor-not-allowed disabled:opacity-60',
+                                'inline-flex h-12 min-w-0 items-center justify-center rounded-2xl border px-3 text-center text-[13px] font-semibold capitalize transition disabled:cursor-not-allowed disabled:opacity-60 sm:h-14 sm:whitespace-nowrap',
                                 difficulty === option
                                   ? isDarkMode
                                     ? 'border-sky-400/30 bg-sky-400/10 text-white'
@@ -1335,7 +1335,7 @@ export function AIInterviewPage() {
                           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                             <div className="min-w-0">
                               <p className={cx('text-sm font-semibold', theme.title)}>Resume upload</p>
-                              <p className={cx('mt-1 text-sm leading-6', theme.body)}>
+                              <p className={cx('mt-1 break-words text-sm leading-6', theme.body)}>
                                 Use a PDF to prepare a personalized interview and keep it linked to
                                 this session.
                               </p>
@@ -1355,7 +1355,7 @@ export function AIInterviewPage() {
                           </div>
 
                           {selectedResumeLabel && (
-                            <p className={cx('inline-flex w-fit rounded-full border px-3 py-1 text-xs', theme.chip)}>
+                            <p className={cx('inline-flex max-w-full flex-wrap rounded-full border px-3 py-1 text-xs break-all sm:w-fit sm:break-normal', theme.chip)}>
                               {selectedFile ? 'Selected' : 'Using saved resume'}: {selectedResumeLabel}
                             </p>
                           )}
@@ -1363,7 +1363,7 @@ export function AIInterviewPage() {
                       </div>
 
                       <div className="space-y-3 pt-1">
-                        <p className={cx('text-sm leading-6', theme.body)}>
+                        <p className={cx('break-words text-sm leading-6', theme.body)}>
                           {preparing
                             ? 'Preparing your interview...'
                             : session && phase === 'ready'
@@ -1373,11 +1373,11 @@ export function AIInterviewPage() {
                             : 'Upload a resume to continue.'}
                         </p>
                         {session && (
-                          <div className={cx('flex flex-wrap items-center gap-2 rounded-2xl border px-3 py-2.5', theme.surface)}>
-                            <span className={cx('text-[11px] uppercase tracking-[0.22em]', theme.muted)}>
+                          <div className={cx('flex min-w-0 flex-wrap items-center gap-2 rounded-2xl border px-3 py-2.5', theme.surface)}>
+                            <span className={cx('text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.22em]', theme.muted)}>
                               Prepared
                             </span>
-                            <span className={cx('text-sm font-medium', theme.title)}>
+                            <span className={cx('min-w-0 break-words text-sm font-medium', theme.title)}>
                               {session.analysis.domain}
                             </span>
                             <span className={cx('rounded-full border px-2.5 py-1 text-[11px]', theme.chip)}>
@@ -1462,14 +1462,14 @@ export function AIInterviewPage() {
           )}
 
           {phase === 'complete' && session && (
-            <section className={cx(theme.section, 'p-5 sm:p-6')}>
+            <section className={cx(theme.section, 'p-4 sm:p-6')}>
               <div className="mb-5 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-                <div>
-                  <p className={cx('text-xs uppercase tracking-[0.24em]', theme.muted)}>Section 2</p>
-                  <h2 className={cx('mt-2 text-2xl font-semibold', theme.title)}>
+                <div className="min-w-0">
+                  <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>Section 2</p>
+                  <h2 className={cx('mt-2 break-words text-xl font-semibold sm:text-2xl', theme.title)}>
                     Session summary
                   </h2>
-                  <p className={cx('mt-2 max-w-2xl text-sm leading-6', theme.body)}>
+                  <p className={cx('mt-2 max-w-2xl break-words text-sm leading-6', theme.body)}>
                     Review the full breakdown, revisit strengths and improvements, and use the
                     next session to keep building momentum.
                   </p>
@@ -1505,12 +1505,12 @@ export function AIInterviewPage() {
 
           {phase !== 'interview' && (
             <section className={cx(theme.section, 'px-4 py-4 sm:px-5 sm:py-4')}>
-            <div className="mx-auto max-w-[1120px]">
+            <div className="mx-auto w-full min-w-0 max-w-[1120px]">
               <div className="mb-3.5 flex flex-col gap-2.5 lg:flex-row lg:items-end lg:justify-between">
-                <div>
-                  <p className={cx('text-xs uppercase tracking-[0.24em]', theme.muted)}>Section 3</p>
-                  <h2 className={cx('mt-2 text-2xl font-semibold', theme.title)}>Session info</h2>
-                  <p className={cx('mt-1.5 max-w-2xl text-sm leading-[1.35rem]', theme.body)}>
+                <div className="min-w-0">
+                  <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>Section 3</p>
+                  <h2 className={cx('mt-2 break-words text-xl font-semibold sm:text-2xl', theme.title)}>Session info</h2>
+                  <p className={cx('mt-1.5 max-w-2xl break-words text-sm leading-[1.35rem]', theme.body)}>
                     Keep an eye on the active session, check voice readiness, and jump back into
                     earlier practice rounds whenever you need them.
                   </p>
@@ -1522,7 +1522,7 @@ export function AIInterviewPage() {
                     void loadSessions();
                   }}
                   className={cx(
-                    'inline-flex items-center gap-2 rounded-2xl border px-4 py-2.5 text-sm font-semibold transition',
+                    'inline-flex w-full items-center justify-center gap-2 rounded-2xl border px-4 py-2.5 text-sm font-semibold transition sm:w-auto',
                     theme.outlineButton,
                   )}
                 >
@@ -1531,14 +1531,14 @@ export function AIInterviewPage() {
                 </button>
               </div>
 
-              <div className="grid gap-5 lg:grid-cols-3">
+              <div className="grid min-w-0 gap-4 lg:grid-cols-3 lg:gap-5">
               <div className={cx(theme.panel, 'flex h-full flex-col p-3 sm:p-3.5')}>
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className={cx('text-xs uppercase tracking-[0.24em]', theme.muted)}>
+                <div className="flex min-w-0 items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>
                       Current session
                     </p>
-                    <h3 className={cx('mt-1.5 text-base font-semibold sm:text-lg', theme.title)}>
+                    <h3 className={cx('mt-1.5 break-words text-base font-semibold sm:text-lg', theme.title)}>
                       {session ? session.analysis.domain : 'No active session'}
                     </h3>
                   </div>
@@ -1556,7 +1556,7 @@ export function AIInterviewPage() {
                   <div className="mt-3 flex flex-1 flex-col space-y-2">
                     <div className="grid gap-2.5 sm:grid-cols-2">
                       <div className={cx('rounded-xl border p-2.5', theme.surface)}>
-                        <p className={cx('text-xs uppercase tracking-[0.24em]', theme.muted)}>
+                        <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>
                           Status
                         </p>
                         <p className={cx('mt-1.5 text-sm font-semibold', theme.title)}>
@@ -1564,7 +1564,7 @@ export function AIInterviewPage() {
                         </p>
                       </div>
                       <div className={cx('rounded-xl border p-2.5', theme.surface)}>
-                        <p className={cx('text-xs uppercase tracking-[0.24em]', theme.muted)}>
+                        <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>
                           Questions
                         </p>
                         <p className={cx('mt-1.5 text-sm font-semibold', theme.title)}>
@@ -1574,10 +1574,10 @@ export function AIInterviewPage() {
                     </div>
 
                     <div className={cx('rounded-xl border p-2.5', theme.surface)}>
-                      <p className={cx('text-xs uppercase tracking-[0.24em]', theme.muted)}>
+                      <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>
                         Resume file
                       </p>
-                      <p className={cx('mt-1.5 text-sm font-medium leading-5', theme.title)}>
+                      <p className={cx('mt-1.5 break-all text-sm font-medium leading-5 sm:break-words', theme.title)}>
                         {session.resumeFileName}
                       </p>
                       <p className={cx('mt-1 text-[13px] leading-5', theme.body)}>
@@ -1598,12 +1598,12 @@ export function AIInterviewPage() {
               </div>
 
               <div className={cx(theme.panel, 'flex h-full flex-col p-3 sm:p-3.5')}>
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className={cx('text-xs uppercase tracking-[0.24em]', theme.muted)}>
+                <div className="flex min-w-0 items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>
                       Voice guidance
                     </p>
-                    <h3 className={cx('mt-1.5 text-base font-semibold sm:text-lg', theme.title)}>
+                    <h3 className={cx('mt-1.5 break-words text-base font-semibold sm:text-lg', theme.title)}>
                       {voiceStatusLabel}
                     </h3>
                   </div>
@@ -1619,7 +1619,7 @@ export function AIInterviewPage() {
 
                 <div className="mt-3 flex flex-1 flex-col space-y-2">
                   <div className={cx('rounded-xl border p-2.5', theme.surface)}>
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex min-w-0 items-center gap-2.5">
                       <span
                         className={cx(
                           'h-2.5 w-2.5 rounded-full',
@@ -1630,14 +1630,14 @@ export function AIInterviewPage() {
                             : 'bg-slate-300',
                         )}
                       />
-                      <p className={cx('text-sm font-semibold', theme.title)}>{voiceStatusLabel}</p>
+                      <p className={cx('min-w-0 break-words text-sm font-semibold', theme.title)}>{voiceStatusLabel}</p>
                     </div>
-                    <p className={cx('mt-1 text-[13px] leading-[1.25rem]', theme.body)}>{voiceStatusNote}</p>
+                    <p className={cx('mt-1 break-words text-[13px] leading-[1.25rem]', theme.body)}>{voiceStatusNote}</p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
                     <div className={cx('rounded-xl border p-2.5', theme.surface)}>
-                      <p className={cx('text-xs uppercase tracking-[0.24em]', theme.muted)}>
+                      <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>
                         Prompts
                       </p>
                       <p className={cx('mt-1.5 text-sm font-medium', theme.title)}>
@@ -1645,7 +1645,7 @@ export function AIInterviewPage() {
                       </p>
                     </div>
                     <div className={cx('rounded-xl border p-2.5', theme.surface)}>
-                      <p className={cx('text-xs uppercase tracking-[0.24em]', theme.muted)}>
+                      <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>
                         Microphone
                       </p>
                       <p className={cx('mt-1.5 text-sm font-medium', theme.title)}>
@@ -1663,11 +1663,11 @@ export function AIInterviewPage() {
 
               <div className="flex h-full flex-col rounded-2xl border border-border bg-card p-3 shadow-sm sm:p-3.5">
                 <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                  <div className="min-w-0">
+                    <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground sm:tracking-[0.24em]">
                       Previous sessions
                     </p>
-                    <h3 className="mt-1.5 text-base font-semibold text-foreground sm:text-lg">
+                    <h3 className="mt-1.5 break-words text-base font-semibold text-foreground sm:text-lg">
                       Resume-based history
                     </h3>
                   </div>
@@ -1688,12 +1688,12 @@ export function AIInterviewPage() {
                             : 'border-border',
                         )}
                       >
-                        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                          <div className="min-w-0">
-                            <div className="flex flex-wrap items-center gap-2">
-                              <p className="truncate text-sm font-semibold text-foreground">
-                                {item.analysis.domain}
-                              </p>
+                          <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                            <div className="min-w-0">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <p className="min-w-0 break-words text-sm font-semibold text-foreground sm:truncate">
+                                  {item.analysis.domain}
+                                </p>
                               <span
                                 className={cx(
                                   'rounded-full border px-2.5 py-1 text-[11px] font-medium',
@@ -1708,18 +1708,18 @@ export function AIInterviewPage() {
                                 {formatStatus(item.status)}
                               </span>
                             </div>
-                            <p className="mt-1 truncate text-xs leading-5 text-muted-foreground">
-                              {item.resumeFileName}
-                            </p>
+                              <p className="mt-1 break-all text-xs leading-5 text-muted-foreground sm:truncate">
+                                {item.resumeFileName}
+                              </p>
                             <p className="mt-1 text-xs text-muted-foreground">
                               {format(new Date(item.createdAt), 'MMM dd, yyyy hh:mm a')}
                             </p>
                           </div>
 
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-2 sm:justify-end">
                             <button
                               onClick={() => handleOpenSession(item)}
-                              className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background px-2.5 py-1.5 text-xs font-semibold text-foreground transition hover:bg-accent hover:text-accent-foreground"
+                              className="inline-flex min-w-0 items-center justify-center gap-1.5 rounded-xl border border-border bg-background px-2.5 py-1.5 text-xs font-semibold text-foreground transition hover:bg-accent hover:text-accent-foreground"
                             >
                               <ChevronRight className="h-3.5 w-3.5" />
                               Open
@@ -1727,7 +1727,7 @@ export function AIInterviewPage() {
                             <button
                               onClick={() => void handleDeleteSession(item.id)}
                               disabled={deletingId === item.id}
-                              className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-2.5 py-1.5 text-xs font-semibold text-destructive transition hover:bg-destructive/10 disabled:cursor-not-allowed disabled:opacity-60"
+                              className="inline-flex min-w-0 items-center justify-center gap-1.5 rounded-xl border border-border bg-card px-2.5 py-1.5 text-xs font-semibold text-destructive transition hover:bg-destructive/10 disabled:cursor-not-allowed disabled:opacity-60"
                             >
                               {deletingId === item.id ? (
                                 <LoaderCircle className="h-3.5 w-3.5 animate-spin" />

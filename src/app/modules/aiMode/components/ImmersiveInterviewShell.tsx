@@ -94,7 +94,7 @@ export function ImmersiveInterviewShell({
   return (
     <section
       className={cx(
-        'relative min-h-screen overflow-hidden px-3 py-3 transition-all duration-500 sm:px-5 sm:py-5 lg:px-6 lg:py-6',
+        'relative min-h-screen overflow-hidden px-2 py-2 transition-all duration-500 sm:px-5 sm:py-5 lg:px-6 lg:py-6',
         isInterviewShellVisible ? 'scale-100 opacity-100' : 'scale-[0.98] opacity-0',
       )}
     >
@@ -109,7 +109,7 @@ export function ImmersiveInterviewShell({
 
       <div
         className={cx(
-          'relative mx-auto flex min-h-[calc(100svh-1.5rem)] max-w-[1600px] flex-col overflow-hidden rounded-[30px] border backdrop-blur-2xl',
+          'relative mx-auto flex min-h-[calc(100svh-1rem)] w-full max-w-[1600px] flex-col overflow-hidden rounded-[24px] border backdrop-blur-2xl sm:min-h-[calc(100svh-1.5rem)] sm:rounded-[30px]',
           isDarkMode
             ? 'border-white/10 bg-slate-950/45 shadow-[0_32px_90px_rgba(2,6,23,0.45)]'
             : 'border-white/80 bg-white/74 shadow-[0_28px_80px_rgba(15,23,42,0.12)]',
@@ -117,13 +117,13 @@ export function ImmersiveInterviewShell({
       >
         <div
           className={cx(
-            'border-b px-4 py-4 sm:px-6 lg:px-8',
+            'border-b px-3 py-3 sm:px-6 sm:py-4 lg:px-8',
             isDarkMode ? 'border-white/8 bg-slate-950/30' : 'border-slate-200/80 bg-white/45',
           )}
         >
-          <div className="relative flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className={cx('rounded-full border px-3 py-1 text-xs font-medium', theme.neutralChip)}>
+          <div className="relative flex min-w-0 flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex min-w-0 flex-wrap items-center gap-2">
+              <span className={cx('max-w-full break-words rounded-full border px-3 py-1 text-xs font-medium', theme.neutralChip)}>
                 {session.analysis.domain}
               </span>
               <span className={cx('rounded-full border px-3 py-1 text-xs font-medium capitalize', theme.chip)}>
@@ -148,7 +148,7 @@ export function ImmersiveInterviewShell({
               </div>
             </div>
 
-            <div className="flex items-center justify-between gap-2 lg:justify-end">
+            <div className="flex min-w-0 items-center justify-between gap-2 lg:justify-end">
               <div
                 className={cx(
                   'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium lg:hidden',
@@ -162,7 +162,7 @@ export function ImmersiveInterviewShell({
               <button
                 onClick={onEndInterview}
                 className={cx(
-                  'inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-semibold transition',
+                  'inline-flex shrink-0 items-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold transition sm:px-3.5',
                   isDarkMode
                     ? 'border-white/10 bg-white/6 text-white hover:bg-white/10'
                     : 'border-slate-200 bg-white/90 text-slate-700 hover:bg-white',
@@ -175,22 +175,22 @@ export function ImmersiveInterviewShell({
           </div>
         </div>
 
-        <div className="flex-1 px-4 pb-4 pt-4 sm:px-6 lg:px-8 lg:pb-6">
-          <div className="grid h-full items-start gap-5 xl:grid-cols-[minmax(0,1.72fr)_minmax(320px,0.78fr)]">
-            <div className="flex min-h-0 flex-col gap-5">
-              <div className={cx(theme.panel, 'p-5 sm:p-6 lg:p-7')}>
+        <div className="flex-1 px-3 pb-3 pt-3 sm:px-6 sm:pb-4 sm:pt-4 lg:px-8 lg:pb-6">
+          <div className="grid h-full min-w-0 items-start gap-4 xl:grid-cols-[minmax(0,1.72fr)_minmax(300px,0.78fr)] xl:gap-5">
+            <div className="flex min-h-0 min-w-0 flex-col gap-4 xl:gap-5">
+              <div className={cx(theme.panel, 'p-4 sm:p-6 lg:p-7')}>
                 <div className="flex flex-wrap items-center gap-2">
                   <span className={cx('rounded-full border px-3 py-1 text-xs font-medium', theme.chip)}>
                     Current question
                   </span>
-                  <span className={cx('rounded-full border px-3 py-1 text-xs font-medium', theme.neutralChip)}>
+                  <span className={cx('max-w-full break-words rounded-full border px-3 py-1 text-xs font-medium', theme.neutralChip)}>
                     Focus: {currentQuestion.focusArea}
                   </span>
                 </div>
 
                 <h2
                   className={cx(
-                    'mt-5 text-2xl font-semibold leading-10 sm:text-[2rem] sm:leading-[2.9rem] xl:max-w-4xl',
+                    'mt-5 break-words text-xl font-semibold leading-8 sm:text-[2rem] sm:leading-[2.9rem] xl:max-w-4xl',
                     theme.title,
                   )}
                 >
@@ -209,11 +209,11 @@ export function ImmersiveInterviewShell({
                 </div>
               </div>
 
-              <div className={cx(theme.panel, 'flex flex-1 flex-col p-5 sm:p-6 lg:p-7')}>
-                <div className="flex items-center justify-between gap-3">
-                  <div>
+              <div className={cx(theme.panel, 'flex flex-1 flex-col p-4 sm:p-6 lg:p-7')}>
+                <div className="flex min-w-0 items-center justify-between gap-3">
+                  <div className="min-w-0">
                     <p className={cx('text-sm font-semibold', theme.title)}>Your answer</p>
-                    <p className={cx('mt-1 text-sm leading-6', theme.body)}>
+                    <p className={cx('mt-1 break-words text-sm leading-6', theme.body)}>
                       Start speaking or type your answer.
                     </p>
                   </div>
@@ -229,26 +229,26 @@ export function ImmersiveInterviewShell({
                     placeholder="Start speaking or type your answer..."
                     rows={12}
                     className={cx(
-                      'h-full min-h-[340px] w-full resize-none rounded-[28px] border px-5 py-5 pb-24 text-sm leading-7 outline-none transition sm:min-h-[380px]',
+                      'h-full min-h-[260px] w-full resize-none rounded-[24px] border px-4 py-4 pb-24 text-sm leading-7 outline-none transition sm:min-h-[380px] sm:rounded-[28px] sm:px-5 sm:py-5',
                       isDarkMode
                         ? 'border-white/10 bg-slate-950/45 text-white placeholder:text-slate-500 focus:border-sky-400/35'
                         : 'border-slate-200 bg-white/90 text-slate-900 placeholder:text-slate-400 focus:border-sky-300',
                     )}
                   />
 
-                  <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-3">
+                  <div className="absolute inset-x-3 bottom-3 flex items-end justify-between gap-2 sm:inset-x-4 sm:bottom-4 sm:gap-3">
                     <div
                       className={cx(
-                        'min-w-0 flex-1 rounded-2xl border px-3.5 py-3 backdrop-blur',
+                        'min-w-0 flex-1 rounded-2xl border px-3 py-2.5 backdrop-blur sm:px-3.5 sm:py-3',
                         isDarkMode
                           ? 'border-white/10 bg-slate-950/78'
                           : 'border-white/80 bg-white/92 shadow-sm',
                       )}
                     >
-                      <div className="flex items-center gap-2">
+                      <div className="flex min-w-0 items-center gap-2">
                         <span
                           className={cx(
-                            'inline-flex h-9 w-9 items-center justify-center rounded-full',
+                            'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full',
                             voiceCaptureState === 'listening'
                               ? isDarkMode
                                 ? 'bg-emerald-500/12 text-emerald-200'
@@ -270,8 +270,8 @@ export function ImmersiveInterviewShell({
                         </span>
 
                         <div className="min-w-0">
-                          <div className="flex items-center gap-2">
-                            <p className={cx('text-sm font-semibold', theme.title)}>
+                          <div className="flex min-w-0 items-center gap-2">
+                            <p className={cx('truncate text-sm font-semibold', theme.title)}>
                               {interviewVoiceLabel}
                             </p>
                             {voiceCaptureState === 'listening' && (
@@ -318,13 +318,13 @@ export function ImmersiveInterviewShell({
                 </div>
 
                 <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <p className={cx('text-xs uppercase tracking-[0.24em]', theme.body)}>
+                    <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.body)}>
                     Submit when your answer feels complete
                   </p>
                   <button
                     onClick={onSubmitAnswer}
                     disabled={!currentAnswer.trim() || evaluating}
-                    className="inline-flex min-w-[240px] items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(14,165,233,0.28)] transition hover:scale-[1.01] hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-55"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(14,165,233,0.28)] transition hover:scale-[1.01] hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-55 sm:w-auto sm:min-w-[240px]"
                   >
                     {evaluating ? (
                       <>
@@ -342,11 +342,11 @@ export function ImmersiveInterviewShell({
               </div>
             </div>
 
-            <aside className="flex min-h-0 flex-col gap-4">
+            <aside className="flex min-h-0 min-w-0 flex-col gap-4">
               <button
                 onClick={onToggleMobileCamera}
                 className={cx(
-                  'inline-flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold sm:hidden',
+                  'inline-flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold sm:hidden',
                   theme.outlineButton,
                 )}
               >
@@ -361,11 +361,11 @@ export function ImmersiveInterviewShell({
               <div className={cx(isMobileCameraCollapsed ? 'hidden sm:flex' : 'flex', 'min-h-0 flex-col gap-4')}>
                 <div className={cx(theme.panel, 'p-4 sm:p-5')}>
                   <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                      <p className={cx('text-xs uppercase tracking-[0.24em]', theme.body)}>
+                    <div className="min-w-0">
+                      <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.body)}>
                         Live
                       </p>
-                      <h3 className={cx('mt-1 text-lg font-semibold', theme.title)}>
+                      <h3 className={cx('mt-1 break-words text-lg font-semibold', theme.title)}>
                         Interview camera
                       </h3>
                     </div>
@@ -394,7 +394,7 @@ export function ImmersiveInterviewShell({
                 <div className={cx(theme.panel, 'p-4 sm:p-5')}>
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <p className={cx('text-xs uppercase tracking-[0.24em]', theme.body)}>
+                      <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.body)}>
                         Progress
                       </p>
                       <h3 className={cx('mt-1 text-lg font-semibold', theme.title)}>
