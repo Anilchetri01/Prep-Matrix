@@ -1,0 +1,4100 @@
+[
+  {
+    "route": "dashboard",
+    "requestedUrl": "https://prepmatrix.vercel.app/dashboard",
+    "requestedViewport": "360x800",
+    "screenshot": "dashboard-360x800-settled.png",
+    "charts": 0,
+    "controlsCount": 0,
+    "dialogs": 0,
+    "formControls": [],
+    "headings": [],
+    "overflow": [],
+    "scrollHeight": 800,
+    "scrollWidth": 360,
+    "smallTargets": [],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Restoring your session...",
+    "url": "https://prepmatrix.vercel.app/dashboard",
+    "viewport": {
+      "h": 800,
+      "w": 360
+    }
+  },
+  {
+    "route": "dashboard",
+    "requestedUrl": "https://prepmatrix.vercel.app/dashboard",
+    "requestedViewport": "320x568",
+    "screenshot": "dashboard-320x568-settled.png",
+    "charts": 6,
+    "controlsCount": 24,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Your AI-powered career preparation command center."
+      },
+      {
+        "tag": "h2",
+        "text": "Feature Access"
+      },
+      {
+        "tag": "h3",
+        "text": "Manual Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "AI Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "Resume Analysis"
+      },
+      {
+        "tag": "h3",
+        "text": "Leaderboard"
+      },
+      {
+        "tag": "h2",
+        "text": "Recent Activity"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 5967,
+    "scrollWidth": 305,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Dark mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Welcome back, Anil Your AI-powered career preparation command center. Track interview readiness, resume progress, practice consistency, and the next best action from one professional dashboard. Start AI Interview Start Manual Interview Upload Resume Continue Previous Session Score Progress Last completed sessions across AI and Manual Mode. Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. AI vs Manual Manual AI 0 1 2 3 4 Difficulty Performance 0 25 50 75 100 beginner intermediate advanced Category Performance Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. Weekly Progress Thu Fri Sat Sun Tue 0 1 2 3 4 Feature Access Jump into the co",
+    "url": "https://prepmatrix.vercel.app/dashboard",
+    "viewport": {
+      "h": 568,
+      "w": 305
+    }
+  },
+  {
+    "route": "dashboard",
+    "requestedUrl": "https://prepmatrix.vercel.app/dashboard",
+    "requestedViewport": "768x1024",
+    "screenshot": "dashboard-768x1024-settled.png",
+    "charts": 6,
+    "controlsCount": 24,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Your AI-powered career preparation command center."
+      },
+      {
+        "tag": "h2",
+        "text": "Feature Access"
+      },
+      {
+        "tag": "h3",
+        "text": "Manual Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "AI Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "Resume Analysis"
+      },
+      {
+        "tag": "h3",
+        "text": "Leaderboard"
+      },
+      {
+        "tag": "h2",
+        "text": "Recent Activity"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 4318,
+    "scrollWidth": 753,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Welcome back, Anil Your AI-powered career preparation command center. Track interview readiness, resume progress, practice consistency, and the next best action from one professional dashboard. Start AI Interview Start Manual Interview Upload Resume Continue Previous Session Score Progress Last completed sessions across AI and Manual Mode. Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. AI vs Manual Manual AI 0 1 2 3 4 Difficulty Performance 0 25 50 75 100 beginner intermediate advanced Category Performance Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. Weekly Progress Wed Thu Fri Sat Sun Mon Tue 0 1 2 3 4 Feature Acce",
+    "url": "https://prepmatrix.vercel.app/dashboard",
+    "viewport": {
+      "h": 1024,
+      "w": 753
+    }
+  },
+  {
+    "route": "dashboard",
+    "requestedUrl": "https://prepmatrix.vercel.app/dashboard",
+    "requestedViewport": "932x430",
+    "screenshot": "dashboard-932x430-settled.png",
+    "charts": 6,
+    "controlsCount": 24,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Your AI-powered career preparation command center."
+      },
+      {
+        "tag": "h2",
+        "text": "Feature Access"
+      },
+      {
+        "tag": "h3",
+        "text": "Manual Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "AI Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "Resume Analysis"
+      },
+      {
+        "tag": "h3",
+        "text": "Leaderboard"
+      },
+      {
+        "tag": "h2",
+        "text": "Recent Activity"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 4318,
+    "scrollWidth": 917,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Dark mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Welcome back, Anil Your AI-powered career preparation command center. Track interview readiness, resume progress, practice consistency, and the next best action from one professional dashboard. Start AI Interview Start Manual Interview Upload Resume Continue Previous Session Score Progress Last completed sessions across AI and Manual Mode. Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. AI vs Manual Manual AI 0 1 2 3 4 Difficulty Performance 0 25 50 75 100 beginner intermediate advanced Category Performance Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. Weekly Progress Wed Thu Fri Sat Sun Mon Tue 0 1 2 3 4 Feature Acce",
+    "url": "https://prepmatrix.vercel.app/dashboard",
+    "viewport": {
+      "h": 430,
+      "w": 917
+    }
+  },
+  {
+    "route": "manual-mode",
+    "requestedUrl": "https://prepmatrix.vercel.app/manual-mode",
+    "requestedViewport": "360x800",
+    "screenshot": "manual-mode-360x800-settled.png",
+    "charts": 0,
+    "controlsCount": 136,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search domains...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Curated interview practice across every career path."
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 3517,
+    "scrollWidth": 345,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "MANUAL MODE Curated interview practice across every career path. Choose a question count, difficulty, and professional domain. Each session uses randomized, non-repeating questions from the standardized manual question bank. 97 DOMAINS 20 PER LEVEL 20 SESSION MAX Session Setup Number of Questions 5 10 15 20 Difficulty Level Beginner Fundamentals, definitions, and entry-level workflows. Intermediate Practical scenarios, troubleshooting, and role workflows. Advanced Architecture, optimization, strategy, and complex trade-offs. Selected Interview Select a domain to prepare your dedicated manual interview. Start Manual Interview Browse Domains 97 domains available for the selected filters. All Careers97 Technology27 AI Careers10 Business & Management9 Finance & Commerce7 Marketing & Sales4 Hea",
+    "url": "https://prepmatrix.vercel.app/manual-mode",
+    "viewport": {
+      "h": 800,
+      "w": 345
+    }
+  },
+  {
+    "route": "manual-mode",
+    "requestedUrl": "https://prepmatrix.vercel.app/manual-mode",
+    "requestedViewport": "320x568",
+    "screenshot": "manual-mode-320x568-settled.png",
+    "charts": 0,
+    "controlsCount": 136,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search domains...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Curated interview practice across every career path."
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 3605,
+    "scrollWidth": 305,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "MANUAL MODE Curated interview practice across every career path. Choose a question count, difficulty, and professional domain. Each session uses randomized, non-repeating questions from the standardized manual question bank. 97 DOMAINS 20 PER LEVEL 20 SESSION MAX Session Setup Number of Questions 5 10 15 20 Difficulty Level Beginner Fundamentals, definitions, and entry-level workflows. Intermediate Practical scenarios, troubleshooting, and role workflows. Advanced Architecture, optimization, strategy, and complex trade-offs. Selected Interview Select a domain to prepare your dedicated manual interview. Start Manual Interview Browse Domains 97 domains available for the selected filters. All Careers97 Technology27 AI Careers10 Business & Management9 Finance & Commerce7 Marketing & Sales4 Hea",
+    "url": "https://prepmatrix.vercel.app/manual-mode",
+    "viewport": {
+      "h": 568,
+      "w": 305
+    }
+  },
+  {
+    "route": "manual-mode",
+    "requestedUrl": "https://prepmatrix.vercel.app/manual-mode",
+    "requestedViewport": "768x1024",
+    "screenshot": "manual-mode-768x1024-settled.png",
+    "charts": 0,
+    "controlsCount": 136,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search domains...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Curated interview practice across every career path."
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 2799,
+    "scrollWidth": 753,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix MANUAL MODE Curated interview practice across every career path. Choose a question count, difficulty, and professional domain. Each session uses randomized, non-repeating questions from the standardized manual question bank. 97 DOMAINS 20 PER LEVEL 20 SESSION MAX Session Setup Number of Questions 5 10 15 20 Difficulty Level Beginner Fundamentals, definitions, and entry-level workflows. Intermediate Practical scenarios, troubleshooting, and role workflows. Advanced Architecture, optimization, strategy, and complex trade-offs. Selected Interview Select a domain to prepare your dedicated manual interview. Start Manual Interview Browse Domains 97 domains available for the selected filters. All Careers97 Technology27 AI Careers10 Business & Management9 Finance & Commerce7 Marketing &",
+    "url": "https://prepmatrix.vercel.app/manual-mode",
+    "viewport": {
+      "h": 1024,
+      "w": 753
+    }
+  },
+  {
+    "route": "manual-mode",
+    "requestedUrl": "https://prepmatrix.vercel.app/manual-mode",
+    "requestedViewport": "932x430",
+    "screenshot": "manual-mode-932x430-settled.png",
+    "charts": 0,
+    "controlsCount": 136,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search domains...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Curated interview practice across every career path."
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 2799,
+    "scrollWidth": 917,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix MANUAL MODE Curated interview practice across every career path. Choose a question count, difficulty, and professional domain. Each session uses randomized, non-repeating questions from the standardized manual question bank. 97 DOMAINS 20 PER LEVEL 20 SESSION MAX Session Setup Number of Questions 5 10 15 20 Difficulty Level Beginner Fundamentals, definitions, and entry-level workflows. Intermediate Practical scenarios, troubleshooting, and role workflows. Advanced Architecture, optimization, strategy, and complex trade-offs. Selected Interview Select a domain to prepare your dedicated manual interview. Start Manual Interview Browse Domains 97 domains available for the selected filters. All Careers97 Technology27 AI Careers10 Business & Management9 Finance & Commerce7 Marketing &",
+    "url": "https://prepmatrix.vercel.app/manual-mode",
+    "viewport": {
+      "h": 430,
+      "w": 917
+    }
+  },
+  {
+    "route": "ai-mode",
+    "requestedUrl": "https://prepmatrix.vercel.app/ai-mode",
+    "requestedViewport": "360x800",
+    "screenshot": "ai-mode-360x800-settled.png",
+    "charts": 0,
+    "controlsCount": 4,
+    "dialogs": 0,
+    "formControls": [],
+    "headings": [],
+    "overflow": [],
+    "scrollHeight": 865,
+    "scrollWidth": 345,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Loading interview workspace...",
+    "url": "https://prepmatrix.vercel.app/ai-mode",
+    "viewport": {
+      "h": 800,
+      "w": 345
+    }
+  },
+  {
+    "route": "ai-mode",
+    "requestedUrl": "https://prepmatrix.vercel.app/ai-mode",
+    "requestedViewport": "320x568",
+    "screenshot": "ai-mode-320x568-settled.png",
+    "charts": 0,
+    "controlsCount": 41,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "file",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Interviews shaped around your experience"
+      },
+      {
+        "tag": "h2",
+        "text": "Interview setup"
+      },
+      {
+        "tag": "h3",
+        "text": "Ready when you are"
+      },
+      {
+        "tag": "h2",
+        "text": "Session info"
+      },
+      {
+        "tag": "h3",
+        "text": "No active session"
+      },
+      {
+        "tag": "h3",
+        "text": "Ready for voice guidance"
+      },
+      {
+        "tag": "h3",
+        "text": "Resume-based history"
+      }
+    ],
+    "overflow": [
+      {
+        "cls": "aspect-[16/10] min-h-[190px] bg-gradient-to-br sm:min-h-[300px] md:min-h-[360px] lg:min-h-[440px] xl:min-h-[500px] from-slate-900 via-slate-900 to-indigo-950",
+        "left": 46,
+        "right": 350,
+        "tag": "div",
+        "text": "Camera readyThe camera will activate as soon as the interview begins.",
+        "width": 304
+      },
+      {
+        "cls": "h-full w-full object-cover transition-opacity duration-300 opacity-0",
+        "left": 46,
+        "right": 350,
+        "tag": "video",
+        "text": "",
+        "width": 304
+      }
+    ],
+    "scrollHeight": 4306,
+    "scrollWidth": 305,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "RESUME-BASED MODE Interviews shaped around your experience Upload your resume to unlock tailored questions, a focused practice space, and intelligent feedback that feels polished and purposeful. SMART ANALYSIS Resume details are turned into focused, role-relevant questions. LIVE PRACTICE Camera and voice support create a more natural interview flow. PERFORMANCE INSIGHTS Every answer is reviewed for clarity, depth, and confidence. SECTION 2 Interview setup Fine-tune the session, upload your resume, and prepare a guided interview tailored to your background. CAMERA PREVIEW Ready when you are Ready Camera ready The camera will activate as soon as the interview begins. Camera ready Camera ready Your preview stays quiet during setup and turns on when the interview begins. Difficulty Beginner In",
+    "url": "https://prepmatrix.vercel.app/ai-mode",
+    "viewport": {
+      "h": 568,
+      "w": 305
+    }
+  },
+  {
+    "route": "ai-mode",
+    "requestedUrl": "https://prepmatrix.vercel.app/ai-mode",
+    "requestedViewport": "768x1024",
+    "screenshot": "ai-mode-768x1024-settled.png",
+    "charts": 0,
+    "controlsCount": 41,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "file",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Interviews shaped around your experience"
+      },
+      {
+        "tag": "h2",
+        "text": "Interview setup"
+      },
+      {
+        "tag": "h3",
+        "text": "Ready when you are"
+      },
+      {
+        "tag": "h2",
+        "text": "Session info"
+      },
+      {
+        "tag": "h3",
+        "text": "No active session"
+      },
+      {
+        "tag": "h3",
+        "text": "Ready for voice guidance"
+      },
+      {
+        "tag": "h3",
+        "text": "Resume-based history"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 3634,
+    "scrollWidth": 753,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix RESUME-BASED MODE Interviews shaped around your experience Upload your resume to unlock tailored questions, a focused practice space, and intelligent feedback that feels polished and purposeful. SMART ANALYSIS Resume details are turned into focused, role-relevant questions. LIVE PRACTICE Camera and voice support create a more natural interview flow. PERFORMANCE INSIGHTS Every answer is reviewed for clarity, depth, and confidence. SECTION 2 Interview setup Fine-tune the session, upload your resume, and prepare a guided interview tailored to your background. CAMERA PREVIEW Ready when you are Ready Camera ready The camera will activate as soon as the interview begins. Camera ready Camera ready Your preview stays quiet during setup and turns on when the interview begins. Difficulty ",
+    "url": "https://prepmatrix.vercel.app/ai-mode",
+    "viewport": {
+      "h": 1024,
+      "w": 753
+    }
+  },
+  {
+    "route": "ai-mode",
+    "requestedUrl": "https://prepmatrix.vercel.app/ai-mode",
+    "requestedViewport": "932x430",
+    "screenshot": "ai-mode-932x430-settled.png",
+    "charts": 0,
+    "controlsCount": 41,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "file",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Interviews shaped around your experience"
+      },
+      {
+        "tag": "h2",
+        "text": "Interview setup"
+      },
+      {
+        "tag": "h3",
+        "text": "Ready when you are"
+      },
+      {
+        "tag": "h2",
+        "text": "Session info"
+      },
+      {
+        "tag": "h3",
+        "text": "No active session"
+      },
+      {
+        "tag": "h3",
+        "text": "Ready for voice guidance"
+      },
+      {
+        "tag": "h3",
+        "text": "Resume-based history"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 3692,
+    "scrollWidth": 917,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix RESUME-BASED MODE Interviews shaped around your experience Upload your resume to unlock tailored questions, a focused practice space, and intelligent feedback that feels polished and purposeful. SMART ANALYSIS Resume details are turned into focused, role-relevant questions. LIVE PRACTICE Camera and voice support create a more natural interview flow. PERFORMANCE INSIGHTS Every answer is reviewed for clarity, depth, and confidence. SECTION 2 Interview setup Fine-tune the session, upload your resume, and prepare a guided interview tailored to your background. CAMERA PREVIEW Ready when you are Ready Camera ready The camera will activate as soon as the interview begins. Camera ready Camera ready Your preview stays quiet during setup and turns on when the interview begins. Difficulty ",
+    "url": "https://prepmatrix.vercel.app/ai-mode",
+    "viewport": {
+      "h": 430,
+      "w": 917
+    }
+  },
+  {
+    "route": "resume-analysis",
+    "requestedUrl": "https://prepmatrix.vercel.app/resume-analysis",
+    "requestedViewport": "360x800",
+    "screenshot": "resume-analysis-360x800-settled.png",
+    "charts": 0,
+    "controlsCount": 105,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search domains...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "file",
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Resume Analysis"
+      },
+      {
+        "tag": "h2",
+        "text": "Upload New Resume"
+      },
+      {
+        "tag": "h3",
+        "text": "Your Resumes"
+      },
+      {
+        "tag": "h3",
+        "text": "anilchetri_resume.pdf"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 4036,
+    "scrollWidth": 345,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Resume Analysis Upload your resume and get AI-powered feedback tailored to your target domain 📄 Total Resumes 1 ⭐ Avg Score 17% 🏆 Best Score 17% 🎯 Domains 1 Upload New Resume Select Target Domain (97 available) FE Frontend Developer RX React Developer BE Backend Developer FS Full Stack Developer AD Android Developer iOS iOS Developer FL Flutter Developer RN React Native Developer DS Data Structures & Algorithms SD System Design DO DevOps Engineer CL Cloud Engineer CS Cybersecurity Specialist QA QA / Automation Engineer SQL Database Engineer (SQL) NSQ Database Engineer (NoSQL) NW Network Engineer OS Operating Systems SRE Site Reliability Engineer (SRE) PE Platform Engineer EMB Embedded Systems Engineer GAME Game Developer ARVR AR/VR Developer BI BI Developer ERP ERP Consultant SF Salesfo",
+    "url": "https://prepmatrix.vercel.app/resume-analysis",
+    "viewport": {
+      "h": 800,
+      "w": 345
+    }
+  },
+  {
+    "route": "resume-analysis",
+    "requestedUrl": "https://prepmatrix.vercel.app/resume-analysis",
+    "requestedViewport": "320x568",
+    "screenshot": "resume-analysis-320x568-settled.png",
+    "charts": 0,
+    "controlsCount": 105,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search domains...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "file",
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Resume Analysis"
+      },
+      {
+        "tag": "h2",
+        "text": "Upload New Resume"
+      },
+      {
+        "tag": "h3",
+        "text": "Your Resumes"
+      },
+      {
+        "tag": "h3",
+        "text": "anilchetri_resume.pdf"
+      }
+    ],
+    "overflow": [
+      {
+        "cls": "text-4xl font-bold text-orange-600",
+        "left": 255,
+        "right": 328,
+        "tag": "div",
+        "text": "17%",
+        "width": 73
+      }
+    ],
+    "scrollHeight": 4508,
+    "scrollWidth": 328,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Resume Analysis Upload your resume and get AI-powered feedback tailored to your target domain 📄 Total Resumes 1 ⭐ Avg Score 17% 🏆 Best Score 17% 🎯 Domains 1 Upload New Resume Select Target Domain (97 available) FE Frontend Developer RX React Developer BE Backend Developer FS Full Stack Developer AD Android Developer iOS iOS Developer FL Flutter Developer RN React Native Developer DS Data Structures & Algorithms SD System Design DO DevOps Engineer CL Cloud Engineer CS Cybersecurity Specialist QA QA / Automation Engineer SQL Database Engineer (SQL) NSQ Database Engineer (NoSQL) NW Network Engineer OS Operating Systems SRE Site Reliability Engineer (SRE) PE Platform Engineer EMB Embedded Systems Engineer GAME Game Developer ARVR AR/VR Developer BI BI Developer ERP ERP Consultant SF Salesfo",
+    "url": "https://prepmatrix.vercel.app/resume-analysis",
+    "viewport": {
+      "h": 553,
+      "w": 305
+    }
+  },
+  {
+    "route": "resume-analysis",
+    "requestedUrl": "https://prepmatrix.vercel.app/resume-analysis",
+    "requestedViewport": "768x1024",
+    "screenshot": "resume-analysis-768x1024-settled.png",
+    "charts": 0,
+    "controlsCount": 105,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search domains...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "file",
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Resume Analysis"
+      },
+      {
+        "tag": "h2",
+        "text": "Upload New Resume"
+      },
+      {
+        "tag": "h3",
+        "text": "Your Resumes"
+      },
+      {
+        "tag": "h3",
+        "text": "anilchetri_resume.pdf"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 2724,
+    "scrollWidth": 753,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Resume Analysis Upload your resume and get AI-powered feedback tailored to your target domain 📄 Total Resumes 1 ⭐ Avg Score 17% 🏆 Best Score 17% 🎯 Domains 1 Upload New Resume Select Target Domain (97 available) FE Frontend Developer RX React Developer BE Backend Developer FS Full Stack Developer AD Android Developer iOS iOS Developer FL Flutter Developer RN React Native Developer DS Data Structures & Algorithms SD System Design DO DevOps Engineer CL Cloud Engineer CS Cybersecurity Specialist QA QA / Automation Engineer SQL Database Engineer (SQL) NSQ Database Engineer (NoSQL) NW Network Engineer OS Operating Systems SRE Site Reliability Engineer (SRE) PE Platform Engineer EMB Embedded Systems Engineer GAME Game Developer ARVR AR/VR Developer BI BI Developer ERP ERP Consultant",
+    "url": "https://prepmatrix.vercel.app/resume-analysis",
+    "viewport": {
+      "h": 1024,
+      "w": 753
+    }
+  },
+  {
+    "route": "resume-analysis",
+    "requestedUrl": "https://prepmatrix.vercel.app/resume-analysis",
+    "requestedViewport": "932x430",
+    "screenshot": "resume-analysis-932x430-settled.png",
+    "charts": 0,
+    "controlsCount": 105,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search domains...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "file",
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Resume Analysis"
+      },
+      {
+        "tag": "h2",
+        "text": "Upload New Resume"
+      },
+      {
+        "tag": "h3",
+        "text": "Your Resumes"
+      },
+      {
+        "tag": "h3",
+        "text": "anilchetri_resume.pdf"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 2704,
+    "scrollWidth": 917,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Resume Analysis Upload your resume and get AI-powered feedback tailored to your target domain 📄 Total Resumes 1 ⭐ Avg Score 17% 🏆 Best Score 17% 🎯 Domains 1 Upload New Resume Select Target Domain (97 available) FE Frontend Developer RX React Developer BE Backend Developer FS Full Stack Developer AD Android Developer iOS iOS Developer FL Flutter Developer RN React Native Developer DS Data Structures & Algorithms SD System Design DO DevOps Engineer CL Cloud Engineer CS Cybersecurity Specialist QA QA / Automation Engineer SQL Database Engineer (SQL) NSQ Database Engineer (NoSQL) NW Network Engineer OS Operating Systems SRE Site Reliability Engineer (SRE) PE Platform Engineer EMB Embedded Systems Engineer GAME Game Developer ARVR AR/VR Developer BI BI Developer ERP ERP Consultant",
+    "url": "https://prepmatrix.vercel.app/resume-analysis",
+    "viewport": {
+      "h": 430,
+      "w": 917
+    }
+  },
+  {
+    "route": "history",
+    "requestedUrl": "https://prepmatrix.vercel.app/history",
+    "requestedViewport": "360x800",
+    "screenshot": "history-360x800-settled.png",
+    "charts": 0,
+    "controlsCount": 18,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search by domain...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "select",
+        "type": null,
+        "value": "all"
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "select",
+        "type": null,
+        "value": "date"
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Interview History"
+      },
+      {
+        "tag": "h2",
+        "text": "0 Interviews"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 1510,
+    "scrollWidth": 345,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 38,
+        "tag": "input",
+        "text": "Search by domain...",
+        "top": 311,
+        "visible": true,
+        "w": 281
+      },
+      {
+        "h": 36,
+        "tag": "select",
+        "text": "All DifficultiesCompleted OnlyBeginnerIntermediateAdvancedExpert",
+        "top": 360,
+        "visible": true,
+        "w": 281
+      },
+      {
+        "h": 36,
+        "tag": "select",
+        "text": "Sort: NewestSort: Highest ScoreSort: Domain",
+        "top": 408,
+        "visible": true,
+        "w": 281
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Interview History Track your progress and review past sessions All Difficulties Completed Only Beginner Intermediate Advanced Expert Sort: Newest Sort: Highest Score Sort: Domain 0 Interviews Loading interviews... PrepMatrix PREPARE SMARTER. PERFORM BETTER. GET HIRED AI-powered preparation across 97+ professional career domains. prepmatrix07@gmail.com India Project Team Anil Chetri Full Stack Developer Keshab Thakur Full Stack Developer Masruf Ali Full Stack Developer Contact Us Send Message © 2026 PrepMatrix — Academic Project",
+    "url": "https://prepmatrix.vercel.app/history",
+    "viewport": {
+      "h": 800,
+      "w": 345
+    }
+  },
+  {
+    "route": "history",
+    "requestedUrl": "https://prepmatrix.vercel.app/history",
+    "requestedViewport": "320x568",
+    "screenshot": "history-320x568-settled.png",
+    "charts": 0,
+    "controlsCount": 18,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search by domain...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "select",
+        "type": null,
+        "value": "all"
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "select",
+        "type": null,
+        "value": "date"
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Interview History"
+      },
+      {
+        "tag": "h2",
+        "text": "0 Interviews"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 1530,
+    "scrollWidth": 305,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 38,
+        "tag": "input",
+        "text": "Search by domain...",
+        "top": 331,
+        "visible": true,
+        "w": 241
+      },
+      {
+        "h": 36,
+        "tag": "select",
+        "text": "All DifficultiesCompleted OnlyBeginnerIntermediateAdvancedExpert",
+        "top": 380,
+        "visible": true,
+        "w": 241
+      },
+      {
+        "h": 36,
+        "tag": "select",
+        "text": "Sort: NewestSort: Highest ScoreSort: Domain",
+        "top": 428,
+        "visible": true,
+        "w": 241
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Interview History Track your progress and review past sessions All Difficulties Completed Only Beginner Intermediate Advanced Expert Sort: Newest Sort: Highest Score Sort: Domain 0 Interviews Loading interviews... PrepMatrix PREPARE SMARTER. PERFORM BETTER. GET HIRED AI-powered preparation across 97+ professional career domains. prepmatrix07@gmail.com India Project Team Anil Chetri Full Stack Developer Keshab Thakur Full Stack Developer Masruf Ali Full Stack Developer Contact Us Send Message © 2026 PrepMatrix — Academic Project",
+    "url": "https://prepmatrix.vercel.app/history",
+    "viewport": {
+      "h": 568,
+      "w": 305
+    }
+  },
+  {
+    "route": "history",
+    "requestedUrl": "https://prepmatrix.vercel.app/history",
+    "requestedViewport": "768x1024",
+    "screenshot": "history-768x1024-settled.png",
+    "charts": 0,
+    "controlsCount": 41,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search by domain...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "select",
+        "type": null,
+        "value": "all"
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "select",
+        "type": null,
+        "value": "date"
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Interview History"
+      },
+      {
+        "tag": "h2",
+        "text": "23 Interviews"
+      },
+      {
+        "tag": "h3",
+        "text": "Frontend Developer"
+      },
+      {
+        "tag": "h3",
+        "text": "Data Structures & Algorithms"
+      },
+      {
+        "tag": "h3",
+        "text": "Full Stack Developer"
+      },
+      {
+        "tag": "h3",
+        "text": "System Design"
+      },
+      {
+        "tag": "h3",
+        "text": "Game Developer"
+      },
+      {
+        "tag": "h3",
+        "text": "Platform Engineer"
+      },
+      {
+        "tag": "h3",
+        "text": "Cybersecurity Specialist"
+      },
+      {
+        "tag": "h3",
+        "text": "Flutter Developer"
+      },
+      {
+        "tag": "h3",
+        "text": "Data Structures & Algorithms"
+      },
+      {
+        "tag": "h3",
+        "text": "iOS Developer"
+      },
+      {
+        "tag": "h3",
+        "text": "Android Developer"
+      },
+      {
+        "tag": "h3",
+        "text": "Full Stack Developer"
+      },
+      {
+        "tag": "h3",
+        "text": "Backend Developer"
+      },
+      {
+        "tag": "h3",
+        "text": "React Developer"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 2976,
+    "scrollWidth": 753,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 38,
+        "tag": "input",
+        "text": "Search by domain...",
+        "top": 291,
+        "visible": true,
+        "w": 322
+      },
+      {
+        "h": 38,
+        "tag": "select",
+        "text": "All DifficultiesCompleted OnlyBeginnerIntermediateAdvancedExpert",
+        "top": 291,
+        "visible": true,
+        "w": 152
+      },
+      {
+        "h": 38,
+        "tag": "select",
+        "text": "Sort: NewestSort: Highest ScoreSort: Domain",
+        "top": 291,
+        "visible": true,
+        "w": 174
+      },
+      {
+        "h": 28,
+        "tag": "button",
+        "text": "Delete interview",
+        "top": 457,
+        "visible": true,
+        "w": 28
+      },
+      {
+        "h": 28,
+        "tag": "button",
+        "text": "Delete interview",
+        "top": 538,
+        "visible": true,
+        "w": 28
+      },
+      {
+        "h": 28,
+        "tag": "button",
+        "text": "Delete interview",
+        "top": 619,
+        "visible": true,
+        "w": 28
+      },
+      {
+        "h": 28,
+        "tag": "button",
+        "text": "Delete interview",
+        "top": 700,
+        "visible": true,
+        "w": 28
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Interview History Track your progress and review past sessions Total 23 Avg Score 51% Best Score 76% All Difficulties Completed Only Beginner Intermediate Advanced Expert Sort: Newest Sort: Highest Score Sort: Domain 23 Interviews 📋 Frontend Developer beginner In Progress Jun 24, 2026 📋 Data Structures & Algorithms beginner Completed May 23, 2026 16:13 5 questions 49% 📋 Full Stack Developer beginner Completed May 13, 2026 2:47 5 questions 17% 📋 System Design advanced Completed May 10, 2026 2:17 5 questions 52% 📋 Game Developer advanced Completed May 10, 2026 1:58 5 questions 64% 📋 Platform Engineer advanced Completed May 10, 2026 2:02 5 questions 52% 📋 Cybersecurity Specialist advanced Completed May 10, 2026 1:25 5 questions 50% 📋 Flutter Developer advanced Completed May",
+    "url": "https://prepmatrix.vercel.app/history",
+    "viewport": {
+      "h": 1024,
+      "w": 753
+    }
+  },
+  {
+    "route": "history",
+    "requestedUrl": "https://prepmatrix.vercel.app/history",
+    "requestedViewport": "932x430",
+    "screenshot": "history-932x430-settled.png",
+    "charts": 0,
+    "controlsCount": 18,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search by domain...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "select",
+        "type": null,
+        "value": "all"
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "select",
+        "type": null,
+        "value": "date"
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Interview History"
+      },
+      {
+        "tag": "h2",
+        "text": "0 Interviews"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 1354,
+    "scrollWidth": 917,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 38,
+        "tag": "input",
+        "text": "Search by domain...",
+        "top": 311,
+        "visible": true,
+        "w": 486
+      },
+      {
+        "h": 38,
+        "tag": "select",
+        "text": "All DifficultiesCompleted OnlyBeginnerIntermediateAdvancedExpert",
+        "top": 311,
+        "visible": true,
+        "w": 152
+      },
+      {
+        "h": 38,
+        "tag": "select",
+        "text": "Sort: NewestSort: Highest ScoreSort: Domain",
+        "top": 311,
+        "visible": true,
+        "w": 174
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Interview History Track your progress and review past sessions All Difficulties Completed Only Beginner Intermediate Advanced Expert Sort: Newest Sort: Highest Score Sort: Domain 0 Interviews Loading interviews... PrepMatrix PREPARE SMARTER. PERFORM BETTER. GET HIRED AI-powered preparation across 97+ professional career domains. prepmatrix07@gmail.com India Project Team Anil Chetri Full Stack Developer Keshab Thakur Full Stack Developer Masruf Ali Full Stack Developer Contact Us Quick project inquiry Send Message © 2026 PrepMatrix — Academic Project",
+    "url": "https://prepmatrix.vercel.app/history",
+    "viewport": {
+      "h": 430,
+      "w": 917
+    }
+  },
+  {
+    "route": "leaderboard",
+    "requestedUrl": "https://prepmatrix.vercel.app/leaderboard",
+    "requestedViewport": "360x800",
+    "screenshot": "leaderboard-360x800-settled.png",
+    "charts": 0,
+    "controlsCount": 16,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Leaderboard"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 1159,
+    "scrollWidth": 345,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 38,
+        "tag": "button",
+        "text": "Refresh",
+        "top": 151,
+        "visible": true,
+        "w": 321
+      },
+      {
+        "h": 28,
+        "tag": "a",
+        "text": "prepmatrix07@gmail.com",
+        "top": 591,
+        "visible": true,
+        "w": 313
+      },
+      {
+        "h": 28,
+        "tag": "a",
+        "text": "Anil Chetri on GitHub",
+        "top": 715,
+        "visible": true,
+        "w": 28
+      },
+      {
+        "h": 28,
+        "tag": "a",
+        "text": "Anil Chetri on LinkedIn",
+        "top": 715,
+        "visible": true,
+        "w": 28
+      },
+      {
+        "h": 28,
+        "tag": "a",
+        "text": "Keshab Thakur on GitHub",
+        "top": 761,
+        "visible": true,
+        "w": 28
+      },
+      {
+        "h": 28,
+        "tag": "a",
+        "text": "Keshab Thakur on LinkedIn",
+        "top": 761,
+        "visible": true,
+        "w": 28
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Leaderboard Global rankings across all users Refresh Loading leaderboard... PrepMatrix PREPARE SMARTER. PERFORM BETTER. GET HIRED AI-powered preparation across 97+ professional career domains. prepmatrix07@gmail.com India Project Team Anil Chetri Full Stack Developer Keshab Thakur Full Stack Developer Masruf Ali Full Stack Developer Contact Us Send Message © 2026 PrepMatrix — Academic Project",
+    "url": "https://prepmatrix.vercel.app/leaderboard",
+    "viewport": {
+      "h": 800,
+      "w": 345
+    }
+  },
+  {
+    "route": "leaderboard",
+    "requestedUrl": "https://prepmatrix.vercel.app/leaderboard",
+    "requestedViewport": "320x568",
+    "screenshot": "leaderboard-320x568-settled.png",
+    "charts": 0,
+    "controlsCount": 16,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Leaderboard"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 1159,
+    "scrollWidth": 305,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 38,
+        "tag": "button",
+        "text": "Refresh",
+        "top": 151,
+        "visible": true,
+        "w": 281
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Leaderboard Global rankings across all users Refresh Loading leaderboard... PrepMatrix PREPARE SMARTER. PERFORM BETTER. GET HIRED AI-powered preparation across 97+ professional career domains. prepmatrix07@gmail.com India Project Team Anil Chetri Full Stack Developer Keshab Thakur Full Stack Developer Masruf Ali Full Stack Developer Contact Us Send Message © 2026 PrepMatrix — Academic Project",
+    "url": "https://prepmatrix.vercel.app/leaderboard",
+    "viewport": {
+      "h": 568,
+      "w": 305
+    }
+  },
+  {
+    "route": "leaderboard",
+    "requestedUrl": "https://prepmatrix.vercel.app/leaderboard",
+    "requestedViewport": "768x1024",
+    "screenshot": "leaderboard-768x1024-settled.png",
+    "charts": 0,
+    "controlsCount": 16,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Leaderboard"
+      },
+      {
+        "tag": "h3",
+        "text": "Top Performers"
+      },
+      {
+        "tag": "h2",
+        "text": "All Rankings (15)"
+      },
+      {
+        "tag": "h3",
+        "text": "Climb the Ranks!"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 2812,
+    "scrollWidth": 753,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 38,
+        "tag": "button",
+        "text": "Refresh",
+        "top": 105,
+        "visible": true,
+        "w": 109
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Leaderboard Global rankings across all users Refresh YOUR RANKING AC Anil Chetri anilchetri810@gmail.com #10 Rank 50% Avg Score 23 Interviews Top Performers M Mangal 65% 2 GB Gyandip Barman 66% 1 S Sushanta 63% 3 All Rankings (15) GB Gyandip Barman 4 interviews Best: 75% May 11 66% avg M Mangal 2 interviews Best: 66% May 11 65% avg S Sushanta 4 interviews Best: 67% May 11 63% avg 4 RD Ram Das 2 interviews Best: 64% May 11 63% avg 5 K kabir 2 interviews Best: 61% May 11 61% avg 6 KD Kali das 2 interviews Best: 61% May 11 61% avg 7 J jitesj 3 interviews Best: 62% May 11 60% avg 8 R rejyan 1 interviews Best: 60% May 11 60% avg 9 MA Masruf Ali 34 interviews Best: 68% May 11 58% avg 10 AC Anil Chetri You 23 interviews Best: 76% May 23 50% avg 11 KS Krishna Sarkar 1 interviews Best: 5",
+    "url": "https://prepmatrix.vercel.app/leaderboard",
+    "viewport": {
+      "h": 1024,
+      "w": 753
+    }
+  },
+  {
+    "route": "leaderboard",
+    "requestedUrl": "https://prepmatrix.vercel.app/leaderboard",
+    "requestedViewport": "932x430",
+    "screenshot": "leaderboard-932x430-settled.png",
+    "charts": 0,
+    "controlsCount": 16,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Leaderboard"
+      },
+      {
+        "tag": "h3",
+        "text": "Top Performers"
+      },
+      {
+        "tag": "h2",
+        "text": "All Rankings (15)"
+      },
+      {
+        "tag": "h3",
+        "text": "Climb the Ranks!"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 2812,
+    "scrollWidth": 917,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 38,
+        "tag": "button",
+        "text": "Refresh",
+        "top": 105,
+        "visible": true,
+        "w": 109
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Leaderboard Global rankings across all users Refresh YOUR RANKING AC Anil Chetri anilchetri810@gmail.com #10 Rank 50% Avg Score 23 Interviews Top Performers M Mangal 65% 2 GB Gyandip Barman 66% 1 S Sushanta 63% 3 All Rankings (15) GB Gyandip Barman 4 interviews Best: 75% May 11 66% avg M Mangal 2 interviews Best: 66% May 11 65% avg S Sushanta 4 interviews Best: 67% May 11 63% avg 4 RD Ram Das 2 interviews Best: 64% May 11 63% avg 5 K kabir 2 interviews Best: 61% May 11 61% avg 6 KD Kali das 2 interviews Best: 61% May 11 61% avg 7 J jitesj 3 interviews Best: 62% May 11 60% avg 8 R rejyan 1 interviews Best: 60% May 11 60% avg 9 MA Masruf Ali 34 interviews Best: 68% May 11 58% avg 10 AC Anil Chetri You 23 interviews Best: 76% May 23 50% avg 11 KS Krishna Sarkar 1 interviews Best: 5",
+    "url": "https://prepmatrix.vercel.app/leaderboard",
+    "viewport": {
+      "h": 430,
+      "w": 917
+    }
+  },
+  {
+    "route": "candidates",
+    "requestedUrl": "https://prepmatrix.vercel.app/candidates",
+    "requestedViewport": "360x800",
+    "screenshot": "candidates-360x800-settled.png",
+    "charts": 0,
+    "controlsCount": 42,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search by name, username, job title...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Explore Candidates"
+      },
+      {
+        "tag": "h3",
+        "text": "Gyandip Barman"
+      },
+      {
+        "tag": "h3",
+        "text": "Mangal"
+      },
+      {
+        "tag": "h3",
+        "text": "Sushanta"
+      },
+      {
+        "tag": "h3",
+        "text": "Ram Das"
+      },
+      {
+        "tag": "h3",
+        "text": "Kali das"
+      },
+      {
+        "tag": "h3",
+        "text": "kabir"
+      },
+      {
+        "tag": "h3",
+        "text": "jitesj"
+      },
+      {
+        "tag": "h3",
+        "text": "rejyan"
+      },
+      {
+        "tag": "h3",
+        "text": "Masruf Ali"
+      },
+      {
+        "tag": "h3",
+        "text": "Anil Chetri"
+      },
+      {
+        "tag": "h3",
+        "text": "Krishna Sarkar"
+      },
+      {
+        "tag": "h3",
+        "text": "riyajali"
+      },
+      {
+        "tag": "h3",
+        "text": "Keshab Thakur"
+      },
+      {
+        "tag": "h3",
+        "text": "Nur"
+      },
+      {
+        "tag": "h3",
+        "text": "Biswa Prakash Baraily"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 7785,
+    "scrollWidth": 345,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Explore Candidates Discover other users on the platform, view their profiles, skills, and interview performance. Showing 26 of 26 candidates GB Gyandip Barman @gyandipbarman10 66% avg No bio provided 4 interviews Best: 75% View Profile M Mangal @mangalmahato098 65% avg No bio provided 2 interviews Best: 66% View Profile S Sushanta @barmansushanta 63% avg No bio provided 4 interviews Best: 67% View Profile RD Ram Das @ramdasjj23 63% avg No bio provided 2 interviews Best: 64% View Profile KD Kali das @kalidas901 61% avg No bio provided 2 interviews Best: 61% View Profile K kabir @kabirsarkar 61% avg No bio provided 2 interviews Best: 61% View Profile J jitesj @jitesh32 60% avg No bio provided 3 interviews Best: 62% View Profile R rejyan @rejyan234 60% avg No bio provided 1 interview Best: 60",
+    "url": "https://prepmatrix.vercel.app/candidates",
+    "viewport": {
+      "h": 800,
+      "w": 345
+    }
+  },
+  {
+    "route": "candidates",
+    "requestedUrl": "https://prepmatrix.vercel.app/candidates",
+    "requestedViewport": "320x568",
+    "screenshot": "candidates-320x568-settled.png",
+    "charts": 0,
+    "controlsCount": 42,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search by name, username, job title...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Explore Candidates"
+      },
+      {
+        "tag": "h3",
+        "text": "Gyandip Barman"
+      },
+      {
+        "tag": "h3",
+        "text": "Mangal"
+      },
+      {
+        "tag": "h3",
+        "text": "Sushanta"
+      },
+      {
+        "tag": "h3",
+        "text": "Ram Das"
+      },
+      {
+        "tag": "h3",
+        "text": "Kali das"
+      },
+      {
+        "tag": "h3",
+        "text": "kabir"
+      },
+      {
+        "tag": "h3",
+        "text": "jitesj"
+      },
+      {
+        "tag": "h3",
+        "text": "rejyan"
+      },
+      {
+        "tag": "h3",
+        "text": "Masruf Ali"
+      },
+      {
+        "tag": "h3",
+        "text": "Anil Chetri"
+      },
+      {
+        "tag": "h3",
+        "text": "Krishna Sarkar"
+      },
+      {
+        "tag": "h3",
+        "text": "riyajali"
+      },
+      {
+        "tag": "h3",
+        "text": "Keshab Thakur"
+      },
+      {
+        "tag": "h3",
+        "text": "Nur"
+      },
+      {
+        "tag": "h3",
+        "text": "Biswa Prakash Baraily"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 7785,
+    "scrollWidth": 305,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Explore Candidates Discover other users on the platform, view their profiles, skills, and interview performance. Showing 26 of 26 candidates GB Gyandip Barman @gyandipbarman10 66% avg No bio provided 4 interviews Best: 75% View Profile M Mangal @mangalmahato098 65% avg No bio provided 2 interviews Best: 66% View Profile S Sushanta @barmansushanta 63% avg No bio provided 4 interviews Best: 67% View Profile RD Ram Das @ramdasjj23 63% avg No bio provided 2 interviews Best: 64% View Profile KD Kali das @kalidas901 61% avg No bio provided 2 interviews Best: 61% View Profile K kabir @kabirsarkar 61% avg No bio provided 2 interviews Best: 61% View Profile J jitesj @jitesh32 60% avg No bio provided 3 interviews Best: 62% View Profile R rejyan @rejyan234 60% avg No bio provided 1 interview Best: 60",
+    "url": "https://prepmatrix.vercel.app/candidates",
+    "viewport": {
+      "h": 568,
+      "w": 305
+    }
+  },
+  {
+    "route": "candidates",
+    "requestedUrl": "https://prepmatrix.vercel.app/candidates",
+    "requestedViewport": "768x1024",
+    "screenshot": "candidates-768x1024-settled.png",
+    "charts": 0,
+    "controlsCount": 42,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search by name, username, job title...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Explore Candidates"
+      },
+      {
+        "tag": "h3",
+        "text": "Gyandip Barman"
+      },
+      {
+        "tag": "h3",
+        "text": "Mangal"
+      },
+      {
+        "tag": "h3",
+        "text": "Sushanta"
+      },
+      {
+        "tag": "h3",
+        "text": "Ram Das"
+      },
+      {
+        "tag": "h3",
+        "text": "Kali das"
+      },
+      {
+        "tag": "h3",
+        "text": "kabir"
+      },
+      {
+        "tag": "h3",
+        "text": "jitesj"
+      },
+      {
+        "tag": "h3",
+        "text": "rejyan"
+      },
+      {
+        "tag": "h3",
+        "text": "Masruf Ali"
+      },
+      {
+        "tag": "h3",
+        "text": "Anil Chetri"
+      },
+      {
+        "tag": "h3",
+        "text": "Krishna Sarkar"
+      },
+      {
+        "tag": "h3",
+        "text": "riyajali"
+      },
+      {
+        "tag": "h3",
+        "text": "Keshab Thakur"
+      },
+      {
+        "tag": "h3",
+        "text": "Nur"
+      },
+      {
+        "tag": "h3",
+        "text": "Biswa Prakash Baraily"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 4356,
+    "scrollWidth": 753,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Explore Candidates Discover other users on the platform, view their profiles, skills, and interview performance. Showing 26 of 26 candidates GB Gyandip Barman @gyandipbarman10 66% avg No bio provided 4 interviews Best: 75% View Profile M Mangal @mangalmahato098 65% avg No bio provided 2 interviews Best: 66% View Profile S Sushanta @barmansushanta 63% avg No bio provided 4 interviews Best: 67% View Profile RD Ram Das @ramdasjj23 63% avg No bio provided 2 interviews Best: 64% View Profile KD Kali das @kalidas901 61% avg No bio provided 2 interviews Best: 61% View Profile K kabir @kabirsarkar 61% avg No bio provided 2 interviews Best: 61% View Profile J jitesj @jitesh32 60% avg No bio provided 3 interviews Best: 62% View Profile R rejyan @rejyan234 60% avg No bio provided 1 intervi",
+    "url": "https://prepmatrix.vercel.app/candidates",
+    "viewport": {
+      "h": 1024,
+      "w": 753
+    }
+  },
+  {
+    "route": "candidates",
+    "requestedUrl": "https://prepmatrix.vercel.app/candidates",
+    "requestedViewport": "932x430",
+    "screenshot": "candidates-932x430-settled.png",
+    "charts": 0,
+    "controlsCount": 42,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Search by name, username, job title...",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Explore Candidates"
+      },
+      {
+        "tag": "h3",
+        "text": "Gyandip Barman"
+      },
+      {
+        "tag": "h3",
+        "text": "Mangal"
+      },
+      {
+        "tag": "h3",
+        "text": "Sushanta"
+      },
+      {
+        "tag": "h3",
+        "text": "Ram Das"
+      },
+      {
+        "tag": "h3",
+        "text": "Kali das"
+      },
+      {
+        "tag": "h3",
+        "text": "kabir"
+      },
+      {
+        "tag": "h3",
+        "text": "jitesj"
+      },
+      {
+        "tag": "h3",
+        "text": "rejyan"
+      },
+      {
+        "tag": "h3",
+        "text": "Masruf Ali"
+      },
+      {
+        "tag": "h3",
+        "text": "Anil Chetri"
+      },
+      {
+        "tag": "h3",
+        "text": "Krishna Sarkar"
+      },
+      {
+        "tag": "h3",
+        "text": "riyajali"
+      },
+      {
+        "tag": "h3",
+        "text": "Keshab Thakur"
+      },
+      {
+        "tag": "h3",
+        "text": "Nur"
+      },
+      {
+        "tag": "h3",
+        "text": "Biswa Prakash Baraily"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 4356,
+    "scrollWidth": 917,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Explore Candidates Discover other users on the platform, view their profiles, skills, and interview performance. Showing 26 of 26 candidates GB Gyandip Barman @gyandipbarman10 66% avg No bio provided 4 interviews Best: 75% View Profile M Mangal @mangalmahato098 65% avg No bio provided 2 interviews Best: 66% View Profile S Sushanta @barmansushanta 63% avg No bio provided 4 interviews Best: 67% View Profile RD Ram Das @ramdasjj23 63% avg No bio provided 2 interviews Best: 64% View Profile KD Kali das @kalidas901 61% avg No bio provided 2 interviews Best: 61% View Profile K kabir @kabirsarkar 61% avg No bio provided 2 interviews Best: 61% View Profile J jitesj @jitesh32 60% avg No bio provided 3 interviews Best: 62% View Profile R rejyan @rejyan234 60% avg No bio provided 1 intervi",
+    "url": "https://prepmatrix.vercel.app/candidates",
+    "viewport": {
+      "h": 430,
+      "w": 917
+    }
+  },
+  {
+    "route": "profile",
+    "requestedUrl": "https://prepmatrix.vercel.app/profile",
+    "requestedViewport": "360x800",
+    "screenshot": "profile-360x800-settled.png",
+    "charts": 0,
+    "controlsCount": 44,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "file",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "text",
+        "value": "Anil Chetri"
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "text",
+        "value": "anilchetri810"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. Software Engineer",
+        "tag": "input",
+        "type": "text",
+        "value": "Prep Matrix Admin"
+      },
+      {
+        "label": "",
+        "placeholder": "A short bio about yourself...",
+        "tag": "textarea",
+        "type": null,
+        "value": "4t3g"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. +1234567890",
+        "tag": "input",
+        "type": "text",
+        "value": "415715"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. New York, USA",
+        "tag": "input",
+        "type": "text",
+        "value": "India, Bangalore"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. Bachelor's in Computer Science",
+        "tag": "input",
+        "type": "text",
+        "value": "BCA"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. Junior Developer",
+        "tag": "input",
+        "type": "text",
+        "value": "Senior developer"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. https://linkedin.com/in/username",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. https://github.com/username",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. https://portfolio.com/username",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. JavaScript, React, Node.js",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Anil Chetri"
+      }
+    ],
+    "overflow": [
+      {
+        "cls": "flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200",
+        "left": 229,
+        "right": 348,
+        "tag": "button",
+        "text": "Statistics",
+        "width": 119
+      }
+    ],
+    "scrollHeight": 2714,
+    "scrollWidth": 345,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 28,
+        "tag": "button",
+        "text": "",
+        "top": 614,
+        "visible": true,
+        "w": 28
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 702,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 702,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 702,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 702,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 702,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 746,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Anil Chetri anilchetri810@gmail.com Prep Matrix Admin Member since May 2026 0 Interviews 0% Avg Score 0% Best Score Profile Security Statistics Profile Picture Change Photo Remove Photo JPG, PNG or GIF · Max 2MB Avatar Color (used when no photo) Full Name Username Job Title Bio Phone Number Location Education Experience Level LinkedIn URL GitHub URL Portfolio URL Skills Save Profile PrepMatrix PREPARE SMARTER. PERFORM BETTER. GET HIRED AI-powered preparation across 97+ professional career domains. prepmatrix07@gmail.com India Project Team Anil Chetri Full Stack Developer Keshab Thakur Full Stack Developer Masruf Ali Full Stack Developer Contact Us Send Message © 2026 PrepMatrix — Academic Project",
+    "url": "https://prepmatrix.vercel.app/profile",
+    "viewport": {
+      "h": 800,
+      "w": 345
+    }
+  },
+  {
+    "route": "profile",
+    "requestedUrl": "https://prepmatrix.vercel.app/profile",
+    "requestedViewport": "320x568",
+    "screenshot": "profile-320x568-settled.png",
+    "charts": 0,
+    "controlsCount": 44,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "file",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "text",
+        "value": "Anil Chetri"
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "text",
+        "value": "anilchetri810"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. Software Engineer",
+        "tag": "input",
+        "type": "text",
+        "value": "Prep Matrix Admin"
+      },
+      {
+        "label": "",
+        "placeholder": "A short bio about yourself...",
+        "tag": "textarea",
+        "type": null,
+        "value": "4t3g"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. +1234567890",
+        "tag": "input",
+        "type": "text",
+        "value": "415715"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. New York, USA",
+        "tag": "input",
+        "type": "text",
+        "value": "India, Bangalore"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. Bachelor's in Computer Science",
+        "tag": "input",
+        "type": "text",
+        "value": "BCA"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. Junior Developer",
+        "tag": "input",
+        "type": "text",
+        "value": "Senior developer"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. https://linkedin.com/in/username",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. https://github.com/username",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. https://portfolio.com/username",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. JavaScript, React, Node.js",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Anil Chetri"
+      }
+    ],
+    "overflow": [
+      {
+        "cls": "flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200",
+        "left": 229,
+        "right": 348,
+        "tag": "button",
+        "text": "Statistics",
+        "width": 119
+      }
+    ],
+    "scrollHeight": 2786,
+    "scrollWidth": 305,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Anil Chetri anilchetri810@gmail.com Prep Matrix Admin Member since May 2026 0 Interviews 0% Avg Score 0% Best Score Profile Security Statistics Profile Picture Change Photo Remove Photo JPG, PNG or GIF · Max 2MB Avatar Color (used when no photo) Full Name Username Job Title Bio Phone Number Location Education Experience Level LinkedIn URL GitHub URL Portfolio URL Skills Save Profile PrepMatrix PREPARE SMARTER. PERFORM BETTER. GET HIRED AI-powered preparation across 97+ professional career domains. prepmatrix07@gmail.com India Project Team Anil Chetri Full Stack Developer Keshab Thakur Full Stack Developer Masruf Ali Full Stack Developer Contact Us Send Message © 2026 PrepMatrix — Academic Project",
+    "url": "https://prepmatrix.vercel.app/profile",
+    "viewport": {
+      "h": 568,
+      "w": 305
+    }
+  },
+  {
+    "route": "profile",
+    "requestedUrl": "https://prepmatrix.vercel.app/profile",
+    "requestedViewport": "768x1024",
+    "screenshot": "profile-768x1024-settled.png",
+    "charts": 0,
+    "controlsCount": 44,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "file",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "text",
+        "value": "Anil Chetri"
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "text",
+        "value": "anilchetri810"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. Software Engineer",
+        "tag": "input",
+        "type": "text",
+        "value": "Prep Matrix Admin"
+      },
+      {
+        "label": "",
+        "placeholder": "A short bio about yourself...",
+        "tag": "textarea",
+        "type": null,
+        "value": "4t3g"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. +1234567890",
+        "tag": "input",
+        "type": "text",
+        "value": "415715"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. New York, USA",
+        "tag": "input",
+        "type": "text",
+        "value": "India, Bangalore"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. Bachelor's in Computer Science",
+        "tag": "input",
+        "type": "text",
+        "value": "BCA"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. Junior Developer",
+        "tag": "input",
+        "type": "text",
+        "value": "Senior developer"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. https://linkedin.com/in/username",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. https://github.com/username",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. https://portfolio.com/username",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. JavaScript, React, Node.js",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Anil Chetri"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 2442,
+    "scrollWidth": 753,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 28,
+        "tag": "button",
+        "text": "",
+        "top": 446,
+        "visible": true,
+        "w": 28
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 534,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 534,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 534,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 534,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 534,
+        "visible": true,
+        "w": 36
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 534,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Anil Chetri anilchetri810@gmail.com Prep Matrix Admin Member since May 2026 0 Interviews 0% Avg Score 0% Best Score Profile Security Statistics Profile Picture Change Photo Remove Photo JPG, PNG or GIF · Max 2MB Avatar Color (used when no photo) Full Name Username Job Title Bio Phone Number Location Education Experience Level LinkedIn URL GitHub URL Portfolio URL Skills Save Profile PrepMatrix PREPARE SMARTER. PERFORM BETTER. GET HIRED AI-powered preparation across 97+ professional career domains. prepmatrix07@gmail.com India Project Team Anil Chetri Full Stack Developer Keshab Thakur Full Stack Developer Masruf Ali Full Stack Developer Contact Us Quick project inquiry Send Message © 2026 PrepMatrix — Academic Project",
+    "url": "https://prepmatrix.vercel.app/profile",
+    "viewport": {
+      "h": 1024,
+      "w": 753
+    }
+  },
+  {
+    "route": "profile",
+    "requestedUrl": "https://prepmatrix.vercel.app/profile",
+    "requestedViewport": "932x430",
+    "screenshot": "profile-932x430-settled.png",
+    "charts": 0,
+    "controlsCount": 44,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "file",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "text",
+        "value": "Anil Chetri"
+      },
+      {
+        "label": "",
+        "placeholder": null,
+        "tag": "input",
+        "type": "text",
+        "value": "anilchetri810"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. Software Engineer",
+        "tag": "input",
+        "type": "text",
+        "value": "Prep Matrix Admin"
+      },
+      {
+        "label": "",
+        "placeholder": "A short bio about yourself...",
+        "tag": "textarea",
+        "type": null,
+        "value": "4t3g"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. +1234567890",
+        "tag": "input",
+        "type": "text",
+        "value": "415715"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. New York, USA",
+        "tag": "input",
+        "type": "text",
+        "value": "India, Bangalore"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. Bachelor's in Computer Science",
+        "tag": "input",
+        "type": "text",
+        "value": "BCA"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. Junior Developer",
+        "tag": "input",
+        "type": "text",
+        "value": "Senior developer"
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. https://linkedin.com/in/username",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. https://github.com/username",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. https://portfolio.com/username",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "e.g. JavaScript, React, Node.js",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Anil Chetri"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 2442,
+    "scrollWidth": 917,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Dark mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Anil Chetri anilchetri810@gmail.com Prep Matrix Admin Member since May 2026 0 Interviews 0% Avg Score 0% Best Score Profile Security Statistics Profile Picture Change Photo Remove Photo JPG, PNG or GIF · Max 2MB Avatar Color (used when no photo) Full Name Username Job Title Bio Phone Number Location Education Experience Level LinkedIn URL GitHub URL Portfolio URL Skills Save Profile PrepMatrix PREPARE SMARTER. PERFORM BETTER. GET HIRED AI-powered preparation across 97+ professional career domains. prepmatrix07@gmail.com India Project Team Anil Chetri Full Stack Developer Keshab Thakur Full Stack Developer Masruf Ali Full Stack Developer Contact Us Quick project inquiry Send Message © 2026 PrepMatrix — Academic Project",
+    "url": "https://prepmatrix.vercel.app/profile",
+    "viewport": {
+      "h": 430,
+      "w": 917
+    }
+  },
+  {
+    "route": "admin",
+    "requestedUrl": "https://prepmatrix.vercel.app/admin",
+    "requestedViewport": "360x800",
+    "screenshot": "admin-360x800-settled.png",
+    "charts": 6,
+    "controlsCount": 24,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Your AI-powered career preparation command center."
+      },
+      {
+        "tag": "h2",
+        "text": "Feature Access"
+      },
+      {
+        "tag": "h3",
+        "text": "Manual Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "AI Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "Resume Analysis"
+      },
+      {
+        "tag": "h3",
+        "text": "Leaderboard"
+      },
+      {
+        "tag": "h2",
+        "text": "Recent Activity"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 5795,
+    "scrollWidth": 345,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Welcome back, Anil Your AI-powered career preparation command center. Track interview readiness, resume progress, practice consistency, and the next best action from one professional dashboard. Start AI Interview Start Manual Interview Upload Resume Continue Previous Session Score Progress Last completed sessions across AI and Manual Mode. Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. AI vs Manual Manual AI 0 1 2 3 4 Difficulty Performance 0 25 50 75 100 beginner intermediate advanced Category Performance Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. Weekly Progress Wed Thu Fri Sat Sun Tue 0 1 2 3 4 Feature Access Jump into th",
+    "url": "https://prepmatrix.vercel.app/dashboard",
+    "viewport": {
+      "h": 800,
+      "w": 345
+    }
+  },
+  {
+    "route": "admin",
+    "requestedUrl": "https://prepmatrix.vercel.app/admin",
+    "requestedViewport": "320x568",
+    "screenshot": "admin-320x568-settled.png",
+    "charts": 6,
+    "controlsCount": 24,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Your AI-powered career preparation command center."
+      },
+      {
+        "tag": "h2",
+        "text": "Feature Access"
+      },
+      {
+        "tag": "h3",
+        "text": "Manual Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "AI Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "Resume Analysis"
+      },
+      {
+        "tag": "h3",
+        "text": "Leaderboard"
+      },
+      {
+        "tag": "h2",
+        "text": "Recent Activity"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 5967,
+    "scrollWidth": 305,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "Welcome back, Anil Your AI-powered career preparation command center. Track interview readiness, resume progress, practice consistency, and the next best action from one professional dashboard. Start AI Interview Start Manual Interview Upload Resume Continue Previous Session Score Progress Last completed sessions across AI and Manual Mode. Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. AI vs Manual Manual AI 0 1 2 3 4 Difficulty Performance 0 25 50 75 100 beginner intermediate advanced Category Performance Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. Weekly Progress Thu Fri Sat Sun Tue 0 1 2 3 4 Feature Access Jump into the co",
+    "url": "https://prepmatrix.vercel.app/dashboard",
+    "viewport": {
+      "h": 568,
+      "w": 305
+    }
+  },
+  {
+    "route": "admin",
+    "requestedUrl": "https://prepmatrix.vercel.app/admin",
+    "requestedViewport": "768x1024",
+    "screenshot": "admin-768x1024-settled.png",
+    "charts": 6,
+    "controlsCount": 24,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Your AI-powered career preparation command center."
+      },
+      {
+        "tag": "h2",
+        "text": "Feature Access"
+      },
+      {
+        "tag": "h3",
+        "text": "Manual Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "AI Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "Resume Analysis"
+      },
+      {
+        "tag": "h3",
+        "text": "Leaderboard"
+      },
+      {
+        "tag": "h2",
+        "text": "Recent Activity"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 4318,
+    "scrollWidth": 753,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Welcome back, Anil Your AI-powered career preparation command center. Track interview readiness, resume progress, practice consistency, and the next best action from one professional dashboard. Start AI Interview Start Manual Interview Upload Resume Continue Previous Session Score Progress Last completed sessions across AI and Manual Mode. Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. AI vs Manual Manual AI 0 1 2 3 4 Difficulty Performance 0 25 50 75 100 beginner intermediate advanced Category Performance Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. Weekly Progress Wed Thu Fri Sat Sun Mon Tue 0 1 2 3 4 Feature Acce",
+    "url": "https://prepmatrix.vercel.app/dashboard",
+    "viewport": {
+      "h": 1024,
+      "w": 753
+    }
+  },
+  {
+    "route": "admin",
+    "requestedUrl": "https://prepmatrix.vercel.app/admin",
+    "requestedViewport": "932x430",
+    "screenshot": "admin-932x430-settled.png",
+    "charts": 6,
+    "controlsCount": 24,
+    "dialogs": 0,
+    "formControls": [
+      {
+        "label": "",
+        "placeholder": "Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "label": "",
+        "placeholder": "Message",
+        "tag": "textarea",
+        "type": null,
+        "value": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Your AI-powered career preparation command center."
+      },
+      {
+        "tag": "h2",
+        "text": "Feature Access"
+      },
+      {
+        "tag": "h3",
+        "text": "Manual Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "AI Mode"
+      },
+      {
+        "tag": "h3",
+        "text": "Resume Analysis"
+      },
+      {
+        "tag": "h3",
+        "text": "Leaderboard"
+      },
+      {
+        "tag": "h2",
+        "text": "Recent Activity"
+      }
+    ],
+    "overflow": [],
+    "scrollHeight": 4318,
+    "scrollWidth": 917,
+    "smallTargets": [
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Disable voice",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 32,
+        "tag": "button",
+        "text": "Light mode",
+        "top": 16,
+        "visible": true,
+        "w": 32
+      },
+      {
+        "h": 36,
+        "tag": "button",
+        "text": "",
+        "top": 14,
+        "visible": true,
+        "w": 36
+      }
+    ],
+    "tables": 0,
+    "title": "PrepMatrix",
+    "topText": "PrepMatrix Welcome back, Anil Your AI-powered career preparation command center. Track interview readiness, resume progress, practice consistency, and the next best action from one professional dashboard. Start AI Interview Start Manual Interview Upload Resume Continue Previous Session Score Progress Last completed sessions across AI and Manual Mode. Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. AI vs Manual Manual AI 0 1 2 3 4 Difficulty Performance 0 25 50 75 100 beginner intermediate advanced Category Performance Analytics will appear after practice Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns. Weekly Progress Wed Thu Fri Sat Sun Mon Tue 0 1 2 3 4 Feature Acce",
+    "url": "https://prepmatrix.vercel.app/dashboard",
+    "viewport": {
+      "h": 430,
+      "w": 917
+    }
+  }
+]

@@ -277,15 +277,15 @@ export function ResumeAnalysis() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950">
+    <div className="min-h-screen overflow-x-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950">
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="mx-auto w-full min-w-0 max-w-7xl space-y-4 px-3 py-4 sm:space-y-6 sm:px-6 sm:py-6 lg:space-y-8 lg:px-8 lg:py-8">
         {/* Header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white shadow-xl">
+        <div className="min-w-0 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 p-4 text-white shadow-lg sm:p-6 sm:shadow-xl">
           <div className="flex items-center gap-3 mb-2">
-            <FileText className="w-8 h-8" />
-            <h1 className="text-3xl font-bold">Resume Analysis</h1>
+            <FileText className="h-7 w-7 shrink-0 sm:h-8 sm:w-8" />
+            <h1 className="min-w-0 break-words text-2xl font-bold sm:text-3xl">Resume Analysis</h1>
           </div>
           <p className="text-indigo-100 text-sm">
             Upload your resume and get AI-powered feedback tailored to your target domain
@@ -293,7 +293,7 @@ export function ResumeAnalysis() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid min-w-0 grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
           {[
             {
               icon: '📄',
@@ -324,21 +324,21 @@ export function ResumeAnalysis() {
               color: 'bg-purple-100 dark:bg-purple-900/30',
             },
           ].map((stat) => (
-            <div key={stat.label} className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg">
-              <div className={`w-10 h-10 ${stat.color} rounded-xl flex items-center justify-center mb-3 text-xl`}>
+            <div key={stat.label} className="min-w-0 rounded-2xl bg-white p-3 shadow-md dark:bg-gray-800 sm:p-5 sm:shadow-lg">
+              <div className={`mb-2 flex h-9 w-9 items-center justify-center rounded-xl text-lg sm:mb-3 sm:h-10 sm:w-10 sm:text-xl ${stat.color}`}>
                 {stat.icon}
               </div>
               <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{stat.label}</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white mt-0.5">{stat.value}</p>
+              <p className="mt-0.5 break-words text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">{stat.value}</p>
             </div>
           ))}
         </div>
 
         {/* Upload Section */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-          <div className="flex items-center gap-2 mb-6">
+        <div className="min-w-0 rounded-2xl bg-white p-4 shadow-lg dark:bg-gray-800 sm:p-6 lg:p-8">
+          <div className="mb-4 flex min-w-0 items-center gap-2 sm:mb-6">
             <Upload className="w-5 h-5 text-indigo-600" />
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">Upload New Resume</h2>
+            <h2 className="min-w-0 break-words text-lg font-bold text-gray-900 dark:text-white sm:text-xl">Upload New Resume</h2>
           </div>
 
           {/* Domain Selection */}
@@ -356,15 +356,16 @@ export function ResumeAnalysis() {
                 className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 max-h-60 overflow-y-auto p-1">
+            <div className="grid max-h-60 min-w-0 grid-cols-1 gap-2 overflow-y-auto p-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {filteredDomains.map((domain) => (
                 <button
                   key={domain.id}
                   onClick={() => setSelectedDomain(domain.id)}
-                  className={`p-3 rounded-xl border-2 transition-all text-center group ${
+                  aria-pressed={selectedDomain === domain.id}
+                  className={`group min-h-11 min-w-0 rounded-xl border-2 p-3 text-center transition-all ${
                     selectedDomain === domain.id
-                      ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 scale-105 shadow-md'
-                      : 'border-gray-200 dark:border-gray-600 hover:border-indigo-300 dark:hover:border-indigo-700 hover:scale-102'
+                      ? 'border-indigo-500 bg-indigo-50 shadow-md dark:bg-indigo-900/30'
+                      : 'border-gray-200 hover:border-indigo-300 dark:border-gray-600 dark:hover:border-indigo-700'
                   }`}
                 >
                   <div className="text-2xl mb-1">{domain.icon}</div>
@@ -381,7 +382,7 @@ export function ResumeAnalysis() {
           </div>
 
           {/* File Upload */}
-          <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-8 text-center">
+          <div className="min-w-0 rounded-xl border-2 border-dashed border-gray-300 p-4 text-center dark:border-gray-600 sm:p-8">
             <input
               ref={fileInputRef}
               type="file"
@@ -400,11 +401,11 @@ export function ResumeAnalysis() {
                   <Upload className="w-8 h-8 text-indigo-600" />
                 )}
               </div>
-              <div>
+              <div className="min-w-0 max-w-full">
                 <button
                   onClick={() => fileInputRef.current?.click()}
                   disabled={analyzing || !selectedDomain}
-                  className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 disabled:from-gray-300 disabled:to-gray-400 dark:disabled:from-gray-700 dark:disabled:to-gray-600 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-xl transition-all shadow-lg hover:shadow-indigo-500/30"
+                  className="min-h-12 max-w-full break-words rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:from-indigo-700 hover:to-purple-700 hover:shadow-indigo-500/30 disabled:cursor-not-allowed disabled:from-gray-300 disabled:to-gray-400 dark:disabled:from-gray-700 dark:disabled:to-gray-600 sm:px-6 sm:text-base"
                 >
                   {analyzing ? 'Analyzing Resume...' : selectedDomain ? 'Choose File to Upload' : 'Select Domain First'}
                 </button>
@@ -417,7 +418,7 @@ export function ResumeAnalysis() {
         </div>
 
         {/* Resume List and Analysis */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid min-w-0 grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3">
           {/* Resume List */}
           <div className="lg:col-span-1 bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
@@ -438,12 +439,20 @@ export function ResumeAnalysis() {
                 </div>
               ) : (
                 resumes.map((resume) => (
-                  <button
+                  <div
                     key={resume.id}
+                    role="button"
+                    tabIndex={0}
                     onClick={() => {
                       void hydrateSelectedResume(resume, resume.analysisResult);
                     }}
-                    className={`w-full flex items-center justify-between px-6 py-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors text-left ${
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        void hydrateSelectedResume(resume, resume.analysisResult);
+                      }
+                    }}
+                    className={`flex w-full min-w-0 items-center justify-between px-4 py-3 text-left transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/50 sm:px-6 ${
                       selectedResume?.id === resume.id ? 'bg-indigo-50 dark:bg-indigo-900/20' : ''
                     }`}
                   >
@@ -476,35 +485,36 @@ export function ResumeAnalysis() {
                             e.stopPropagation();
                             handleDeleteResume(resume.id);
                           }}
-                          className="p-1 hover:bg-red-100 dark:hover:bg-red-900/20 rounded text-red-600 dark:text-red-400 transition-colors"
+                          aria-label={`Delete ${resume.fileName}`}
+                          className="inline-flex h-11 w-11 items-center justify-center rounded text-red-600 transition-colors hover:bg-red-100 dark:text-red-400 dark:hover:bg-red-900/20"
                           title="Delete resume"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
-                  </button>
+                  </div>
                 ))
               )}
             </div>
           </div>
 
           {/* Analysis Details */}
-          <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+          <div className="min-w-0 rounded-2xl bg-white p-4 shadow-lg dark:bg-gray-800 sm:p-6 lg:col-span-2">
             {selectedResume?.analysisResult ? (
               <div className="space-y-6">
                 {/* Header */}
                 <div>
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                  <div className="mb-2 flex min-w-0 flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="min-w-0">
+                      <h3 className="break-all text-lg font-bold text-gray-900 dark:text-white sm:break-words sm:text-xl">
                         {selectedResume.fileName}
                       </h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="break-words text-sm text-gray-500 dark:text-gray-400">
                         {selectedResume.domainName} • Uploaded {format(new Date(selectedResume.uploadedAt), 'MMM dd, yyyy')}
                       </p>
                     </div>
-                    <div className={`text-4xl font-bold ${
+                    <div className={`shrink-0 text-3xl font-bold sm:text-4xl ${
                       selectedResume.analysisResult.overallScore >= 75
                         ? 'text-green-600'
                         : selectedResume.analysisResult.overallScore >= 50
@@ -590,16 +600,16 @@ export function ResumeAnalysis() {
                         key={idx}
                         className={`p-4 rounded-lg border-2 ${PRIORITY_COLORS[suggestion.priority]}`}
                       >
-                        <div className="flex items-start gap-3">
+                        <div className="flex min-w-0 items-start gap-3">
                           <span className="text-2xl flex-shrink-0">{suggestion.icon || '💡'}</span>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                              <h5 className="font-bold text-sm">{suggestion.title}</h5>
+                          <div className="min-w-0 flex-1">
+                            <div className="mb-1 flex flex-wrap items-center gap-2">
+                              <h5 className="break-words text-sm font-bold">{suggestion.title}</h5>
                               <span className="px-2 py-0.5 bg-white/50 dark:bg-black/20 rounded text-xs font-semibold capitalize">
                                 {suggestion.priority}
                               </span>
                             </div>
-                            <p className="text-sm opacity-90">{suggestion.description}</p>
+                            <p className="break-words text-sm opacity-90">{suggestion.description}</p>
                           </div>
                         </div>
                       </div>

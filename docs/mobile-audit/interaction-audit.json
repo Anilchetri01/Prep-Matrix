@@ -1,0 +1,43 @@
+[
+  {
+    "state": "mobile-drawer",
+    "screenshot": "navbar-drawer-320x568.png",
+    "metrics": {
+      "dialogCount": 0,
+      "scrollWidth": 323,
+      "text": "Anil Chetri anilchetri810@gmail.com Dashboard Manual Mode AI Mode Resume Analysis History Leaderboard Candidates Profile Sign Out Welcome back, Anil Your AI-powered career preparation command center. Track interview readiness, resume progress, practice consistency, and the next best action from one professional dashboard. Start AI Interview Start Manual Interview Upload Resume Continue Previous Session Total Interviews 23 21 manual, 2 AI Average Score 49% Across completed sessions Best Score 76% Personal high score Domains Practiced 18 97 total domains available AI Interviews Completed 2 Resume-based dynamic sessions Manual Interviews Completed 21 Curated question-bank sessions Resume Analyses Done 1 Uploaded and reviewed resumes Weekly Progress 0 Sessions completed this week Score Progress Last completed sessions across AI and Manual Mode. S2 S4 S6 S8 S10 0 25 50 75 100 AI vs Manual Manual AI 0 6 12 18 24 Difficulty Performance 0 25 50 75 100 beginner intermediate advanced Category Pe"
+    }
+  },
+  {
+    "state": "logout-dialog",
+    "screenshot": "logout-dialog-320x568.png",
+    "metrics": {
+      "dialogCount": 1,
+      "scrollWidth": 323,
+      "text": "Welcome back, Anil Your AI-powered career preparation command center. Track interview readiness, resume progress, practice consistency, and the next best action from one professional dashboard. Start AI Interview Start Manual Interview Upload Resume Continue Previous Session Total Interviews 23 21 manual, 2 AI Average Score 49% Across completed sessions Best Score 76% Personal high score Domains Practiced 18 97 total domains available AI Interviews Completed 2 Resume-based dynamic sessions Manual Interviews Completed 21 Curated question-bank sessions Resume Analyses Done 1 Uploaded and reviewed resumes Weekly Progress 0 Sessions completed this week Score Progress Last completed sessions across AI and Manual Mode. S2 S4 S6 S8 S10 0 25 50 75 100 AI vs Manual Manual AI 0 6 12 18 24 Difficulty Performance 0 25 50 75 100 beginner intermediate advanced Category Performance AI Careers Technology 0 25 50 75 100 Weekly Progress Thu Fri Sat Sun Tue 0 1 2 3 4 Feature Access Jump into the core Pre"
+    }
+  },
+  {
+    "state": "candidate-profile-modal",
+    "screenshot": "candidate-profile-modal-320x568.png",
+    "metrics": {
+      "dialogCount": 1,
+      "scrollWidth": 305,
+      "text": "Explore Candidates Discover other users on the platform, view their profiles, skills, and interview performance. Showing 26 of 26 candidates GB Gyandip Barman @gyandipbarman10 66% avg No bio provided 4 interviews Best: 75% View Profile M Mangal @mangalmahato098 65% avg No bio provided 2 interviews Best: 66% View Profile S Sushanta @barmansushanta 63% avg No bio provided 4 interviews Best: 67% View Profile RD Ram Das @ramdasjj23 63% avg No bio provided 2 interviews Best: 64% View Profile KD Kali das @kalidas901 61% avg No bio provided 2 interviews Best: 61% View Profile K kabir @kabirsarkar 61% avg No bio provided 2 interviews Best: 61% View Profile J jitesj @jitesh32 60% avg No bio provided 3 interviews Best: 62% View Profile R rejyan @rejyan234 60% avg No bio provided 1 interview Best: 60% View Profile MA Masruf Ali @masrufali24 58% avg No bio provided 34 interviews Best: 68% View Profile Anil Chetri @anilchetri810 Prep Matrix Admin 50% avg 4t3g 23 interviews Best: 76% View Profile KS Krishna Sarkar @krishnasarkar01 50% avg No bio provided 1 interview Best: 50% View Profile R riyajali @riyajali01 47% avg No bio provided 3 interviews Best: 66% View Profile Keshab Thakur @keshabthak"
+    }
+  },
+  {
+    "state": "profile-tabs-scrolled",
+    "screenshot": "profile-tabs-scrolled-320x568.png",
+    "metrics": {
+      "overflow": [
+        {
+          "cls": "flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold transition-colors text-gray-500 dark:text-",
+          "text": "Statistics"
+        }
+      ],
+      "scrollWidth": 305,
+      "text": "Anil Chetri anilchetri810@gmail.com Prep Matrix Admin Member since May 2026 23 Interviews 49% Avg Score 76% Best Score Profile Security Statistics Profile Picture Change Photo Remove Photo JPG, PNG or GIF · Max 2MB Avatar Color (used when no photo) Full Name Username Job Title Bio Phone Number Location Education Experience Level LinkedIn URL GitHub URL Portfolio URL Skills Save Profile PrepMatrix PREPARE SMARTER. PERFORM BETTER. GET HIRED AI-powered preparation across 97+ professional career domains. prepmatrix07@gmail.com India Project Team Anil Chetri Full Stack Developer Keshab Thakur Full Stack Developer Masruf Ali Full Stack Developer Contact Us Send Message © 2026 PrepMatrix — Academic Project"
+    }
+  }
+]

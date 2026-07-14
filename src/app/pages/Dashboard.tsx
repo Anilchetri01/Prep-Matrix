@@ -364,31 +364,31 @@ export function Dashboard() {
     <div className="min-h-screen bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-white">
       <Navbar />
 
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-slate-900/80">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div>
+      <main className="mx-auto max-w-7xl px-3 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+        <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+            <div className="min-w-0">
               <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-300">
                 Welcome back, {user?.name?.split(' ')[0] || 'there'}
               </p>
-              <h1 className="mt-2 max-w-3xl text-3xl font-bold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
+              <h1 className="mt-1 max-w-3xl text-2xl font-bold tracking-tight text-slate-950 dark:text-white sm:mt-2 sm:text-4xl">
                 Your AI-powered career preparation command center.
               </h1>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300 sm:text-base">
+              <p className="mt-3 hidden max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300 sm:block sm:text-base">
                 Track interview readiness, resume progress, practice consistency, and the next best action from one professional dashboard.
               </p>
             </div>
 
-            <div className="grid gap-2 sm:grid-cols-2">
+            <div className="grid grid-cols-2 gap-2">
               {quickActions.map((action) => {
                 const Icon = action.icon;
                 return (
                   <button
                     key={action.label}
                     onClick={() => navigate(action.route)}
-                    className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:bg-white hover:shadow-md dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10"
+                    className="flex min-h-[72px] min-w-0 flex-col items-start justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-left text-xs font-semibold leading-4 text-slate-800 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:bg-white hover:shadow-md dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10 sm:min-h-0 sm:flex-row sm:items-center sm:gap-3 sm:px-4 sm:py-3 sm:text-sm"
                   >
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-white">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-600 text-white sm:h-9 sm:w-9">
                       <Icon className="h-4 w-4" />
                     </span>
                     {action.label}
@@ -406,28 +406,28 @@ export function Dashboard() {
             ))}
           </div>
         ) : (
-          <section className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <section className="mt-4 grid grid-cols-2 gap-3 sm:mt-6 sm:gap-4 lg:grid-cols-4">
             {statCards.map((stat) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={stat.label}
-                  className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg dark:border-white/10 dark:bg-slate-900/80"
+                  className="min-w-0 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg dark:border-white/10 dark:bg-slate-900/80 sm:p-5"
                 >
-                  <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${stat.tone} text-white shadow-lg`}>
+                  <div className={`mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br ${stat.tone} text-white shadow-sm sm:mb-4 sm:h-11 sm:w-11 sm:shadow-lg`}>
                     <Icon className="h-5 w-5" />
                   </div>
                   <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{stat.label}</p>
-                  <p className="mt-1 text-2xl font-bold text-slate-950 dark:text-white">{stat.value}</p>
-                  <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">{stat.detail}</p>
+                  <p className="mt-1 break-words text-xl font-bold text-slate-950 dark:text-white sm:text-2xl">{stat.value}</p>
+                  <p className="mt-1 hidden text-xs leading-5 text-slate-500 dark:text-slate-400 sm:block">{stat.detail}</p>
                 </div>
               );
             })}
           </section>
         )}
 
-        <section className="mt-6 grid gap-6 lg:grid-cols-3">
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900/80 lg:col-span-2">
+        <section className="mt-4 grid gap-4 sm:mt-6 sm:gap-6 lg:grid-cols-3">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5 lg:col-span-2">
             <div className="mb-4 flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
@@ -435,6 +435,11 @@ export function Dashboard() {
                   Score Progress
                 </div>
                 <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Last completed sessions across AI and Manual Mode.</p>
+                {scoreProgress.length > 0 && (
+                  <p className="mt-2 text-xs font-medium text-indigo-600 dark:text-indigo-300">
+                    Latest score: {scoreProgress[scoreProgress.length - 1].score}% across {scoreProgress.length} recent session{scoreProgress.length === 1 ? '' : 's'}.
+                  </p>
+                )}
               </div>
             </div>
 
@@ -457,11 +462,14 @@ export function Dashboard() {
             )}
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900/80">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
             <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
               <BarChart3 className="h-4 w-4 text-indigo-500" />
               AI vs Manual
             </div>
+            <p className="mb-2 text-xs text-slate-500 dark:text-slate-400">
+              {comparisonData.map((item) => `${item.name}: ${item.count}`).join(' | ')}
+            </p>
             <ResponsiveContainer width="100%" height={260}>
               <BarChart data={comparisonData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#94A3B8" opacity={0.15} />
@@ -480,8 +488,8 @@ export function Dashboard() {
           </div>
         </section>
 
-        <section className="mt-6 grid gap-6 lg:grid-cols-3">
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900/80">
+        <section className="mt-4 grid gap-4 sm:mt-6 sm:gap-6 lg:grid-cols-3">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
             <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
               <Target className="h-4 w-4 text-indigo-500" />
               Difficulty Performance
@@ -503,7 +511,7 @@ export function Dashboard() {
             </ResponsiveContainer>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900/80">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
             <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
               <BriefcaseBusiness className="h-4 w-4 text-indigo-500" />
               Category Performance
@@ -526,7 +534,7 @@ export function Dashboard() {
             )}
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900/80">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
             <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
               <CalendarDays className="h-4 w-4 text-indigo-500" />
               Weekly Progress
@@ -546,8 +554,8 @@ export function Dashboard() {
           </div>
         </section>
 
-        <section className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
-          <div>
+        <section className="mt-4 grid min-w-0 gap-4 sm:mt-6 sm:gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
+          <div className="min-w-0">
             <div className="mb-4 flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-bold text-slate-950 dark:text-white">Feature Access</h2>
@@ -561,7 +569,7 @@ export function Dashboard() {
                   <button
                     key={feature.title}
                     onClick={() => navigate(feature.route)}
-                    className="group overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-slate-900/80"
+                    className="group overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-slate-900/80 sm:p-5"
                   >
                     <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${feature.accent} text-white shadow-lg`}>
                       <Icon className="h-5 w-5" />
@@ -580,10 +588,10 @@ export function Dashboard() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900/80">
+          <div className="min-w-0 rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900/80">
             <div className="border-b border-slate-200 p-5 dark:border-white/10">
-              <div className="flex items-center justify-between">
-                <div>
+              <div className="flex min-w-0 items-center justify-between gap-3">
+                <div className="min-w-0">
                   <h2 className="text-lg font-bold text-slate-950 dark:text-white">Recent Activity</h2>
                   <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Latest scores and resume uploads.</p>
                 </div>

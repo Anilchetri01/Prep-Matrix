@@ -3,6 +3,7 @@ import { RouterProvider } from 'react-router';
 import { Toaster } from 'sonner';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { SplashScreen } from './components/SplashScreen';
+import { useIsMobile } from './components/ui/use-mobile';
 import { AuthProvider } from './contexts/AuthContext';
 import { SettingsProvider } from './contexts/SettingsContext';
 import { router } from './routes';
@@ -11,6 +12,7 @@ const INITIAL_SPLASH_DURATION_MS = 1800;
 
 export default function App() {
   const [isAppLoading, setIsAppLoading] = useState(true);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
@@ -67,13 +69,14 @@ export default function App() {
             <RouterProvider router={router} />
             {/* Global toast notifications */}
             <Toaster
-              position="top-right"
+              position={isMobile ? 'top-center' : 'top-right'}
+              mobileOffset={{ top: 68, left: 12, right: 12 }}
               richColors
               closeButton
               expand={false}
               duration={4000}
               toastOptions={{
-                style: { borderRadius: '12px', fontSize: '14px' },
+                style: { borderRadius: '10px', fontSize: '14px' },
               }}
             />
           </SettingsProvider>
@@ -82,4 +85,3 @@ export default function App() {
     </HelmetProvider>
   );
 }
-

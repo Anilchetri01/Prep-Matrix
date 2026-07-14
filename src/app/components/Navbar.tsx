@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
 import { useSettings } from '../contexts/SettingsContext';
@@ -91,7 +91,7 @@ function NavLink({
     <Link
       to={to}
       onClick={onClick}
-      className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+      className={`flex min-h-11 items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
         active
           ? 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300'
           : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/60'
@@ -188,6 +188,7 @@ export function Navbar() {
   const { user, logout } = useAuth();
   const { settings, toggleDarkMode, toggleVoice } = useSettings();
   const navigate = useNavigate();
+  const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
   const [logoutError, setLogoutError] = useState<string | null>(null);
@@ -241,14 +242,22 @@ export function Navbar() {
       : []),
   ];
 
+  const primaryItems = navItems.slice(0, 4);
+  const exploreItems = navItems.slice(4, 7);
+  const accountItems = navItems.slice(7);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 shadow-sm backdrop-blur-md dark:border-gray-800 dark:bg-gray-950/90">
-      <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="mx-auto max-w-[92rem] px-3 sm:px-6 lg:px-8">
+        <div className="flex h-[60px] items-center justify-between sm:h-16">
           {/* Logo */}
           <Link to="/dashboard" className="flex items-center gap-3 flex-shrink-0">
             <AppLogo variant="dark" className="h-9 w-9" />
-            <span className="font-semibold text-gray-900 dark:text-white hidden sm:block text-lg">
+            <span className="hidden text-lg font-semibold text-gray-900 dark:text-white sm:block xl:hidden 2xl:block">
               {APP_NAME}
             </span>
           </Link>
@@ -266,7 +275,9 @@ export function Navbar() {
             <button
               onClick={toggleVoice}
               title={settings.voiceEnabled ? 'Disable voice' : 'Enable voice'}
-              className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              aria-label={settings.voiceEnabled ? 'Disable voice' : 'Enable voice'}
+              aria-pressed={settings.voiceEnabled}
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
             >
               {settings.voiceEnabled ? (
                 <Volume2 className="w-4 h-4" />
@@ -279,7 +290,9 @@ export function Navbar() {
             <button
               onClick={toggleDarkMode}
               title={settings.darkMode ? 'Light mode' : 'Dark mode'}
-              className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              aria-label={settings.darkMode ? 'Use light theme' : 'Use dark theme'}
+              aria-pressed={settings.darkMode}
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
             >
               {settings.darkMode ? (
                 <Sun className="w-4 h-4" />
@@ -296,7 +309,7 @@ export function Navbar() {
                   color={user.avatarColor}
                   imageUrl={avatarUrl(user)}
                 />
-                <div className="hidden lg:block text-left">
+                <div className="hidden text-left 2xl:block">
                   <p className="text-xs font-semibold text-gray-900 dark:text-white leading-tight">
                     {user.name}
                   </p>
@@ -312,7 +325,7 @@ export function Navbar() {
               onClick={openLogoutDialog}
               title="Sign out"
               aria-label="Open sign out confirmation"
-              className="hidden xl:flex p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+              className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-red-50 hover:text-red-600 dark:text-gray-400 dark:hover:bg-red-900/20 dark:hover:text-red-400 xl:flex"
             >
               <LogOut className="w-4 h-4" />
             </button>
@@ -320,7 +333,10 @@ export function Navbar() {
             {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="xl:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 xl:hidden"
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -328,47 +344,77 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      {mobileOpen && (
-        <div className="xl:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-4 space-y-1">
-          {/* User info */}
-          {user && (
-            <div className="flex items-center gap-3 pb-3 mb-3 border-b border-gray-200 dark:border-gray-700">
-              <UserAvatar
-                name={user.name}
-                color={user.avatarColor}
-                imageUrl={avatarUrl(user)}
-              />
-              <div>
-                <p className="font-semibold text-gray-900 dark:text-white text-sm">{user.name}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">{user.email}</p>
-              </div>
-              {user.role === 'admin' && (
-                <span className="ml-auto px-2 py-0.5 text-xs font-semibold rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300">
-                  Admin
-                </span>
+      <Dialog open={mobileOpen} onOpenChange={setMobileOpen}>
+        <DialogContent
+          id="mobile-navigation"
+          className="!bottom-0 !left-auto !right-0 !top-0 z-[60] flex h-[100dvh] w-[min(92vw,360px)] max-w-none !translate-x-0 !translate-y-0 flex-col gap-0 overflow-hidden rounded-none border-y-0 border-r-0 bg-white p-0 shadow-2xl dark:bg-gray-950 xl:hidden [&_[data-slot=dialog-close]]:hidden"
+        >
+          <DialogHeader className="border-b border-gray-200 px-4 pb-4 pt-[max(1rem,env(safe-area-inset-top))] text-left dark:border-gray-800">
+            <div className="flex items-start justify-between gap-3">
+              {user ? (
+                <div className="flex min-w-0 items-center gap-3">
+                  <UserAvatar
+                    name={user.name}
+                    color={user.avatarColor}
+                    imageUrl={avatarUrl(user)}
+                    size="lg"
+                  />
+                  <div className="min-w-0">
+                    <DialogTitle className="truncate text-base text-gray-950 dark:text-white">
+                      {user.name}
+                    </DialogTitle>
+                    <DialogDescription className="truncate text-xs text-gray-500 dark:text-gray-400">
+                      {user.email}
+                    </DialogDescription>
+                  </div>
+                </div>
+              ) : (
+                <DialogTitle>Navigation</DialogTitle>
               )}
+              <button
+                type="button"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close navigation menu"
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/10"
+              >
+                <X className="h-5 w-5" />
+              </button>
             </div>
-          )}
+          </DialogHeader>
 
-          {navItems.map((item) => (
-            <NavLink
-              key={item.to}
-              {...item}
-              onClick={() => setMobileOpen(false)}
-            />
-          ))}
+          <nav className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-3 py-4">
+            {[
+              { label: 'Practice', items: primaryItems },
+              { label: 'Explore', items: exploreItems },
+              { label: 'Account', items: accountItems },
+            ].map((group) => (
+              group.items.length > 0 && (
+                <div key={group.label} className="mb-5 last:mb-0">
+                  <p className="mb-1 px-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-400">
+                    {group.label}
+                  </p>
+                  <div className="space-y-1">
+                    {group.items.map((item) => (
+                      <NavLink key={item.to} {...item} onClick={() => setMobileOpen(false)} />
+                    ))}
+                  </div>
+                </div>
+              )
+            ))}
+          </nav>
 
-          <button
-            onClick={openLogoutDialog}
-            aria-label="Open sign out confirmation"
-            className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors mt-2"
-          >
-            <LogOut className="w-4 h-4" />
-            Sign Out
-          </button>
-        </div>
-      )}
+          <div className="border-t border-gray-200 px-3 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 dark:border-gray-800">
+            <button
+              onClick={openLogoutDialog}
+              aria-label="Open sign out confirmation"
+              className="flex min-h-11 w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
+            >
+              <LogOut className="h-4 w-4" />
+              Sign Out
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <LogoutConfirmationDialog
         error={logoutError}

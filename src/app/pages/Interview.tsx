@@ -451,9 +451,9 @@ export function Interview() {
   const headerLabel = `Q${Math.min(currentQuestionIndex + 1, questions.length)}/${questions.length}`;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950 flex flex-col">
+    <div className="flex h-[100dvh] min-h-[100svh] flex-col overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950">
       <header className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
-        <div className="max-w-3xl mx-auto px-4 py-3">
+        <div className="mx-auto max-w-3xl px-3 py-2.5 sm:px-4 sm:py-3">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <span className="text-xl">{sanitizeInterviewText(domain.icon)}</span>
@@ -468,7 +468,8 @@ export function Interview() {
             </div>
             <button
               onClick={handleExit}
-              className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Exit interview"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
               title="Exit interview"
             >
               <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
@@ -490,8 +491,8 @@ export function Interview() {
         </div>
       </header>
 
-      <div className="flex-1 overflow-y-auto">
-        <div className="max-w-3xl mx-auto px-4 py-6 space-y-4">
+      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+        <div className="mx-auto max-w-3xl space-y-4 px-3 py-4 sm:px-4 sm:py-6">
           {messages.map((message, index) => (
             <div
               key={`${message.type}-${index}`}
@@ -520,7 +521,7 @@ export function Interview() {
               )}
 
               <div
-                className={`max-w-[78%] rounded-2xl px-4 py-3 shadow-sm ${
+                className={`max-w-[84%] min-w-0 break-words rounded-2xl px-3 py-2.5 shadow-sm sm:max-w-[78%] sm:px-4 sm:py-3 ${
                   message.type === 'user'
                     ? 'bg-indigo-600 text-white'
                     : message.type === 'feedback'
@@ -591,7 +592,7 @@ export function Interview() {
         </div>
       </div>
 
-      <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-700 p-4">
+      <div className="shrink-0 border-t border-gray-200 bg-white/95 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-md dark:border-gray-700 dark:bg-gray-800/95 sm:p-4">
         <div className="max-w-3xl mx-auto">
           {interimTranscript && (
             <div className="mb-2 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg text-sm text-indigo-600 dark:text-indigo-300 italic">
@@ -603,7 +604,9 @@ export function Interview() {
             <button
               onClick={toggleListening}
               disabled={isInputDisabled}
-              className={`p-3 rounded-xl transition-all flex-shrink-0 ${
+              aria-label={isListening ? 'Stop listening' : 'Start voice input'}
+              aria-pressed={isListening}
+              className={`inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl transition-all ${
                 isListening
                   ? 'bg-red-500 hover:bg-red-600 text-white animate-pulse'
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
@@ -622,27 +625,28 @@ export function Interview() {
                   ? sanitizeInterviewText('Wait for the question...')
                   : sanitizeInterviewText('Type your answer here...')
               }
-              rows={2}
+              rows={1}
               onKeyDown={(event) => {
                 if (event.key === 'Enter' && !event.shiftKey) {
                   event.preventDefault();
                   handleSubmitAnswer();
                 }
               }}
-              className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none disabled:opacity-50"
+              className="min-h-12 min-w-0 flex-1 resize-none rounded-xl border border-gray-300 bg-white px-3 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:px-4"
             />
 
             <button
               onClick={handleSubmitAnswer}
               disabled={isInputDisabled || !userAnswer.trim()}
-              className="p-3 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed text-white rounded-xl transition-colors flex-shrink-0"
+              aria-label="Send answer"
+              className="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-white transition-colors hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-40"
               title="Send answer"
             >
               <Send className="w-5 h-5" />
             </button>
           </div>
 
-          <p className="text-xs text-gray-400 dark:text-gray-500 text-center mt-2">
+          <p className="mt-2 hidden text-center text-xs text-gray-400 dark:text-gray-500 sm:block">
             {sanitizeInterviewText('Press Enter to send · Shift+Enter for new line ·')} {isSpeaking && sanitizeInterviewText('🔊 Reading question...')}
           </p>
         </div>

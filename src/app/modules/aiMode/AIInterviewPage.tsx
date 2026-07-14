@@ -172,7 +172,7 @@ export function AIInterviewPage() {
     useState<InterviewTransitionState>('idle');
   const [isInterviewShellVisible, setIsInterviewShellVisible] = useState(false);
   const [showEndInterviewConfirm, setShowEndInterviewConfirm] = useState(false);
-  const [isMobileCameraCollapsed, setIsMobileCameraCollapsed] = useState(false);
+  const [isMobileCameraCollapsed, setIsMobileCameraCollapsed] = useState(true);
   const [interviewViewStartedAt, setInterviewViewStartedAt] = useState<number | null>(null);
   const [elapsedInterviewSeconds, setElapsedInterviewSeconds] = useState(0);
 
@@ -618,7 +618,7 @@ export function AIInterviewPage() {
     setPhase(mapSessionToPhase(nextSession));
     setInterviewTransitionState('idle');
     setShowEndInterviewConfirm(false);
-    setIsMobileCameraCollapsed(false);
+    setIsMobileCameraCollapsed(true);
     setInterviewViewStartedAt(null);
     setElapsedInterviewSeconds(0);
     lastPromptedQuestionRef.current = '';
@@ -847,7 +847,7 @@ export function AIInterviewPage() {
       setSession(nextSession);
       setPhase('interview');
       setQuestionStartedAt(Date.now());
-      setIsMobileCameraCollapsed(false);
+      setIsMobileCameraCollapsed(true);
       upsertRecentSession(nextSession);
       startInterviewReveal();
     } catch (error: any) {
@@ -1135,7 +1135,7 @@ export function AIInterviewPage() {
     setSelectedFile(null);
     setInterviewTransitionState('idle');
     setShowEndInterviewConfirm(false);
-    setIsMobileCameraCollapsed(false);
+    setIsMobileCameraCollapsed(true);
     setInterviewViewStartedAt(null);
     setElapsedInterviewSeconds(0);
     lastPromptedQuestionRef.current = '';
@@ -1172,7 +1172,7 @@ export function AIInterviewPage() {
         {showApplicationChrome && <Navbar />}
         <main className={mainContainerClasses}>
           <section className={cx(theme.section, 'p-4 sm:p-6')}>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-3 sm:gap-5">
               <div className="min-w-0 max-w-2xl">
                 <div
                   className={cx(
@@ -1186,13 +1186,13 @@ export function AIInterviewPage() {
                 <h1 className={cx('break-words text-2xl font-semibold tracking-tight sm:text-3xl lg:text-[2rem]', theme.title)}>
                   Interviews shaped around your experience
                 </h1>
-                <p className={cx('mt-3 max-w-xl break-words text-sm leading-6 sm:text-[15px]', theme.body)}>
+                <p className={cx('mt-2 hidden max-w-xl break-words text-sm leading-6 sm:mt-3 sm:block sm:text-[15px]', theme.body)}>
                   Upload your resume to unlock tailored questions, a focused practice space, and
                   intelligent feedback that feels polished and purposeful.
                 </p>
               </div>
 
-              <div className="grid min-w-0 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
+              <div className="hidden min-w-0 gap-3 sm:grid sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
                 {heroHighlights.map((item) => (
                   <div key={item.label} className={theme.featureCard}>
                     <div
@@ -1225,17 +1225,17 @@ export function AIInterviewPage() {
 
           {(phase === 'setup' || phase === 'ready') && (
             <section className={cx(theme.section, 'p-4 sm:p-6')}>
-              <div className="mb-5 flex flex-col gap-2">
+              <div className="mb-4 flex flex-col gap-1.5 sm:mb-5 sm:gap-2">
                 <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>Section 2</p>
                 <h2 className={cx('text-xl font-semibold sm:text-2xl', theme.title)}>Interview setup</h2>
-                <p className={cx('max-w-2xl break-words text-sm leading-6', theme.body)}>
+                <p className={cx('hidden max-w-2xl break-words text-sm leading-6 sm:block', theme.body)}>
                   Fine-tune the session, upload your resume, and prepare a guided interview
                   tailored to your background.
                 </p>
               </div>
 
               <div className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1.9fr)_minmax(320px,1fr)] lg:items-start xl:grid-cols-[minmax(0,1.9fr)_minmax(380px,1fr)]">
-                <div className={cx(theme.panel, 'h-full p-4 sm:p-5')}>
+                <div className={cx(theme.panel, 'order-2 h-full p-4 sm:p-5 lg:order-1')}>
                   <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div className="min-w-0">
                       <p className={cx('text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em]', theme.muted)}>
@@ -1267,10 +1267,10 @@ export function AIInterviewPage() {
                   </div>
                 </div>
 
-                <div className="grid gap-4">
+                <div className="order-1 grid gap-4 lg:order-2">
                   <div className={cx(theme.panel, 'p-4 sm:p-5')}>
-                    <div className="space-y-4">
-                      <div>
+                    <div className="flex flex-col gap-4">
+                      <div className="order-2">
                         <p className={cx('text-sm font-medium', theme.title)}>Difficulty</p>
                         <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
                           {DIFFICULTY_OPTIONS.map((option) => (
@@ -1278,6 +1278,7 @@ export function AIInterviewPage() {
                               key={option}
                               disabled={preparing}
                               onClick={() => setDifficulty(option)}
+                              aria-pressed={difficulty === option}
                               className={cx(
                                 'inline-flex h-12 min-w-0 items-center justify-center rounded-2xl border px-3 text-center text-[13px] font-semibold capitalize transition disabled:cursor-not-allowed disabled:opacity-60 sm:h-14 sm:whitespace-nowrap',
                                 difficulty === option
@@ -1293,7 +1294,7 @@ export function AIInterviewPage() {
                         </div>
                       </div>
 
-                      <div>
+                      <div className="order-3">
                         <p className={cx('text-sm font-medium', theme.title)}>Question count</p>
                         <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
                           {QUESTION_OPTIONS.map((option) => (
@@ -1301,6 +1302,7 @@ export function AIInterviewPage() {
                               key={option}
                               disabled={preparing}
                               onClick={() => setQuestionCount(option)}
+                              aria-pressed={questionCount === option}
                               className={cx(
                                 'inline-flex h-11 items-center justify-center rounded-2xl border px-4 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60',
                                 questionCount === option
@@ -1318,7 +1320,7 @@ export function AIInterviewPage() {
 
                       <div
                         className={cx(
-                          'rounded-2xl border border-dashed p-3.5',
+                          'order-1 rounded-2xl border border-dashed p-3.5',
                           isDarkMode ? 'border-white/12 bg-white/5' : 'border-slate-300 bg-slate-50/80',
                         )}
                       >
@@ -1362,7 +1364,7 @@ export function AIInterviewPage() {
                         </div>
                       </div>
 
-                      <div className="space-y-3 pt-1">
+                      <div className="order-4 space-y-3 pt-1">
                         <p className={cx('break-words text-sm leading-6', theme.body)}>
                           {preparing
                             ? 'Preparing your interview...'

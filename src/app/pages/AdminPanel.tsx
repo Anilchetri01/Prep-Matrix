@@ -172,9 +172,9 @@ export function AdminPanel() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950">
       <Navbar />
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      <main className="mx-auto w-full max-w-6xl space-y-4 px-3 py-4 sm:space-y-6 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
               <ShieldCheck className="w-6 h-6 text-indigo-600" /> Admin Panel
@@ -188,7 +188,7 @@ export function AdminPanel() {
               void loadData();
             }}
             disabled={loading}
-            className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-sm disabled:opacity-60"
+            className="flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 disabled:opacity-60 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 sm:w-auto"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
             Refresh
@@ -197,12 +197,14 @@ export function AdminPanel() {
 
         {/* Tabs */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-          <div className="flex border-b border-gray-200 dark:border-gray-700">
+          <div className="grid grid-cols-2 border-b border-gray-200 dark:border-gray-700" role="tablist" aria-label="Admin sections">
             {tabs.map(({ id, label, icon: Icon }) => (
               <button
                 key={id}
                 onClick={() => setActiveTab(id)}
-                className={`flex items-center gap-2 px-6 py-3 text-sm font-semibold transition-colors ${
+                role="tab"
+                aria-selected={activeTab === id}
+                className={`flex min-h-12 min-w-0 items-center justify-center gap-2 px-3 py-3 text-sm font-semibold transition-colors sm:px-6 ${
                   activeTab === id
                     ? 'border-b-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 dark:border-indigo-400'
                     : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
@@ -216,25 +218,25 @@ export function AdminPanel() {
 
           {/* ── Overview Tab ── */}
           {activeTab === 'overview' && (
-            <div className="p-6 space-y-6">
+            <div className="space-y-6 p-4 sm:p-6">
               {loading ? (
                 <LoadingSpinner message="Loading stats..." />
               ) : stats ? (
                 <>
                   {/* KPI cards */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
                     {[
                       { icon: <Users className="w-5 h-5 text-blue-600" />, bg: 'bg-blue-100 dark:bg-blue-900/30', label: 'Total Users', value: stats.totalUsers },
                       { icon: <FileText className="w-5 h-5 text-green-600" />, bg: 'bg-green-100 dark:bg-green-900/30', label: 'Total Interviews', value: stats.totalInterviews },
                       { icon: <Star className="w-5 h-5 text-yellow-600" />, bg: 'bg-yellow-100 dark:bg-yellow-900/30', label: 'Platform Avg', value: `${stats.averageScore}%` },
                       { icon: <TrendingUp className="w-5 h-5 text-purple-600" />, bg: 'bg-purple-100 dark:bg-purple-900/30', label: 'Admins', value: users.filter((u) => u.role === 'admin').length },
                     ].map((s) => (
-                      <div key={s.label} className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4">
+                      <div key={s.label} className="min-w-0 rounded-xl bg-gray-50 p-3 dark:bg-gray-700/50 sm:p-4">
                         <div className={`w-9 h-9 ${s.bg} rounded-lg flex items-center justify-center mb-2`}>
                           {s.icon}
                         </div>
                         <p className="text-xs text-gray-500 dark:text-gray-400">{s.label}</p>
-                        <p className="text-xl font-bold text-gray-900 dark:text-white">{s.value}</p>
+                        <p className="break-words text-lg font-bold text-gray-900 dark:text-white sm:text-xl">{s.value}</p>
                       </div>
                     ))}
                   </div>
@@ -322,7 +324,7 @@ export function AdminPanel() {
 
           {/* ── Users Tab ── */}
           {activeTab === 'users' && (
-            <div className="p-6 space-y-4">
+            <div className="space-y-4 p-4 sm:p-6">
               {/* Search */}
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -349,7 +351,7 @@ export function AdminPanel() {
                     return (
                       <div
                         key={u.id}
-                        className={`flex items-center gap-4 p-4 rounded-xl border transition-colors ${
+                        className={`flex min-w-0 flex-col gap-3 rounded-xl border p-3 transition-colors sm:flex-row sm:items-center sm:gap-4 sm:p-4 ${
                           isCurrentUser
                             ? 'bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800'
                             : 'bg-gray-50 dark:bg-gray-700/50 border-gray-200 dark:border-gray-600'
@@ -380,12 +382,13 @@ export function AdminPanel() {
                         </div>
 
                         {!isCurrentUser && (
-                          <div className="flex items-center gap-2 flex-shrink-0">
+                          <div className="flex w-full flex-shrink-0 items-center justify-end gap-2 sm:w-auto">
                             <button
                               onClick={() => handleToggleRole(u.id, u.role)}
                               disabled={isActioning}
                               title={u.role === 'admin' ? 'Demote to User' : 'Promote to Admin'}
-                              className={`p-2 rounded-lg transition-colors ${
+                              aria-label={u.role === 'admin' ? `Remove admin role from ${u.name}` : `Make ${u.name} an admin`}
+                              className={`inline-flex h-11 w-11 items-center justify-center rounded-lg transition-colors ${
                                 u.role === 'admin'
                                   ? 'text-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20'
                                   : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-600'
@@ -403,7 +406,8 @@ export function AdminPanel() {
                               onClick={() => handleDelete(u.id, u.name)}
                               disabled={isActioning}
                               title="Delete user"
-                              className="p-2 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors disabled:opacity-40"
+                              aria-label={`Delete ${u.name}`}
+                              className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-red-500 transition-colors hover:bg-red-50 disabled:opacity-40 dark:hover:bg-red-900/20"
                             >
                               <Trash2 className="w-4 h-4" />
                             </button>

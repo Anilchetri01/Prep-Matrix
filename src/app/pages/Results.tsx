@@ -229,13 +229,13 @@ export function Results() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950 flex flex-col">
       <Navbar />
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-6 flex-1">
+      <main className="mx-auto w-full max-w-5xl flex-1 space-y-4 px-3 py-4 sm:space-y-6 sm:px-6 sm:py-8">
         {/* Title */}
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full mb-4 shadow-2xl">
-            <Trophy className="w-10 h-10 text-white" />
+          <div className="mb-2 inline-flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg sm:mb-4 sm:h-20 sm:w-20 sm:shadow-2xl">
+            <Trophy className="h-7 w-7 text-white sm:h-10 sm:w-10" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
+          <h1 className="mb-1 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
             Interview Complete!
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
@@ -244,9 +244,9 @@ export function Results() {
         </div>
 
         {/* Score card */}
-        <div className="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl p-8 text-white text-center shadow-2xl">
+        <div className="rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 p-5 text-center text-white shadow-xl sm:rounded-3xl sm:p-8 sm:shadow-2xl">
           <p className="text-indigo-200 mb-1">Overall Score</p>
-          <div className="text-7xl font-extrabold mb-3 tracking-tight">{interview.score}%</div>
+          <div className="mb-2 text-5xl font-extrabold tracking-tight sm:mb-3 sm:text-7xl">{interview.score}%</div>
           <div className="inline-block px-5 py-1.5 rounded-full bg-white/20 backdrop-blur font-semibold">
             {performanceRating.rating}
           </div>
@@ -256,7 +256,7 @@ export function Results() {
 
           {/* Intro vs Main scores */}
           {(introAvg !== null || mainAvg !== null) && (
-            <div className="mt-6 grid grid-cols-2 gap-4 max-w-xs mx-auto">
+            <div className="mx-auto mt-4 grid max-w-xs grid-cols-2 gap-2 sm:mt-6 sm:gap-4">
               {introAvg !== null && (
                 <div className="bg-white/10 rounded-2xl p-3">
                   <div className="flex items-center justify-center gap-1 mb-1">
@@ -280,20 +280,20 @@ export function Results() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {[
             { icon: <Target className="w-5 h-5 text-blue-600 dark:text-blue-400" />, bg: 'bg-blue-100 dark:bg-blue-900/30', label: 'Questions', value: interview.answers.length },
             { icon: <Clock className="w-5 h-5 text-green-600 dark:text-green-400" />, bg: 'bg-green-100 dark:bg-green-900/30', label: 'Total Time', value: `${Math.floor(totalTime / 60)}:${(totalTime % 60).toString().padStart(2, '0')}` },
             { icon: <TrendingUp className="w-5 h-5 text-purple-600 dark:text-purple-400" />, bg: 'bg-purple-100 dark:bg-purple-900/30', label: 'Avg Time/Q', value: `${avgTimePerQ}s` },
             { icon: <Star className="w-5 h-5 text-amber-600 dark:text-amber-400" />, bg: 'bg-amber-100 dark:bg-amber-900/30', label: 'Intro Score', value: introAvg !== null ? `${introAvg}%` : 'N/A' },
           ].map((s) => (
-            <div key={s.label} className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg flex items-center gap-4">
-              <div className={`w-11 h-11 ${s.bg} rounded-xl flex items-center justify-center flex-shrink-0`}>
+            <div key={s.label} className="flex min-w-0 flex-col gap-2 rounded-2xl bg-white p-3 shadow-md dark:bg-gray-800 sm:flex-row sm:items-center sm:gap-4 sm:p-5 sm:shadow-lg">
+              <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl sm:h-11 sm:w-11 ${s.bg}`}>
                 {s.icon}
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-xs text-gray-500 dark:text-gray-400">{s.label}</p>
-                <p className="text-xl font-bold text-gray-900 dark:text-white">{s.value}</p>
+                <p className="break-words text-lg font-bold text-gray-900 dark:text-white sm:text-xl">{s.value}</p>
               </div>
             </div>
           ))}
@@ -301,7 +301,7 @@ export function Results() {
 
         {/* Tabs */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-          <div className="flex border-b border-gray-200 dark:border-gray-700">
+          <div className="grid grid-cols-3 border-b border-gray-200 dark:border-gray-700" role="tablist" aria-label="Result sections">
             {[
               { id: 'overview', label: '📊 Performance' },
               { id: 'breakdown', label: '📋 Q&A Breakdown' },
@@ -310,7 +310,9 @@ export function Results() {
               <button
                 key={tabId}
                 onClick={() => setActiveTab(tabId as any)}
-                className={`flex-1 py-3 px-4 text-sm font-semibold transition-colors ${
+                role="tab"
+                aria-selected={activeTab === tabId}
+                className={`min-h-14 min-w-0 break-words px-1 py-2 text-xs font-semibold leading-4 transition-colors sm:min-h-12 sm:px-4 sm:py-3 sm:text-sm ${
                   activeTab === tabId
                     ? 'border-b-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 dark:border-indigo-400'
                     : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
@@ -323,12 +325,15 @@ export function Results() {
 
           {/* Overview Tab */}
           {activeTab === 'overview' && (
-            <div className="p-6 space-y-6">
+            <div className="space-y-6 p-4 sm:p-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Score per question bar chart */}
                 {questionScores.length > 0 && (
                   <div>
                     <h3 className="font-bold text-gray-900 dark:text-white mb-4 text-sm">Score per Domain Question</h3>
+                    <p className="mb-2 text-xs text-gray-500 dark:text-gray-400">
+                      {questionScores.length} domain answer{questionScores.length === 1 ? '' : 's'} reviewed; overall score {interview.score}%.
+                    </p>
                     <ResponsiveContainer width="100%" height={220}>
                       <BarChart data={questionScores}>
                         <CartesianGrid strokeDasharray="3 3" opacity={0.1} />
@@ -351,6 +356,9 @@ export function Results() {
                 {/* Radar chart */}
                 <div>
                   <h3 className="font-bold text-gray-900 dark:text-white mb-4 text-sm">Performance Analysis</h3>
+                  <p className="mb-2 text-xs text-gray-500 dark:text-gray-400">
+                    Domain {mainAvg ?? 0}%, introduction {introAvg ?? 0}%, overall {interview.score}%.
+                  </p>
                   <ResponsiveContainer width="100%" height={220}>
                     <RadarChart data={radarData}>
                       <PolarGrid stroke="#374151" opacity={0.3} />
@@ -394,7 +402,7 @@ export function Results() {
           {activeTab === 'breakdown' && (
             <div className="divide-y divide-gray-100 dark:divide-gray-700">
               {interview.answers.map((answer, i) => (
-                <div key={i} className="p-5">
+                <div key={i} className="p-4 sm:p-5">
                   <button
                     className="w-full flex items-start justify-between gap-4 text-left"
                     onClick={() => setExpandedAnswer(expandedAnswer === i ? null : i)}
@@ -465,7 +473,7 @@ export function Results() {
 
           {/* Insights Tab */}
           {activeTab === 'insights' && (
-            <div className="p-6 space-y-6">
+            <div className="space-y-6 p-4 sm:p-6">
               {/* Strengths */}
               <div>
                 <h3 className="font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">

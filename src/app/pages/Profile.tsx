@@ -373,20 +373,20 @@ export function Profile() {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950">
+    <div className="min-h-screen overflow-x-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950">
       <Navbar />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      <main className="mx-auto w-full min-w-0 max-w-4xl space-y-4 px-3 py-4 sm:space-y-6 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
         {/* Profile card header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white shadow-xl">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+        <div className="min-w-0 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 p-4 text-white shadow-lg sm:p-6 sm:shadow-xl">
+          <div className="flex min-w-0 flex-col items-center gap-4 sm:flex-row sm:items-start sm:gap-5">
             <UserAvatar
               name={user.name}
               color={selectedColor}
               imageUrl={profilePicture}
               size={80}
             />
-            <div className="text-center sm:text-left flex-1">
+            <div className="min-w-0 flex-1 text-center sm:text-left">
               <div className="flex items-center gap-2 justify-center sm:justify-start flex-wrap">
                 <h1 className="text-2xl font-bold">{user.name}</h1>
                 {user.role === 'admin' && (
@@ -395,7 +395,7 @@ export function Profile() {
                   </span>
                 )}
               </div>
-              <p className="text-indigo-200 text-sm mt-0.5">{user.email}</p>
+              <p className="mt-0.5 break-all text-sm text-indigo-200 sm:break-normal">{user.email}</p>
               {user.jobTitle && (
                 <p className="text-indigo-100 text-sm flex items-center gap-1 justify-center sm:justify-start mt-1">
                   <Briefcase className="w-3 h-3" /> {user.jobTitle}
@@ -406,7 +406,7 @@ export function Profile() {
                 Member since {format(new Date(user.createdAt), 'MMMM yyyy')}
               </p>
             </div>
-            <div className="flex gap-6 text-center">
+            <div className="grid w-full grid-cols-3 gap-2 text-center sm:flex sm:w-auto sm:gap-6">
               <div>
                 <p className="text-2xl font-bold">{completed.length}</p>
                 <p className="text-indigo-200 text-xs">Interviews</p>
@@ -424,13 +424,15 @@ export function Profile() {
         </div>
 
         {/* Tabs */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-          <div className="flex border-b border-gray-200 dark:border-gray-700">
+        <div className="min-w-0 overflow-hidden rounded-2xl bg-white shadow-lg dark:bg-gray-800">
+          <div className="grid grid-cols-3 border-b border-gray-200 dark:border-gray-700" role="tablist" aria-label="Profile sections">
             {tabs.map(({ id, label, icon: Icon }) => (
               <button
                 key={id}
                 onClick={() => setActiveTab(id)}
-                className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold transition-colors ${
+                role="tab"
+                aria-selected={activeTab === id}
+                className={`flex min-h-14 min-w-0 flex-col items-center justify-center gap-1 px-1 py-2 text-xs font-semibold transition-colors sm:min-h-12 sm:flex-row sm:gap-2 sm:px-4 sm:py-3 sm:text-sm ${
                   activeTab === id
                     ? 'border-b-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 dark:border-indigo-400'
                     : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
@@ -444,13 +446,13 @@ export function Profile() {
 
           {/* ── Profile Tab ── */}
           {activeTab === 'profile' && (
-            <form onSubmit={profileForm.handleSubmit(onSaveProfile)} className="p-6 space-y-5">
+            <form onSubmit={profileForm.handleSubmit(onSaveProfile)} className="space-y-5 p-4 sm:p-6">
               {/* Profile Picture Upload */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
                   Profile Picture
                 </label>
-                <div className="flex items-center gap-5">
+                <div className="flex min-w-0 flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5">
                   {/* Preview */}
                   <div className="relative flex-shrink-0">
                     {profilePicture ? (
@@ -465,18 +467,19 @@ export function Profile() {
                     <button
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
-                      className="absolute -bottom-1 -right-1 w-7 h-7 bg-indigo-600 hover:bg-indigo-700 rounded-full flex items-center justify-center shadow-md transition-colors"
+                      aria-label="Upload profile picture"
+                      className="absolute -bottom-2 -right-2 flex h-11 w-11 items-center justify-center rounded-full border-4 border-white bg-indigo-600 shadow-md transition-colors hover:bg-indigo-700 dark:border-gray-800"
                     >
-                      <Camera className="w-3.5 h-3.5 text-white" />
+                      <Camera className="h-4 w-4 text-white" />
                     </button>
                   </div>
 
                   {/* Buttons */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex w-full min-w-0 flex-col gap-2 sm:w-auto">
                     <button
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
-                      className="flex items-center gap-2 px-4 py-2 border-2 border-indigo-300 dark:border-indigo-600 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-xl text-sm font-semibold transition-colors"
+                      className="flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-indigo-300 px-4 py-2 text-sm font-semibold text-indigo-700 transition-colors hover:bg-indigo-50 dark:border-indigo-600 dark:text-indigo-300 dark:hover:bg-indigo-900/20"
                     >
                       <Upload className="w-4 h-4" />
                       {profilePicture ? 'Change Photo' : 'Upload Photo'}
@@ -485,7 +488,7 @@ export function Profile() {
                       <button
                         type="button"
                         onClick={handleRemovePhoto}
-                        className="flex items-center gap-2 px-4 py-2 border-2 border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl text-sm font-semibold transition-colors"
+                        className="flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-red-200 px-4 py-2 text-sm font-semibold text-red-600 transition-colors hover:bg-red-50 dark:border-red-800 dark:text-red-400 dark:hover:bg-red-900/20"
                       >
                         <Trash2 className="w-4 h-4" />
                         Remove Photo
@@ -516,7 +519,9 @@ export function Profile() {
                       key={color}
                       type="button"
                       onClick={() => setSelectedColor(color)}
-                      className={`w-9 h-9 rounded-full transition-all shadow-sm ${
+                      aria-label={`Use ${color} avatar color`}
+                      aria-pressed={selectedColor === color}
+                      className={`h-11 w-11 rounded-full shadow-sm transition-all ${
                         selectedColor === color ? 'ring-2 ring-offset-2 ring-indigo-500 scale-110' : 'hover:scale-105'
                       }`}
                       style={{ backgroundColor: color }}
@@ -715,7 +720,7 @@ export function Profile() {
               <button
                 type="submit"
                 disabled={savingProfile}
-                className="flex items-center gap-2 px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white font-semibold rounded-xl transition-colors shadow-md"
+                className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-2.5 font-semibold text-white shadow-md transition-colors hover:bg-indigo-700 disabled:opacity-60 sm:w-auto"
               >
                 {savingProfile ? (
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -729,7 +734,7 @@ export function Profile() {
 
           {/* ── Security Tab ── */}
           {activeTab === 'security' && (
-            <form onSubmit={passwordForm.handleSubmit(onChangePassword)} className="p-6 space-y-5">
+            <form onSubmit={passwordForm.handleSubmit(onChangePassword)} className="space-y-5 p-4 sm:p-6">
               <div className="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl text-sm text-amber-700 dark:text-amber-300">
                 Choose a strong password with at least 8 characters including uppercase, lowercase, and a number.
               </div>
@@ -797,7 +802,7 @@ export function Profile() {
               <button
                 type="submit"
                 disabled={savingPassword}
-                className="flex items-center gap-2 px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white font-semibold rounded-xl transition-colors shadow-md"
+                className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-2.5 font-semibold text-white shadow-md transition-colors hover:bg-indigo-700 disabled:opacity-60 sm:w-auto"
               >
                 {savingPassword ? (
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -823,7 +828,7 @@ export function Profile() {
 
           {/* ── Stats Tab ── */}
           {activeTab === 'stats' && (
-            <div className="p-6 space-y-6">
+            <div className="space-y-6 p-4 sm:p-6">
               {loading ? (
                 <LoadingSpinner message="Loading stats..." />
               ) : completed.length === 0 ? (
@@ -833,14 +838,14 @@ export function Profile() {
                 </div>
               ) : (
                 <>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
                     {[
                       { label: 'Total', value: completed.length, icon: '📝' },
                       { label: 'Avg Score', value: `${avgScore}%`, icon: '⭐' },
                       { label: 'Best Score', value: `${bestScore}%`, icon: '🏆' },
                       { label: 'Domains', value: Object.keys(domainMap).length, icon: '🎯' },
                     ].map((s) => (
-                      <div key={s.label} className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 text-center">
+                      <div key={s.label} className="min-w-0 rounded-xl bg-gray-50 p-3 text-center dark:bg-gray-700/50 sm:p-4">
                         <div className="text-2xl mb-1">{s.icon}</div>
                         <p className="text-xl font-bold text-gray-900 dark:text-white">{s.value}</p>
                         <p className="text-xs text-gray-500 dark:text-gray-400">{s.label}</p>
@@ -853,6 +858,9 @@ export function Profile() {
                       <h3 className="font-bold text-gray-900 dark:text-white mb-3 text-sm">
                         Performance by Domain
                       </h3>
+                      <p className="mb-2 text-xs text-gray-500 dark:text-gray-400">
+                        Strongest recent domain: {domainData[0].name} at {domainData[0].avgScore}% across {domainData[0].count} session{domainData[0].count === 1 ? '' : 's'}.
+                      </p>
                       <ResponsiveContainer width="100%" height={200}>
                         <BarChart data={domainData} layout="vertical">
                           <CartesianGrid strokeDasharray="3 3" opacity={0.1} />

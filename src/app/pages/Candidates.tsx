@@ -66,24 +66,68 @@ function ScoreBar({ score }: { score: number }) {
 }
 
 function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void }) {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const skills = typeof user.skills === 'string'
     ? (user.skills as string).split(',').map((s) => s.trim()).filter(Boolean)
     : Array.isArray(user.skills)
     ? user.skills
     : [];
 
+  useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+        return;
+      }
+
+      if (event.key !== 'Tab' || !modalRef.current) return;
+      const focusable = Array.from(
+        modalRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus();
+    };
+  }, [onClose]);
+
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-[60] flex items-end justify-center sm:items-center sm:p-4"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="candidate-profile-title"
     >
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-      <div className="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-lg max-h-[85vh] flex flex-col border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <div ref={modalRef} className="relative flex h-[100dvh] w-full max-w-lg flex-col overflow-hidden border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900 sm:h-auto sm:max-h-[85vh] sm:rounded-2xl">
         {/* Header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 flex items-start gap-4">
+        <div className="flex min-w-0 items-start gap-3 bg-gradient-to-r from-indigo-600 to-purple-600 px-4 pb-4 pt-[max(1rem,env(safe-area-inset-top))] sm:gap-4 sm:p-6">
           <UserAvatarDisplay user={user} size={72} />
           <div className="flex-1 min-w-0">
-            <h2 className="font-bold text-white text-xl truncate">{user.name}</h2>
+            <h2 id="candidate-profile-title" className="truncate text-xl font-bold text-white">{user.name}</h2>
             {user.username && <p className="text-indigo-200 text-sm">@{user.username}</p>}
             {user.jobTitle && (
               <p className="text-indigo-100 text-sm flex items-center gap-1 mt-1">
@@ -97,25 +141,27 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
             )}
           </div>
           <button
+            ref={closeButtonRef}
             onClick={onClose}
-            className="text-white/70 hover:text-white transition-colors p-1 flex-shrink-0"
+            aria-label="Close candidate profile"
+            className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg text-white/80 transition-colors hover:bg-white/10 hover:text-white"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Scrollable content */}
-        <div className="overflow-y-auto flex-1 p-6 space-y-5">
+        <div className="flex-1 space-y-5 overflow-y-auto overscroll-contain px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 sm:p-6">
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
             {[
               { label: 'Interviews', value: user.totalInterviews, icon: '📝' },
               { label: 'Avg Score', value: `${user.averageScore}%`, icon: '⭐' },
               { label: 'Best Score', value: `${user.bestScore}%`, icon: '🏆' },
             ].map((s) => (
-              <div key={s.label} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-3 text-center">
+              <div key={s.label} className="min-w-0 rounded-xl bg-gray-50 p-2 text-center dark:bg-gray-800 sm:p-3">
                 <div className="text-xl mb-0.5">{s.icon}</div>
-                <p className="font-bold text-gray-900 dark:text-white">{s.value}</p>
+                <p className="break-words font-bold text-gray-900 dark:text-white">{s.value}</p>
                 <p className="text-xs text-gray-500 dark:text-gray-400">{s.label}</p>
               </div>
             ))}
@@ -131,7 +177,7 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
 
           {/* Education & Experience */}
           {(user.education || user.experienceLevel) && (
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {user.education && (
                 <div className="flex items-start gap-2">
                   <GraduationCap className="w-4 h-4 text-indigo-500 mt-0.5 flex-shrink-0" />
@@ -174,7 +220,7 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
           {(user.linkedinUrl || user.githubUrl || user.portfolioUrl) && (
             <div>
               <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Links</h4>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 {user.linkedinUrl && (
                   <a
                     href={user.linkedinUrl}
@@ -296,12 +342,12 @@ export function Candidates() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950 flex flex-col">
+    <div className="flex min-h-screen flex-col overflow-x-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950">
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 flex-1">
+      <main className="mx-auto w-full max-w-7xl flex-1 space-y-4 px-3 py-4 sm:space-y-6 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
         {/* Header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white shadow-xl">
+        <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 p-4 text-white shadow-lg sm:p-6 sm:shadow-xl">
           <div className="flex items-center gap-3 mb-2">
             <Users className="w-7 h-7" />
             <h1 className="text-2xl font-bold">Explore Candidates</h1>
@@ -312,7 +358,7 @@ export function Candidates() {
         </div>
 
         {/* Search */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-lg">
+        <div className="rounded-2xl bg-white p-3 shadow-lg dark:bg-gray-800 sm:p-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
@@ -320,7 +366,7 @@ export function Candidates() {
               placeholder="Search by name, username, job title..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="min-h-11 w-full rounded-xl border border-gray-300 bg-white py-2.5 pl-10 pr-4 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
             />
           </div>
           {!loading && (
@@ -429,7 +475,7 @@ export function Candidates() {
                     {/* View Profile button */}
                     <button
                       onClick={() => setSelectedUser(user)}
-                      className="w-full mt-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-sm font-semibold py-2.5 rounded-xl transition-all"
+                      className="mt-1 min-h-11 w-full rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 py-2.5 text-sm font-semibold text-white transition-all hover:from-indigo-700 hover:to-purple-700"
                     >
                       View Profile
                     </button>

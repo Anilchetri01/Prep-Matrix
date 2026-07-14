@@ -126,23 +126,23 @@ export function ManualMode() {
     <div className="min-h-screen bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-white">
       <Navbar />
 
-      <main className="mx-auto w-full max-w-7xl px-3 py-5 sm:px-6 lg:px-8 lg:py-8">
+      <main className="mx-auto w-full max-w-7xl px-3 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-8">
         <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-6">
-          <div className="flex min-w-0 flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex min-w-0 flex-col gap-4 lg:flex-row lg:items-center lg:justify-between lg:gap-5">
             <div className="min-w-0 max-w-3xl">
-              <div className="mb-3 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-indigo-700 dark:border-indigo-400/20 dark:bg-indigo-400/10 dark:text-indigo-200 sm:tracking-[0.18em]">
+              <div className="mb-2 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-indigo-700 dark:border-indigo-400/20 dark:bg-indigo-400/10 dark:text-indigo-200 sm:mb-3 sm:tracking-[0.18em]">
                 <Shuffle className="h-3.5 w-3.5" />
                 Manual Mode
               </div>
               <h1 className="break-words text-2xl font-bold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
                 Curated interview practice across every career path.
               </h1>
-              <p className="mt-3 max-w-2xl break-words text-sm leading-6 text-slate-600 dark:text-slate-300 sm:text-base">
+              <p className="mt-2 line-clamp-2 max-w-2xl break-words text-sm leading-6 text-slate-600 dark:text-slate-300 sm:mt-3 sm:line-clamp-none sm:text-base">
                 Choose a question count, difficulty, and professional domain. Each session uses randomized, non-repeating questions from the standardized manual question bank.
               </p>
             </div>
 
-            <div className="grid w-full grid-cols-1 gap-2 rounded-xl border border-slate-200 bg-slate-50 p-2 dark:border-white/10 dark:bg-slate-950/60 sm:min-w-[320px] sm:grid-cols-3 lg:w-auto">
+            <div className="hidden w-full grid-cols-3 gap-2 rounded-xl border border-slate-200 bg-slate-50 p-2 dark:border-white/10 dark:bg-slate-950/60 sm:grid sm:min-w-[320px] lg:w-auto">
               {[
                 { label: 'Domains', value: DOMAINS.length },
                 { label: 'Per Level', value: MAX_QUESTIONS_PER_LEVEL },
@@ -159,7 +159,7 @@ export function ManualMode() {
           </div>
         </section>
 
-        <section className="mt-5 grid min-w-0 gap-5 lg:mt-6 lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-6">
+        <section className="mt-4 grid min-w-0 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-6">
           <aside className="min-w-0 space-y-4">
             <div className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
               <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
@@ -172,12 +172,13 @@ export function ManualMode() {
                   <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">
                     Number of Questions
                   </label>
-                  <div className="mt-3 grid grid-cols-4 gap-2">
+                  <div className="mt-3 grid grid-cols-4 gap-1.5 sm:gap-2">
                     {ALLOWED_QUESTION_COUNTS.map((count) => (
                       <button
                         key={count}
                         onClick={() => setQuestionCount(count)}
-                        className={`rounded-xl border px-3 py-3 text-sm font-bold transition-all ${
+                        aria-pressed={questionCount === count}
+                        className={`min-h-11 rounded-xl border px-2 py-2.5 text-sm font-bold transition-all sm:px-3 sm:py-3 ${
                           questionCount === count
                             ? 'border-indigo-500 bg-indigo-600 text-white shadow-lg shadow-indigo-500/20'
                             : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-indigo-300 dark:border-white/10 dark:bg-white/5 dark:text-slate-200'
@@ -203,7 +204,8 @@ export function ManualMode() {
                         <button
                           key={level}
                           onClick={() => setSelectedDifficulty(level)}
-                          className={`w-full rounded-xl border p-3 text-left transition-all ${
+                          aria-pressed={active}
+                          className={`min-h-11 w-full rounded-xl border p-3 text-left transition-all ${
                             active
                               ? 'border-indigo-500 bg-indigo-50 shadow-sm dark:bg-indigo-500/15'
                               : 'border-slate-200 bg-white hover:border-indigo-300 dark:border-white/10 dark:bg-white/5'
@@ -261,7 +263,7 @@ export function ManualMode() {
               <button
                 onClick={handleStart}
                 disabled={!selectedDomain || showInterviewSplash}
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-500/20 transition-all hover:from-indigo-500 hover:to-violet-500 disabled:cursor-not-allowed disabled:from-slate-300 disabled:to-slate-400 disabled:shadow-none dark:disabled:from-slate-700 dark:disabled:to-slate-700"
+                className="mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-500/20 transition-all hover:from-indigo-500 hover:to-violet-500 disabled:cursor-not-allowed disabled:from-slate-300 disabled:to-slate-400 disabled:shadow-none dark:disabled:from-slate-700 dark:disabled:to-slate-700"
               >
                 {showInterviewSplash ? 'Preparing session...' : 'Start Manual Interview'}
                 <ArrowRight className="h-4 w-4" />

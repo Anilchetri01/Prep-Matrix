@@ -128,7 +128,7 @@ export function InterviewHistory() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950">
       <Navbar />
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      <main className="mx-auto w-full max-w-5xl space-y-4 px-3 py-4 sm:space-y-6 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
         {/* Header */}
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Interview History</h1>
@@ -139,25 +139,25 @@ export function InterviewHistory() {
 
         {/* Stats */}
         {loading ? (
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4">
             {[1, 2, 3].map((i) => (
               <div key={i} className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg animate-pulse h-24" />
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4">
             {[
               { icon: <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400" />, bg: 'bg-blue-100 dark:bg-blue-900/30', label: 'Total', value: interviews.length },
               { icon: <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />, bg: 'bg-green-100 dark:bg-green-900/30', label: 'Avg Score', value: `${avgScore}%` },
               { icon: <Trophy className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />, bg: 'bg-yellow-100 dark:bg-yellow-900/30', label: 'Best Score', value: `${bestScore}%` },
             ].map((s) => (
-              <div key={s.label} className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-lg flex items-center gap-3">
-                <div className={`w-9 h-9 ${s.bg} rounded-xl flex items-center justify-center flex-shrink-0`}>
+              <div key={s.label} className="flex min-w-0 flex-col gap-2 rounded-2xl bg-white p-3 shadow-md dark:bg-gray-800 sm:flex-row sm:items-center sm:gap-3 sm:p-4 sm:shadow-lg">
+                <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl ${s.bg}`}>
                   {s.icon}
                 </div>
-                <div>
+                <div className="min-w-0">
                   <p className="text-xs text-gray-500 dark:text-gray-400">{s.label}</p>
-                  <p className="text-lg font-bold text-gray-900 dark:text-white">{s.value}</p>
+                  <p className="break-words text-base font-bold text-gray-900 dark:text-white sm:text-lg">{s.value}</p>
                 </div>
               </div>
             ))}
@@ -165,7 +165,7 @@ export function InterviewHistory() {
         )}
 
         {/* Filters */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4">
+        <div className="rounded-2xl bg-white p-3 shadow-lg dark:bg-gray-800 sm:p-4">
           <div className="flex flex-col sm:flex-row gap-3">
             {/* Search */}
             <div className="relative flex-1">
@@ -175,7 +175,7 @@ export function InterviewHistory() {
                 placeholder="Search by domain..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="min-h-11 w-full rounded-xl border border-gray-300 bg-white py-2 pl-9 pr-4 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
               />
             </div>
 
@@ -183,7 +183,7 @@ export function InterviewHistory() {
             <select
               value={filterBy}
               onChange={(e) => setFilterBy(e.target.value as FilterKey)}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="min-h-11 rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
             >
               <option value="all">All Difficulties</option>
               <option value="completed">Completed Only</option>
@@ -197,7 +197,7 @@ export function InterviewHistory() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortKey)}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="min-h-11 rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
             >
               <option value="date">Sort: Newest</option>
               <option value="score">Sort: Highest Score</option>
@@ -245,7 +245,7 @@ export function InterviewHistory() {
                   <div
                     key={interview.id}
                     onClick={() => isClickable && navigate(`/results/${interview.id}`)}
-                    className={`flex items-center gap-4 p-5 transition-colors group ${
+                    className={`group flex min-w-0 items-start gap-3 p-4 transition-colors sm:items-center sm:gap-4 sm:p-5 ${
                       isClickable
                         ? 'hover:bg-gray-50 dark:hover:bg-gray-700/40 cursor-pointer'
                         : 'opacity-70'
@@ -273,7 +273,7 @@ export function InterviewHistory() {
                           {interview.status === 'completed' ? 'Completed' : 'In Progress'}
                         </span>
                       </div>
-                      <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500 dark:text-gray-400 sm:gap-4">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-3 h-3" />
                           {format(new Date(interview.startTime), 'MMM dd, yyyy')}
@@ -291,7 +291,7 @@ export function InterviewHistory() {
                     </div>
 
                     {/* Score + actions */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex shrink-0 flex-col items-end gap-1 sm:flex-row sm:items-center sm:gap-3">
                       {interview.status === 'completed' && interview.score !== undefined && (
                         <div className={`text-xl font-bold ${
                           interview.score >= 75 ? 'text-green-600' :
@@ -305,7 +305,8 @@ export function InterviewHistory() {
                       <button
                         onClick={(e) => handleDelete(interview.id, e)}
                         disabled={deletingId === interview.id}
-                        className="p-1.5 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-400 hover:text-red-500 transition-all"
+                        aria-label={`Delete ${interview.domainName} interview`}
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-gray-400 opacity-100 transition-all hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-900/20 sm:opacity-0 sm:group-hover:opacity-100"
                         title="Delete interview"
                       >
                         {deletingId === interview.id ? (
