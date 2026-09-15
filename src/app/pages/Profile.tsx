@@ -213,7 +213,7 @@ export function Profile() {
         linkedinUrl: data.linkedinUrl,
         githubUrl: data.githubUrl,
         portfolioUrl: data.portfolioUrl,
-        skills: data.skills
+        skills: (data.skills || '')
           .split(',')
           .map((skill) => skill.trim())
           .filter(Boolean),
@@ -510,10 +510,10 @@ export function Profile() {
 
               {/* Avatar color */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                  Avatar Color <span className="text-xs text-gray-400">(used when no photo)</span>
+                <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-[#5F6F84] dark:text-[#AAB7CA]">
+                  Avatar Color <span className="normal-case text-[#7F8CA0] dark:text-[#718096]">(used when no photo)</span>
                 </label>
-                <div className="flex gap-2 flex-wrap">
+                <div className="flex gap-2 flex-wrap items-center">
                   {AVATAR_COLORS.map((color) => (
                     <button
                       key={color}
@@ -521,206 +521,244 @@ export function Profile() {
                       onClick={() => setSelectedColor(color)}
                       aria-label={`Use ${color} avatar color`}
                       aria-pressed={selectedColor === color}
-                      className={`h-11 w-11 rounded-full shadow-sm transition-all ${
-                        selectedColor === color ? 'ring-2 ring-offset-2 ring-indigo-500 scale-110' : 'hover:scale-105'
-                      }`}
-                      style={{ backgroundColor: color }}
+                      className="w-7 h-7 rounded-full transition-transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#6D5EF9]"
+                      style={{
+                        backgroundColor: color,
+                        transform: selectedColor === color ? 'scale(1.15)' : 'scale(1)',
+                        boxShadow: selectedColor === color ? '0 0 0 2px #fff, 0 0 0 4px #6D5EF9' : undefined,
+                      }}
                     />
                   ))}
                 </div>
               </div>
 
-              {/* Name */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  Full Name
-                </label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    {...profileForm.register('name', { required: true, minLength: 2 })}
-                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              {/* Profile Details Form */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Full Name */}
+                <div>
+                  <label htmlFor="profile-name" className="block text-sm font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1.5">
+                    Full Name
+                  </label>
+                  <div className="relative">
+                    <User className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7F8CA0] dark:text-[#718096]" />
+                    <input
+                      id="profile-name"
+                      type="text"
+                      autoComplete="name"
+                      {...profileForm.register('name', {
+                        required: 'Full name is required',
+                        minLength: { value: 2, message: 'Full name must be at least 2 characters' },
+                        validate: (v) => (v && v.trim().length >= 2) || 'Full name cannot be empty or whitespace',
+                      })}
+                      className="w-full h-11 pl-10 pr-4 border border-[#DDE3EC] dark:border-[#263449] rounded-xl text-sm bg-[#F1F4F8] dark:bg-[#172235] text-[#142033] dark:text-[#F4F7FB] placeholder-[#7F8CA0] dark:placeholder-[#718096] focus:outline-none focus:ring-2 focus:ring-[#8174FF]/20 focus:border-[#8174FF] transition-colors"
+                    />
+                  </div>
+                  {profileForm.formState.errors.name && (
+                    <p role="alert" className="text-xs text-[#FB7185] mt-1">
+                      {profileForm.formState.errors.name.message || 'Full name is required (min 2 characters)'}
+                    </p>
+                  )}
+                </div>
+
+                {/* Username */}
+                <div>
+                  <label htmlFor="profile-username" className="block text-sm font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1.5">
+                    Username
+                  </label>
+                  <div className="relative">
+                    <User className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7F8CA0] dark:text-[#718096]" />
+                    <input
+                      id="profile-username"
+                      type="text"
+                      autoComplete="username"
+                      {...profileForm.register('username', {
+                        required: 'Username is required',
+                        minLength: { value: 2, message: 'Username must be at least 2 characters' },
+                        validate: (v) => (v && v.trim().length >= 2) || 'Username cannot be empty or whitespace',
+                      })}
+                      className="w-full h-11 pl-10 pr-4 border border-[#DDE3EC] dark:border-[#263449] rounded-xl text-sm bg-[#F1F4F8] dark:bg-[#172235] text-[#142033] dark:text-[#F4F7FB] placeholder-[#7F8CA0] dark:placeholder-[#718096] focus:outline-none focus:ring-2 focus:ring-[#8174FF]/20 focus:border-[#8174FF] transition-colors"
+                    />
+                  </div>
+                  {profileForm.formState.errors.username && (
+                    <p role="alert" className="text-xs text-[#FB7185] mt-1">
+                      {profileForm.formState.errors.username.message || 'Username is required (min 2 characters)'}
+                    </p>
+                  )}
+                </div>
+
+                {/* Job Title */}
+                <div>
+                  <label htmlFor="profile-jobTitle" className="block text-sm font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1.5">
+                    Job Title
+                  </label>
+                  <div className="relative">
+                    <Briefcase className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7F8CA0] dark:text-[#718096]" />
+                    <input
+                      id="profile-jobTitle"
+                      type="text"
+                      placeholder="e.g. Software Engineer"
+                      {...profileForm.register('jobTitle')}
+                      className="w-full h-11 pl-10 pr-4 border border-[#DDE3EC] dark:border-[#263449] rounded-xl text-sm bg-[#F1F4F8] dark:bg-[#172235] text-[#142033] dark:text-[#F4F7FB] placeholder-[#7F8CA0] dark:placeholder-[#718096] focus:outline-none focus:ring-2 focus:ring-[#8174FF]/20 focus:border-[#8174FF] transition-colors"
+                    />
+                  </div>
+                </div>
+
+                {/* Bio */}
+                <div className="sm:col-span-2">
+                  <label htmlFor="profile-bio" className="block text-sm font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1.5">
+                    Bio
+                  </label>
+                  <textarea
+                    id="profile-bio"
+                    rows={3}
+                    placeholder="A short bio about yourself..."
+                    {...profileForm.register('bio')}
+                    className="w-full min-h-[88px] p-3 border border-[#DDE3EC] dark:border-[#263449] rounded-xl text-sm bg-[#F1F4F8] dark:bg-[#172235] text-[#142033] dark:text-[#F4F7FB] placeholder-[#7F8CA0] dark:placeholder-[#718096] focus:outline-none focus:ring-2 focus:ring-[#8174FF]/20 focus:border-[#8174FF] transition-colors resize-none"
                   />
                 </div>
-              </div>
 
-              {/* Username */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  Username
-                </label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    {...profileForm.register('username', { required: true, minLength: 2 })}
-                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
+                {/* Phone Number */}
+                <div>
+                  <label htmlFor="profile-phoneNumber" className="block text-sm font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1.5">
+                    Phone Number
+                  </label>
+                  <div className="relative">
+                    <Phone className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7F8CA0] dark:text-[#718096]" />
+                    <input
+                      id="profile-phoneNumber"
+                      type="text"
+                      autoComplete="tel"
+                      placeholder="e.g. +1234567890"
+                      {...profileForm.register('phoneNumber')}
+                      className="w-full h-11 pl-10 pr-4 border border-[#DDE3EC] dark:border-[#263449] rounded-xl text-sm bg-[#F1F4F8] dark:bg-[#172235] text-[#142033] dark:text-[#F4F7FB] placeholder-[#7F8CA0] dark:placeholder-[#718096] focus:outline-none focus:ring-2 focus:ring-[#8174FF]/20 focus:border-[#8174FF] transition-colors"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Job title */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  Job Title
-                </label>
-                <div className="relative">
-                  <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="e.g. Software Engineer"
-                    {...profileForm.register('jobTitle')}
-                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
+                {/* Location */}
+                <div>
+                  <label htmlFor="profile-location" className="block text-sm font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1.5">
+                    Location
+                  </label>
+                  <div className="relative">
+                    <MapPin className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7F8CA0] dark:text-[#718096]" />
+                    <input
+                      id="profile-location"
+                      type="text"
+                      placeholder="e.g. New York, USA"
+                      {...profileForm.register('location')}
+                      className="w-full h-11 pl-10 pr-4 border border-[#DDE3EC] dark:border-[#263449] rounded-xl text-sm bg-[#F1F4F8] dark:bg-[#172235] text-[#142033] dark:text-[#F4F7FB] placeholder-[#7F8CA0] dark:placeholder-[#718096] focus:outline-none focus:ring-2 focus:ring-[#8174FF]/20 focus:border-[#8174FF] transition-colors"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Bio */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  Bio
-                </label>
-                <textarea
-                  rows={3}
-                  placeholder="A short bio about yourself..."
-                  {...profileForm.register('bio')}
-                  className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
-                />
-              </div>
-
-              {/* Phone Number */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  Phone Number
-                </label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="e.g. +1234567890"
-                    {...profileForm.register('phoneNumber')}
-                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
+                {/* Education */}
+                <div>
+                  <label htmlFor="profile-education" className="block text-sm font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1.5">
+                    Education
+                  </label>
+                  <div className="relative">
+                    <GraduationCap className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7F8CA0] dark:text-[#718096]" />
+                    <input
+                      id="profile-education"
+                      type="text"
+                      placeholder="e.g. Bachelor's in Computer Science"
+                      {...profileForm.register('education')}
+                      className="w-full h-11 pl-10 pr-4 border border-[#DDE3EC] dark:border-[#263449] rounded-xl text-sm bg-[#F1F4F8] dark:bg-[#172235] text-[#142033] dark:text-[#F4F7FB] placeholder-[#7F8CA0] dark:placeholder-[#718096] focus:outline-none focus:ring-2 focus:ring-[#8174FF]/20 focus:border-[#8174FF] transition-colors"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Location */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  Location
-                </label>
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="e.g. New York, USA"
-                    {...profileForm.register('location')}
-                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
+                {/* Experience Level */}
+                <div>
+                  <label htmlFor="profile-experienceLevel" className="block text-sm font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1.5">
+                    Experience Level
+                  </label>
+                  <div className="relative">
+                    <Tag className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7F8CA0] dark:text-[#718096]" />
+                    <input
+                      id="profile-experienceLevel"
+                      type="text"
+                      placeholder="e.g. Junior Developer"
+                      {...profileForm.register('experienceLevel')}
+                      className="w-full h-11 pl-10 pr-4 border border-[#DDE3EC] dark:border-[#263449] rounded-xl text-sm bg-[#F1F4F8] dark:bg-[#172235] text-[#142033] dark:text-[#F4F7FB] placeholder-[#7F8CA0] dark:placeholder-[#718096] focus:outline-none focus:ring-2 focus:ring-[#8174FF]/20 focus:border-[#8174FF] transition-colors"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Education */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  Education
-                </label>
-                <div className="relative">
-                  <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="e.g. Bachelor's in Computer Science"
-                    {...profileForm.register('education')}
-                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
+                {/* LinkedIn URL */}
+                <div>
+                  <label htmlFor="profile-linkedinUrl" className="block text-sm font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1.5">
+                    LinkedIn URL
+                  </label>
+                  <div className="relative">
+                    <Linkedin className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7F8CA0] dark:text-[#718096]" />
+                    <input
+                      id="profile-linkedinUrl"
+                      type="text"
+                      placeholder="e.g. https://linkedin.com/in/username"
+                      {...profileForm.register('linkedinUrl')}
+                      className="w-full h-11 pl-10 pr-4 border border-[#DDE3EC] dark:border-[#263449] rounded-xl text-sm bg-[#F1F4F8] dark:bg-[#172235] text-[#142033] dark:text-[#F4F7FB] placeholder-[#7F8CA0] dark:placeholder-[#718096] focus:outline-none focus:ring-2 focus:ring-[#8174FF]/20 focus:border-[#8174FF] transition-colors"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Experience Level */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  Experience Level
-                </label>
-                <div className="relative">
-                  <Tag className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="e.g. Junior Developer"
-                    {...profileForm.register('experienceLevel')}
-                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
+                {/* GitHub URL */}
+                <div>
+                  <label htmlFor="profile-githubUrl" className="block text-sm font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1.5">
+                    GitHub URL
+                  </label>
+                  <div className="relative">
+                    <Github className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7F8CA0] dark:text-[#718096]" />
+                    <input
+                      id="profile-githubUrl"
+                      type="text"
+                      placeholder="e.g. https://github.com/username"
+                      {...profileForm.register('githubUrl')}
+                      className="w-full h-11 pl-10 pr-4 border border-[#DDE3EC] dark:border-[#263449] rounded-xl text-sm bg-[#F1F4F8] dark:bg-[#172235] text-[#142033] dark:text-[#F4F7FB] placeholder-[#7F8CA0] dark:placeholder-[#718096] focus:outline-none focus:ring-2 focus:ring-[#8174FF]/20 focus:border-[#8174FF] transition-colors"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* LinkedIn URL */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  LinkedIn URL
-                </label>
-                <div className="relative">
-                  <Linkedin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="e.g. https://linkedin.com/in/username"
-                    {...profileForm.register('linkedinUrl')}
-                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
+                {/* Portfolio URL */}
+                <div>
+                  <label htmlFor="profile-portfolioUrl" className="block text-sm font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1.5">
+                    Portfolio URL
+                  </label>
+                  <div className="relative">
+                    <LinkIcon className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7F8CA0] dark:text-[#718096]" />
+                    <input
+                      id="profile-portfolioUrl"
+                      type="text"
+                      placeholder="e.g. https://portfolio.com/username"
+                      {...profileForm.register('portfolioUrl')}
+                      className="w-full h-11 pl-10 pr-4 border border-[#DDE3EC] dark:border-[#263449] rounded-xl text-sm bg-[#F1F4F8] dark:bg-[#172235] text-[#142033] dark:text-[#F4F7FB] placeholder-[#7F8CA0] dark:placeholder-[#718096] focus:outline-none focus:ring-2 focus:ring-[#8174FF]/20 focus:border-[#8174FF] transition-colors"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* GitHub URL */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  GitHub URL
-                </label>
-                <div className="relative">
-                  <Github className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="e.g. https://github.com/username"
-                    {...profileForm.register('githubUrl')}
-                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
-                </div>
-              </div>
-
-              {/* Portfolio URL */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  Portfolio URL
-                </label>
-                <div className="relative">
-                  <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="e.g. https://portfolio.com/username"
-                    {...profileForm.register('portfolioUrl')}
-                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
-                </div>
-              </div>
-
-              {/* Skills */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  Skills
-                </label>
-                <div className="relative">
-                  <Tag className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="e.g. JavaScript, React, Node.js"
-                    {...profileForm.register('skills')}
-                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
+                {/* Skills */}
+                <div className="sm:col-span-2">
+                  <label htmlFor="profile-skills" className="block text-sm font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1.5">
+                    Skills
+                  </label>
+                  <div className="relative">
+                    <Tag className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7F8CA0] dark:text-[#718096]" />
+                    <input
+                      id="profile-skills"
+                      type="text"
+                      placeholder="e.g. JavaScript, React, Node.js"
+                      {...profileForm.register('skills')}
+                      className="w-full h-11 pl-10 pr-4 border border-[#DDE3EC] dark:border-[#263449] rounded-xl text-sm bg-[#F1F4F8] dark:bg-[#172235] text-[#142033] dark:text-[#F4F7FB] placeholder-[#7F8CA0] dark:placeholder-[#718096] focus:outline-none focus:ring-2 focus:ring-[#8174FF]/20 focus:border-[#8174FF] transition-colors"
+                    />
+                  </div>
                 </div>
               </div>
 
               <button
                 type="submit"
                 disabled={savingProfile}
-                className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-2.5 font-semibold text-white shadow-md transition-colors hover:bg-indigo-700 disabled:opacity-60 sm:w-auto"
+                className="flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#6D5EF9] hover:bg-[#8174FF] px-6 py-2.5 font-semibold text-white shadow-sm transition-colors disabled:opacity-60 sm:w-auto"
               >
                 {savingProfile ? (
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />

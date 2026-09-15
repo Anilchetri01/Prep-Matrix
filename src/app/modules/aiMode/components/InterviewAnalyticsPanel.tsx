@@ -94,7 +94,7 @@ export function InterviewAnalyticsPanel({
 
       <div className="h-3 overflow-hidden rounded-full bg-white/8">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-sky-500 via-cyan-400 to-indigo-500 transition-[width] duration-500"
+          className="h-full rounded-full bg-[#6D5EF9] transition-[width] duration-500"
           style={{ width: `${analytics.completionRate}%` }}
         />
       </div>

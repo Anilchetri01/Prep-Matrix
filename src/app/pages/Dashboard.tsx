@@ -45,9 +45,9 @@ import type { InterviewSession, Resume } from '../types';
 import { api } from '../utils/api';
 
 const DIFFICULTY_COLORS: Record<string, string> = {
-  beginner: '#10B981',
-  intermediate: '#3B82F6',
-  advanced: '#8B5CF6',
+  beginner: '#34D399',
+  intermediate: '#6D5EF9',
+  advanced: '#8174FF',
 };
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -96,14 +96,23 @@ function getWeeklyProgress(manualInterviews: InterviewSession[], aiInterviews: A
   });
 }
 
-function EmptyAnalytics() {
+function EmptyAnalytics({ actionText = "Start an interview", onAction }: { actionText?: string; onAction?: () => void }) {
   return (
-    <div className="flex h-[240px] flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50 text-center dark:border-white/10 dark:bg-slate-950/50">
-      <BarChart3 className="h-9 w-9 text-slate-400" />
-      <p className="mt-3 text-sm font-semibold text-slate-900 dark:text-white">Analytics will appear after practice</p>
-      <p className="mt-1 max-w-sm text-sm text-slate-500 dark:text-slate-400">
-        Complete manual or AI interviews to unlock trends, comparisons, and performance breakdowns.
+    <div className="flex h-[175px] flex-col items-center justify-center rounded-[14px] border border-dashed border-[#DDE3EC] bg-[#F7F8FC] p-4 text-center dark:border-[#263449] dark:bg-[#172235]/40">
+      <BarChart3 className="h-6 w-6 text-[#7F8CA0] dark:text-[#718096]" />
+      <p className="mt-2 font-display text-xs font-bold text-[#142033] dark:text-[#F4F7FB]">Analytics will appear after practice</p>
+      <p className="mt-0.5 max-w-xs text-[11px] text-[#5F6F84] dark:text-[#AAB7CA]">
+        Complete an AI or manual session to see performance analytics and score trends.
       </p>
+      {onAction && (
+        <button
+          onClick={onAction}
+          className="mt-2.5 inline-flex items-center gap-1.5 rounded-lg bg-[#EEECFF] px-2.5 py-1 text-xs font-semibold text-[#5B4BE7] transition hover:bg-[#5B4BE7] hover:text-white dark:bg-[#1D1B49] dark:text-[#8174FF] dark:hover:bg-[#6D5EF9] dark:hover:text-white"
+        >
+          {actionText}
+          <ArrowRight className="h-3 w-3" />
+        </button>
+      )}
     </div>
   );
 }
@@ -255,8 +264,8 @@ export function Dashboard() {
   const weeklyProgress = getWeeklyProgress(completedManual, completedAi);
 
   const comparisonData = [
-    { name: 'Manual', count: completedManual.length, color: '#6366F1' },
-    { name: 'AI', count: completedAi.length, color: '#14B8A6' },
+    { name: 'Manual', count: completedManual.length, color: '#6D5EF9' },
+    { name: 'AI', count: completedAi.length, color: '#22D3EE' },
   ];
 
   const statCards = [
@@ -265,136 +274,127 @@ export function Dashboard() {
       value: totalInterviews,
       detail: `${completedManual.length} manual, ${completedAi.length} AI`,
       icon: ClipboardList,
-      tone: 'from-indigo-500 to-violet-500',
+      iconClass: 'bg-[#EEECFF] text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]',
     },
     {
       label: 'Average Score',
       value: `${averageScore}%`,
       detail: scoreValues.length > 0 ? 'Across completed sessions' : 'No scored sessions yet',
       icon: Target,
-      tone: 'from-emerald-500 to-teal-500',
+      iconClass: averageScore >= 75
+        ? 'bg-emerald-50 text-[#059669] dark:bg-emerald-950/40 dark:text-[#34D399]'
+        : averageScore >= 50
+        ? 'bg-amber-50 text-[#B45309] dark:bg-amber-950/40 dark:text-[#FBBF24]'
+        : 'bg-[#EEECFF] text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]',
     },
     {
       label: 'Best Score',
       value: `${bestScore}%`,
       detail: bestScore > 0 ? 'Personal high score' : 'Complete a session to set it',
       icon: Trophy,
-      tone: 'from-amber-500 to-orange-500',
+      iconClass: bestScore >= 75
+        ? 'bg-emerald-50 text-[#059669] dark:bg-emerald-950/40 dark:text-[#34D399]'
+        : 'bg-[#EEECFF] text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]',
     },
     {
       label: 'Domains Practiced',
       value: practicedDomains,
       detail: `${DOMAINS.length} total domains available`,
       icon: BriefcaseBusiness,
-      tone: 'from-sky-500 to-blue-500',
+      iconClass: 'bg-[#EEECFF] text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]',
     },
     {
       label: 'AI Interviews Completed',
       value: completedAi.length,
       detail: 'Resume-based dynamic sessions',
       icon: Bot,
-      tone: 'from-cyan-500 to-blue-500',
+      iconClass: 'bg-cyan-50 text-[#0891B2] dark:bg-cyan-950/40 dark:text-[#22D3EE]',
     },
     {
       label: 'Manual Interviews Completed',
       value: completedManual.length,
       detail: 'Curated question-bank sessions',
       icon: ClipboardList,
-      tone: 'from-fuchsia-500 to-violet-500',
+      iconClass: 'bg-[#EEECFF] text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]',
     },
     {
       label: 'Resume Analyses Done',
       value: resumes.length,
       detail: 'Uploaded and reviewed resumes',
       icon: FileSearch,
-      tone: 'from-rose-500 to-pink-500',
+      iconClass: 'bg-[#EEECFF] text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]',
     },
     {
       label: 'Weekly Progress',
       value: weeklyProgress.reduce((sum, day) => sum + day.total, 0),
       detail: 'Sessions completed this week',
       icon: CalendarDays,
-      tone: 'from-lime-500 to-emerald-500',
+      iconClass: weeklyProgress.reduce((sum, day) => sum + day.total, 0) > 0
+        ? 'bg-emerald-50 text-[#059669] dark:bg-emerald-950/40 dark:text-[#34D399]'
+        : 'bg-[#EEECFF] text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]',
     },
-  ];
-
-  const featureCards = [
-    {
-      title: 'Manual Mode',
-      description: 'Practice curated domain-based interviews with randomized non-repeating questions.',
-      action: 'Open Manual Mode',
-      route: '/manual-mode',
-      icon: ClipboardList,
-      accent: 'from-indigo-600 to-violet-600',
-    },
-    {
-      title: 'AI Mode',
-      description: 'Upload a resume and start a dynamic Gemini-powered interview experience.',
-      action: 'Open AI Mode',
-      route: '/ai-mode',
-      icon: Sparkles,
-      accent: 'from-cyan-600 to-blue-600',
-    },
-    {
-      title: 'Resume Analysis',
-      description: 'Analyze your resume for role fit, missing skills, and practical improvements.',
-      action: 'Analyze Resume',
-      route: '/resume-analysis',
-      icon: FileSearch,
-      accent: 'from-emerald-600 to-teal-600',
-    },
-    {
-      title: 'Leaderboard',
-      description: 'Compare rankings, consistency, and interview performance across candidates.',
-      action: 'View Rankings',
-      route: '/leaderboard',
-      icon: Medal,
-      accent: 'from-amber-500 to-orange-600',
-    },
-  ];
-
-  const quickActions = [
-    { label: 'Start AI Interview', route: '/ai-mode', icon: Sparkles },
-    { label: 'Start Manual Interview', route: '/manual-mode', icon: ClipboardList },
-    { label: 'Upload Resume', route: '/resume-analysis', icon: Upload },
-    { label: 'Continue Previous Session', route: allCompleted[0]?.route || '/history', icon: History },
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-white">
+    <div className="min-h-screen bg-[#F7F8FC] text-[#142033] dark:bg-[#070B14] dark:text-[#F4F7FB]">
       <Navbar />
 
       <main className="mx-auto max-w-7xl px-3 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
-        <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-6">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
-            <div className="min-w-0">
-              <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-300">
+        <section className="relative overflow-hidden rounded-[14px] border border-[#DDE3EC] bg-white p-5 shadow-sm dark:border-[#263449] dark:bg-[#101827] sm:p-6">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-12 -top-12 h-64 w-64 rounded-full bg-[#6D5EF9]/[0.07] blur-3xl dark:bg-[#6D5EF9]/[0.10]"
+          />
+          <div className="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+            <div className="min-w-0 max-w-2xl">
+              <p className="text-xs font-bold uppercase tracking-[0.10em] text-[#5B4BE7] dark:text-[#8174FF]">
                 Welcome back, {user?.name?.split(' ')[0] || 'there'}
               </p>
-              <h1 className="mt-1 max-w-3xl text-2xl font-bold tracking-tight text-slate-950 dark:text-white sm:mt-2 sm:text-4xl">
-                Your AI-powered career preparation command center.
+              <h1 className="mt-1 font-display text-2xl font-bold tracking-tight text-[#142033] dark:text-[#F4F7FB] sm:mt-1.5 sm:text-[32px] sm:leading-[40px]">
+                Your career preparation command center.
               </h1>
-              <p className="mt-3 hidden max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300 sm:block sm:text-base">
-                Track interview readiness, resume progress, practice consistency, and the next best action from one professional dashboard.
+              <p className="mt-2 text-sm leading-relaxed text-[#5F6F84] dark:text-[#AAB7CA] sm:text-[15px]">
+                Track interview readiness, practice consistency, and resume progress from one focused dashboard.
               </p>
+
+              {/* Smaller quick-actions row per report recommendation */}
+              <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-[#5F6F84] dark:text-[#AAB7CA]">
+                <span className="font-medium text-[#7F8CA0] dark:text-[#718096]">Quick links:</span>
+                <button
+                  onClick={() => navigate('/resume-analysis')}
+                  className="inline-flex items-center gap-1.5 rounded-md px-2 py-1 font-medium transition hover:bg-[#F1F4F8] hover:text-[#142033] dark:hover:bg-[#172235] dark:hover:text-[#F4F7FB]"
+                >
+                  <Upload className="h-3.5 w-3.5 text-[#5B4BE7] dark:text-[#8174FF]" />
+                  <span>Resume Analysis</span>
+                </button>
+                <span className="text-[#DDE3EC] dark:text-[#263449]">·</span>
+                <button
+                  onClick={() => navigate(allCompleted[0]?.route || '/history')}
+                  className="inline-flex items-center gap-1.5 rounded-md px-2 py-1 font-medium transition hover:bg-[#F1F4F8] hover:text-[#142033] dark:hover:bg-[#172235] dark:hover:text-[#F4F7FB]"
+                >
+                  <History className="h-3.5 w-3.5 text-[#5B4BE7] dark:text-[#8174FF]" />
+                  <span>Previous sessions</span>
+                </button>
+              </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
-              {quickActions.map((action) => {
-                const Icon = action.icon;
-                return (
-                  <button
-                    key={action.label}
-                    onClick={() => navigate(action.route)}
-                    className="flex min-h-[72px] min-w-0 flex-col items-start justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-left text-xs font-semibold leading-4 text-slate-800 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:bg-white hover:shadow-md dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:bg-white/10 sm:min-h-0 sm:flex-row sm:items-center sm:gap-3 sm:px-4 sm:py-3 sm:text-sm"
-                  >
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-600 text-white sm:h-9 sm:w-9">
-                      <Icon className="h-4 w-4" />
-                    </span>
-                    {action.label}
-                  </button>
-                );
-              })}
+            {/* CTA Hierarchy: Primary = Start AI, Secondary = Start Manual */}
+            <div className="flex flex-col gap-2.5 sm:flex-row lg:flex-col lg:min-w-[220px]">
+              <button
+                onClick={() => navigate('/ai-mode')}
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-[#6D5EF9] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#8174FF] active:scale-[0.98]"
+              >
+                <Sparkles className="h-4 w-4 text-[#22D3EE]" />
+                <span>Start AI interview</span>
+                <ArrowRight className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => navigate('/manual-mode')}
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-[#DDE3EC] bg-[#F1F4F8] px-5 text-sm font-semibold text-[#142033] transition hover:border-[#8174FF]/40 hover:bg-white dark:border-[#263449] dark:bg-[#172235] dark:text-[#F4F7FB] dark:hover:bg-[#172235]/80 active:scale-[0.98]"
+              >
+                <ClipboardList className="h-4 w-4 text-[#5B4BE7] dark:text-[#8174FF]" />
+                <span>Start manual interview</span>
+              </button>
             </div>
           </div>
         </section>
@@ -412,14 +412,14 @@ export function Dashboard() {
               return (
                 <div
                   key={stat.label}
-                  className="min-w-0 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg dark:border-white/10 dark:bg-slate-900/80 sm:p-5"
+                  className="min-w-0 rounded-[14px] border border-[#DDE3EC] bg-white p-3.5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-[#263449] dark:bg-[#101827] sm:p-5"
                 >
-                  <div className={`mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br ${stat.tone} text-white shadow-sm sm:mb-4 sm:h-11 sm:w-11 sm:shadow-lg`}>
+                  <div className={`mb-3 flex h-9 w-9 items-center justify-center rounded-xl ${stat.iconClass} sm:mb-4 sm:h-10 sm:w-10`}>
                     <Icon className="h-5 w-5" />
                   </div>
-                  <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{stat.label}</p>
-                  <p className="mt-1 break-words text-xl font-bold text-slate-950 dark:text-white sm:text-2xl">{stat.value}</p>
-                  <p className="mt-1 hidden text-xs leading-5 text-slate-500 dark:text-slate-400 sm:block">{stat.detail}</p>
+                  <p className="text-xs font-medium text-[#5F6F84] dark:text-[#AAB7CA] sm:text-sm">{stat.label}</p>
+                  <p className="mt-1 font-display break-words text-xl font-bold text-[#142033] dark:text-[#F4F7FB] sm:text-2xl">{stat.value}</p>
+                  <p className="mt-1 hidden text-xs leading-5 text-[#7F8CA0] dark:text-[#718096] sm:block">{stat.detail}</p>
                 </div>
               );
             })}
@@ -427,16 +427,16 @@ export function Dashboard() {
         )}
 
         <section className="mt-4 grid gap-4 sm:mt-6 sm:gap-6 lg:grid-cols-3">
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5 lg:col-span-2">
+          <div className="rounded-[14px] border border-[#DDE3EC] bg-white p-4 shadow-sm dark:border-[#263449] dark:bg-[#101827] sm:p-5 lg:col-span-2">
             <div className="mb-4 flex items-center justify-between">
               <div>
-                <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
-                  <LineChartIcon className="h-4 w-4 text-indigo-500" />
+                <div className="flex items-center gap-2 font-display text-sm font-bold text-[#142033] dark:text-[#F4F7FB]">
+                  <LineChartIcon className="h-4 w-4 text-[#5B4BE7] dark:text-[#8174FF]" />
                   Score Progress
                 </div>
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Last completed sessions across AI and Manual Mode.</p>
+                <p className="mt-1 text-xs text-[#5F6F84] dark:text-[#AAB7CA]">Last completed sessions across AI and Manual Mode.</p>
                 {scoreProgress.length > 0 && (
-                  <p className="mt-2 text-xs font-medium text-indigo-600 dark:text-indigo-300">
+                  <p className="mt-1.5 text-xs font-semibold text-[#5B4BE7] dark:text-[#8174FF]">
                     Latest score: {scoreProgress[scoreProgress.length - 1].score}% across {scoreProgress.length} recent session{scoreProgress.length === 1 ? '' : 's'}.
                   </p>
                 )}
@@ -444,41 +444,41 @@ export function Dashboard() {
             </div>
 
             {scoreProgress.length > 0 ? (
-              <ResponsiveContainer width="100%" height={260}>
+              <ResponsiveContainer width="100%" height={240}>
                 <LineChart data={scoreProgress}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#94A3B8" opacity={0.15} />
-                  <XAxis dataKey="name" stroke="#94A3B8" tick={{ fontSize: 12 }} />
-                  <YAxis domain={[0, 100]} stroke="#94A3B8" tick={{ fontSize: 12 }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#263449" opacity={0.3} />
+                  <XAxis dataKey="name" stroke="#718096" tick={{ fontSize: 12 }} />
+                  <YAxis domain={[0, 100]} stroke="#718096" tick={{ fontSize: 12 }} />
                   <Tooltip
-                    contentStyle={{ backgroundColor: '#0F172A', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: '#fff' }}
+                    contentStyle={{ backgroundColor: '#101827', border: '1px solid #263449', borderRadius: 10, color: '#F4F7FB' }}
                     formatter={(value: number, _name, props: any) => [`${value}%`, props?.payload?.domain || 'Score']}
                     labelFormatter={(_label, payload) => payload?.[0]?.payload?.mode || 'Session'}
                   />
-                  <Line type="monotone" dataKey="score" stroke="#6366F1" strokeWidth={3} dot={{ r: 4, fill: '#6366F1' }} />
+                  <Line type="monotone" dataKey="score" stroke="#6D5EF9" strokeWidth={2.5} dot={{ r: 4, fill: '#6D5EF9' }} />
                 </LineChart>
               </ResponsiveContainer>
             ) : (
-              <EmptyAnalytics />
+              <EmptyAnalytics onAction={() => navigate('/manual-mode')} />
             )}
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
-            <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
-              <BarChart3 className="h-4 w-4 text-indigo-500" />
+          <div className="rounded-[14px] border border-[#DDE3EC] bg-white p-4 shadow-sm dark:border-[#263449] dark:bg-[#101827] sm:p-5">
+            <div className="mb-4 flex items-center gap-2 font-display text-sm font-bold text-[#142033] dark:text-[#F4F7FB]">
+              <BarChart3 className="h-4 w-4 text-[#5B4BE7] dark:text-[#8174FF]" />
               AI vs Manual
             </div>
-            <p className="mb-2 text-xs text-slate-500 dark:text-slate-400">
+            <p className="mb-2 text-xs text-[#5F6F84] dark:text-[#AAB7CA]">
               {comparisonData.map((item) => `${item.name}: ${item.count}`).join(' | ')}
             </p>
-            <ResponsiveContainer width="100%" height={260}>
+            <ResponsiveContainer width="100%" height={240}>
               <BarChart data={comparisonData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#94A3B8" opacity={0.15} />
-                <XAxis dataKey="name" stroke="#94A3B8" tick={{ fontSize: 12 }} />
-                <YAxis allowDecimals={false} stroke="#94A3B8" tick={{ fontSize: 12 }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#263449" opacity={0.3} />
+                <XAxis dataKey="name" stroke="#718096" tick={{ fontSize: 12 }} />
+                <YAxis allowDecimals={false} stroke="#718096" tick={{ fontSize: 12 }} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0F172A', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: '#fff' }}
+                  contentStyle={{ backgroundColor: '#101827', border: '1px solid #263449', borderRadius: 10, color: '#F4F7FB' }}
                 />
-                <Bar dataKey="count" radius={[8, 8, 0, 0]}>
+                <Bar dataKey="count" radius={[6, 6, 0, 0]}>
                   {comparisonData.map((entry) => (
                     <Cell key={entry.name} fill={entry.color} />
                   ))}
@@ -489,20 +489,20 @@ export function Dashboard() {
         </section>
 
         <section className="mt-4 grid gap-4 sm:mt-6 sm:gap-6 lg:grid-cols-3">
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
-            <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
-              <Target className="h-4 w-4 text-indigo-500" />
+          <div className="rounded-[14px] border border-[#DDE3EC] bg-white p-4 shadow-sm dark:border-[#263449] dark:bg-[#101827] sm:p-5">
+            <div className="mb-4 flex items-center gap-2 font-display text-sm font-bold text-[#142033] dark:text-[#F4F7FB]">
+              <Target className="h-4 w-4 text-[#5B4BE7] dark:text-[#8174FF]" />
               Difficulty Performance
             </div>
-            <ResponsiveContainer width="100%" height={220}>
+            <ResponsiveContainer width="100%" height={200}>
               <BarChart data={difficultyPerformance} layout="vertical">
-                <XAxis type="number" domain={[0, 100]} stroke="#94A3B8" tick={{ fontSize: 12 }} />
-                <YAxis dataKey="difficulty" type="category" width={92} stroke="#94A3B8" tick={{ fontSize: 12 }} />
+                <XAxis type="number" domain={[0, 100]} stroke="#718096" tick={{ fontSize: 12 }} />
+                <YAxis dataKey="difficulty" type="category" width={92} stroke="#718096" tick={{ fontSize: 12 }} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0F172A', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: '#fff' }}
+                  contentStyle={{ backgroundColor: '#101827', border: '1px solid #263449', borderRadius: 10, color: '#F4F7FB' }}
                   formatter={(value: number) => [`${value}%`, 'Average score']}
                 />
-                <Bar dataKey="score" radius={[0, 8, 8, 0]}>
+                <Bar dataKey="score" radius={[0, 6, 6, 0]}>
                   {difficultyPerformance.map((entry) => (
                     <Cell key={entry.difficulty} fill={entry.color} />
                   ))}
@@ -511,44 +511,44 @@ export function Dashboard() {
             </ResponsiveContainer>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
-            <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
-              <BriefcaseBusiness className="h-4 w-4 text-indigo-500" />
+          <div className="rounded-[14px] border border-[#DDE3EC] bg-white p-4 shadow-sm dark:border-[#263449] dark:bg-[#101827] sm:p-5">
+            <div className="mb-4 flex items-center gap-2 font-display text-sm font-bold text-[#142033] dark:text-[#F4F7FB]">
+              <BriefcaseBusiness className="h-4 w-4 text-[#5B4BE7] dark:text-[#8174FF]" />
               Category Performance
             </div>
             {categoryPerformance.length > 0 ? (
-              <ResponsiveContainer width="100%" height={220}>
+              <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={categoryPerformance}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#94A3B8" opacity={0.15} />
-                  <XAxis dataKey="category" stroke="#94A3B8" tick={{ fontSize: 11 }} interval={0} angle={-20} textAnchor="end" height={62} />
-                  <YAxis domain={[0, 100]} stroke="#94A3B8" tick={{ fontSize: 12 }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#263449" opacity={0.3} />
+                  <XAxis dataKey="category" stroke="#718096" tick={{ fontSize: 11 }} interval={0} angle={-20} textAnchor="end" height={62} />
+                  <YAxis domain={[0, 100]} stroke="#718096" tick={{ fontSize: 12 }} />
                   <Tooltip
-                    contentStyle={{ backgroundColor: '#0F172A', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: '#fff' }}
+                    contentStyle={{ backgroundColor: '#101827', border: '1px solid #263449', borderRadius: 10, color: '#F4F7FB' }}
                     formatter={(value: number) => [`${value}%`, 'Average score']}
                   />
-                  <Bar dataKey="score" fill="#8B5CF6" radius={[8, 8, 0, 0]} />
+                  <Bar dataKey="score" fill="#6D5EF9" radius={[6, 6, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             ) : (
-              <EmptyAnalytics />
+              <EmptyAnalytics onAction={() => navigate('/manual-mode')} />
             )}
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/80 sm:p-5">
-            <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
-              <CalendarDays className="h-4 w-4 text-indigo-500" />
+          <div className="rounded-[14px] border border-[#DDE3EC] bg-white p-4 shadow-sm dark:border-[#263449] dark:bg-[#101827] sm:p-5">
+            <div className="mb-4 flex items-center gap-2 font-display text-sm font-bold text-[#142033] dark:text-[#F4F7FB]">
+              <CalendarDays className="h-4 w-4 text-[#5B4BE7] dark:text-[#8174FF]" />
               Weekly Progress
             </div>
-            <ResponsiveContainer width="100%" height={220}>
+            <ResponsiveContainer width="100%" height={200}>
               <AreaChart data={weeklyProgress}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#94A3B8" opacity={0.15} />
-                <XAxis dataKey="day" stroke="#94A3B8" tick={{ fontSize: 12 }} />
-                <YAxis allowDecimals={false} stroke="#94A3B8" tick={{ fontSize: 12 }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#263449" opacity={0.3} />
+                <XAxis dataKey="day" stroke="#718096" tick={{ fontSize: 12 }} />
+                <YAxis allowDecimals={false} stroke="#718096" tick={{ fontSize: 12 }} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0F172A', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: '#fff' }}
+                  contentStyle={{ backgroundColor: '#101827', border: '1px solid #263449', borderRadius: 10, color: '#F4F7FB' }}
                 />
-                <Area type="monotone" dataKey="manual" stackId="1" stroke="#6366F1" fill="#6366F1" fillOpacity={0.65} />
-                <Area type="monotone" dataKey="ai" stackId="1" stroke="#14B8A6" fill="#14B8A6" fillOpacity={0.65} />
+                <Area type="monotone" dataKey="manual" stackId="1" stroke="#6D5EF9" fill="#6D5EF9" fillOpacity={0.6} />
+                <Area type="monotone" dataKey="ai" stackId="1" stroke="#22D3EE" fill="#22D3EE" fillOpacity={0.6} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -558,29 +558,62 @@ export function Dashboard() {
           <div className="min-w-0">
             <div className="mb-4 flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-bold text-slate-950 dark:text-white">Feature Access</h2>
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Jump into the core PrepMatrix workflows.</p>
+                <h2 className="font-display text-xl font-bold text-[#142033] dark:text-[#F4F7FB]">Feature Access</h2>
+                <p className="mt-0.5 text-xs text-[#5F6F84] dark:text-[#AAB7CA]">Jump into the core PrepMatrix workflows.</p>
               </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {featureCards.map((feature) => {
+            <div className="grid gap-3.5 sm:grid-cols-2">
+              {[
+                {
+                  title: 'Manual Mode',
+                  description: 'Practice curated domain-based interviews with randomized non-repeating questions.',
+                  action: 'Open Manual Mode',
+                  route: '/manual-mode',
+                  icon: ClipboardList,
+                  iconClass: 'bg-[#EEECFF] text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]',
+                },
+                {
+                  title: 'AI Mode',
+                  description: 'Upload a resume and start a dynamic Gemini-powered interview experience.',
+                  action: 'Open AI Mode',
+                  route: '/ai-mode',
+                  icon: Sparkles,
+                  iconClass: 'bg-cyan-50 text-[#0891B2] dark:bg-cyan-950/40 dark:text-[#22D3EE]',
+                },
+                {
+                  title: 'Resume Analysis',
+                  description: 'Analyze your resume for role fit, missing skills, and practical improvements.',
+                  action: 'Analyze Resume',
+                  route: '/resume-analysis',
+                  icon: FileSearch,
+                  iconClass: 'bg-[#EEECFF] text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]',
+                },
+                {
+                  title: 'Leaderboard',
+                  description: 'Compare rankings, consistency, and interview performance across candidates.',
+                  action: 'View Rankings',
+                  route: '/leaderboard',
+                  icon: Medal,
+                  iconClass: 'bg-[#EEECFF] text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]',
+                },
+              ].map((feature) => {
                 const Icon = feature.icon;
                 return (
                   <button
                     key={feature.title}
                     onClick={() => navigate(feature.route)}
-                    className="group overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-slate-900/80 sm:p-5"
+                    className="group rounded-[14px] border border-[#DDE3EC] bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#8174FF]/40 hover:shadow-md dark:border-[#263449] dark:bg-[#101827] sm:p-5"
                   >
-                    <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${feature.accent} text-white shadow-lg`}>
+                    <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-xl ${feature.iconClass}`}>
                       <Icon className="h-5 w-5" />
                     </div>
-                    <h3 className="text-lg font-bold text-slate-950 dark:text-white">{feature.title}</h3>
-                    <p className="mt-2 min-h-[48px] text-sm leading-6 text-slate-600 dark:text-slate-300">
+                    <h3 className="font-display text-base font-bold text-[#142033] dark:text-[#F4F7FB]">{feature.title}</h3>
+                    <p className="mt-1.5 min-h-[44px] text-xs leading-relaxed text-[#5F6F84] dark:text-[#AAB7CA] sm:text-sm">
                       {feature.description}
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-indigo-600 dark:text-indigo-300">
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#5B4BE7] transition group-hover:translate-x-0.5 dark:text-[#8174FF]">
                       {feature.action}
-                      <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                      <ArrowRight className="h-3.5 w-3.5" />
                     </span>
                   </button>
                 );
@@ -588,36 +621,36 @@ export function Dashboard() {
             </div>
           </div>
 
-          <div className="min-w-0 rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900/80">
-            <div className="border-b border-slate-200 p-5 dark:border-white/10">
+          <div className="min-w-0 rounded-[14px] border border-[#DDE3EC] bg-white shadow-sm dark:border-[#263449] dark:bg-[#101827]">
+            <div className="border-b border-[#DDE3EC] p-4.5 dark:border-[#263449]">
               <div className="flex min-w-0 items-center justify-between gap-3">
                 <div className="min-w-0">
-                  <h2 className="text-lg font-bold text-slate-950 dark:text-white">Recent Activity</h2>
-                  <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Latest scores and resume uploads.</p>
+                  <h2 className="font-display text-base font-bold text-[#142033] dark:text-[#F4F7FB]">Recent Activity</h2>
+                  <p className="mt-0.5 text-xs text-[#5F6F84] dark:text-[#AAB7CA]">Latest scores and resume uploads.</p>
                 </div>
                 <button
                   onClick={() => navigate('/history')}
-                  className="text-sm font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-300"
+                  className="text-xs font-semibold text-[#5B4BE7] hover:underline dark:text-[#8174FF]"
                 >
                   View all
                 </button>
               </div>
             </div>
 
-            <div className="divide-y divide-slate-100 dark:divide-white/10">
+            <div className="divide-y divide-[#DDE3EC] dark:divide-[#263449]">
               {allCompleted.slice(0, 5).map((activity) => (
                 <button
                   key={`${activity.mode}-${activity.id}`}
                   onClick={() => navigate(activity.route)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-slate-50 dark:hover:bg-white/5"
+                  className="flex w-full items-center justify-between gap-4 px-4.5 py-3.5 text-left transition hover:bg-[#F1F4F8] dark:hover:bg-[#172235]"
                 >
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold text-slate-950 dark:text-white">{activity.label}</p>
-                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                      {activity.mode} Mode - {format(new Date(activity.timestamp), 'MMM dd')}
+                    <p className="truncate text-sm font-semibold text-[#142033] dark:text-[#F4F7FB]">{activity.label}</p>
+                    <p className="mt-0.5 text-xs text-[#5F6F84] dark:text-[#AAB7CA]">
+                      {activity.mode} Mode · {format(new Date(activity.timestamp), 'MMM dd')}
                     </p>
                   </div>
-                  <span className="rounded-lg bg-slate-100 px-2.5 py-1 text-sm font-bold text-slate-800 dark:bg-white/10 dark:text-white">
+                  <span className="rounded-md bg-[#EEECFF] px-2.5 py-1 text-xs font-bold text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]">
                     {activity.score}%
                   </span>
                 </button>
@@ -627,23 +660,23 @@ export function Dashboard() {
                 <button
                   key={resume.id}
                   onClick={() => navigate('/resume-analysis')}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-slate-50 dark:hover:bg-white/5"
+                  className="flex w-full items-center justify-between gap-4 px-4.5 py-3.5 text-left transition hover:bg-[#F1F4F8] dark:hover:bg-[#172235]"
                 >
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold text-slate-950 dark:text-white">{resume.fileName}</p>
-                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                      Resume Analysis - {format(new Date(resume.uploadedAt), 'MMM dd')}
+                    <p className="truncate text-sm font-semibold text-[#142033] dark:text-[#F4F7FB]">{resume.fileName}</p>
+                    <p className="mt-0.5 text-xs text-[#5F6F84] dark:text-[#AAB7CA]">
+                      Resume Analysis · {format(new Date(resume.uploadedAt), 'MMM dd')}
                     </p>
                   </div>
-                  <FileSearch className="h-4 w-4 text-indigo-500" />
+                  <FileSearch className="h-4 w-4 text-[#5B4BE7] dark:text-[#8174FF]" />
                 </button>
               ))}
 
               {allCompleted.length === 0 && resumes.length === 0 && (
-                <div className="px-5 py-10 text-center">
-                  <History className="mx-auto h-8 w-8 text-slate-400" />
-                  <p className="mt-3 text-sm font-semibold text-slate-900 dark:text-white">No activity yet</p>
-                  <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                <div className="px-5 py-8 text-center">
+                  <History className="mx-auto h-7 w-7 text-[#7F8CA0] dark:text-[#718096]" />
+                  <p className="mt-2 text-xs font-semibold text-[#142033] dark:text-[#F4F7FB]">No activity yet</p>
+                  <p className="mt-0.5 text-xs text-[#5F6F84] dark:text-[#AAB7CA]">
                     Start a session or upload a resume to populate your timeline.
                   </p>
                 </div>

@@ -243,46 +243,46 @@ export function AIInterviewPage() {
   const theme = useMemo(
     () => ({
       page: isDarkMode
-        ? 'min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white'
-        : 'min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50 text-slate-900',
+        ? 'min-h-screen bg-[#070B14] text-white'
+        : 'min-h-screen bg-[#F7F8FC] text-[#0D1526]',
       pageOverlay: isDarkMode
-        ? 'absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(56,189,248,0.16),transparent_24%),radial-gradient(circle_at_88%_0%,rgba(99,102,241,0.16),transparent_26%),radial-gradient(circle_at_50%_85%,rgba(14,165,233,0.12),transparent_28%)]'
-        : 'absolute inset-0 bg-[radial-gradient(circle_at_15%_12%,rgba(14,165,233,0.10),transparent_24%),radial-gradient(circle_at_85%_4%,rgba(99,102,241,0.10),transparent_24%),radial-gradient(circle_at_50%_90%,rgba(148,163,184,0.08),transparent_28%)]',
+        ? 'absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(34,211,238,0.06),transparent_24%),radial-gradient(circle_at_88%_0%,rgba(109,94,249,0.06),transparent_26%)]'
+        : 'absolute inset-0 bg-[radial-gradient(circle_at_15%_12%,rgba(34,211,238,0.04),transparent_24%),radial-gradient(circle_at_85%_4%,rgba(109,94,249,0.04),transparent_24%)]',
       section:
         isDarkMode
-          ? 'min-w-0 max-w-full overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-[0_24px_60px_rgba(2,6,23,0.28)] backdrop-blur-xl'
-          : 'min-w-0 max-w-full overflow-hidden rounded-2xl border border-white/80 bg-white/78 shadow-[0_20px_56px_rgba(15,23,42,0.08)] backdrop-blur-xl',
+          ? 'min-w-0 max-w-full overflow-hidden rounded-[14px] border border-[#263449] bg-[#101827] shadow-sm'
+          : 'min-w-0 max-w-full overflow-hidden rounded-[14px] border border-[#DDE3EC] bg-white shadow-sm',
       panel:
         isDarkMode
-          ? 'min-w-0 max-w-full rounded-2xl border border-white/8 bg-slate-950/40 shadow-lg shadow-slate-950/15'
-          : 'min-w-0 max-w-full rounded-2xl border border-slate-200/80 bg-slate-50/90 shadow-sm',
+          ? 'min-w-0 max-w-full rounded-[14px] border border-[#263449] bg-[#172235]'
+          : 'min-w-0 max-w-full rounded-[14px] border border-[#DDE3EC] bg-[#F1F4F8]',
       surface:
         isDarkMode
-          ? 'min-w-0 max-w-full rounded-2xl border border-white/8 bg-white/5'
-          : 'min-w-0 max-w-full rounded-2xl border border-slate-200/80 bg-white/90',
-      title: isDarkMode ? 'text-white' : 'text-slate-900',
-      body: isDarkMode ? 'text-slate-300/80' : 'text-slate-600',
-      muted: isDarkMode ? 'text-slate-400' : 'text-slate-500',
-      subtle: isDarkMode ? 'text-slate-300/75' : 'text-slate-700',
+          ? 'min-w-0 max-w-full rounded-[14px] border border-[#263449] bg-[#172235]'
+          : 'min-w-0 max-w-full rounded-[14px] border border-[#DDE3EC] bg-white',
+      title: isDarkMode ? 'text-white font-display' : 'text-[#0D1526] font-display',
+      body: isDarkMode ? 'text-[#AAB7CA]' : 'text-[#5F6F84]',
+      muted: isDarkMode ? 'text-[#718096]' : 'text-[#7F8CA0]',
+      subtle: isDarkMode ? 'text-[#AAB7CA]' : 'text-[#5F6F84]',
       outlineButton: isDarkMode
-        ? 'border-white/10 bg-white/6 text-white hover:bg-white/10'
-        : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50',
+        ? 'border-[#263449] bg-[#172235] text-white hover:bg-[#263449]'
+        : 'border-[#DDE3EC] bg-white text-[#0D1526] hover:bg-[#F1F4F8]',
       chip: isDarkMode
-        ? 'border-sky-400/20 bg-sky-400/10 text-sky-100'
-        : 'border-sky-200 bg-sky-50 text-sky-700',
+        ? 'border-[#22D3EE]/30 bg-[#22D3EE]/10 text-[#22D3EE]'
+        : 'border-[#22D3EE]/40 bg-[#22D3EE]/10 text-cyan-800',
       neutralChip: isDarkMode
-        ? 'border-white/10 bg-white/6 text-white/70'
-        : 'border-slate-200 bg-white text-slate-600',
+        ? 'border-[#263449] bg-[#172235] text-[#AAB7CA]'
+        : 'border-[#DDE3EC] bg-[#F1F4F8] text-[#5F6F84]',
       successChip: isDarkMode
-        ? 'bg-emerald-400/10 text-emerald-200'
-        : 'bg-emerald-50 text-emerald-700',
+        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+        : 'bg-emerald-50 text-emerald-700 border border-emerald-200',
       scoreChip: isDarkMode
-        ? 'bg-indigo-400/10 text-indigo-200'
-        : 'bg-indigo-50 text-indigo-700',
+        ? 'bg-[#EEECFF]/10 text-[#8E82FA] border border-[#6D5EF9]/30'
+        : 'bg-[#EEECFF] text-[#6D5EF9] border border-[#6D5EF9]/20',
       featureCard:
         isDarkMode
-          ? 'flex h-full min-h-[132px] min-w-0 max-w-full flex-col items-start rounded-2xl border border-white/10 bg-white/6 p-3.5 sm:min-h-[150px] sm:p-4'
-          : 'flex h-full min-h-[132px] min-w-0 max-w-full flex-col items-start rounded-2xl border border-slate-200/80 bg-white/88 p-3.5 sm:min-h-[150px] sm:p-4',
+          ? 'flex h-full min-h-[132px] min-w-0 max-w-full flex-col items-start rounded-[14px] border border-[#263449] bg-[#172235] p-3.5 sm:min-h-[150px] sm:p-4'
+          : 'flex h-full min-h-[132px] min-w-0 max-w-full flex-col items-start rounded-[14px] border border-[#DDE3EC] bg-[#F1F4F8] p-3.5 sm:min-h-[150px] sm:p-4',
     }),
     [isDarkMode],
   );
@@ -1394,7 +1394,7 @@ export function AIInterviewPage() {
                               : void handlePrepareInterview()
                           }
                           disabled={session && phase === 'ready' ? false : preparing || !selectedFile}
-                          className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-55"
+                          className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#6D5EF9] hover:bg-[#5B4BE7] px-5 py-3 text-sm font-semibold text-white shadow-sm transition disabled:cursor-not-allowed disabled:opacity-55"
                         >
                           {preparing ? (
                             <>
@@ -1493,7 +1493,7 @@ export function AIInterviewPage() {
                   </button>
                   <button
                     onClick={handleReset}
-                    className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-105"
+                    className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#6D5EF9] hover:bg-[#5B4BE7] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition"
                   >
                     <Play className="h-4 w-4" />
                     Start new interview
@@ -1802,7 +1802,7 @@ export function AIInterviewPage() {
                 </button>
                 <button
                   onClick={handleReset}
-                  className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-105"
+                  className="inline-flex items-center justify-center rounded-2xl bg-[#6D5EF9] hover:bg-[#5B4BE7] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition"
                 >
                   End interview
                 </button>

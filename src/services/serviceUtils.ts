@@ -4,16 +4,14 @@ import type { AppSettings, User } from '../app/types';
 import { supabase } from '../lib/supabaseClient';
 
 const AVATAR_COLORS = [
-  '#6366F1',
-  '#8B5CF6',
-  '#EC4899',
-  '#EF4444',
-  '#F59E0B',
-  '#10B981',
+  '#6D5EF9',
+  '#4F46E5',
   '#3B82F6',
-  '#14B8A6',
-  '#F97316',
-  '#84CC16',
+  '#0891B2',
+  '#0D9488',
+  '#475569',
+  '#1E293B',
+  '#581C87',
 ];
 
 export interface ProfileRow {
@@ -86,7 +84,7 @@ function normalizeLogPayload(payload: unknown) {
 }
 
 export const DEFAULT_APP_SETTINGS: AppSettings = {
-  darkMode: false,
+  darkMode: true,
   soundEnabled: true,
   voiceEnabled: true,
 };

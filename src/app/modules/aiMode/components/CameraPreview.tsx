@@ -51,12 +51,12 @@ export function CameraPreview({ isDarkMode, status, stream }: CameraPreviewProps
   }, [stream]);
 
   const frameClass = isDarkMode
-    ? 'border-white/12 bg-slate-950/75 shadow-[0_0_0_1px_rgba(56,189,248,0.10),0_24px_60px_rgba(2,6,23,0.28)]'
-    : 'border-slate-200/80 bg-white/85 shadow-[0_0_0_1px_rgba(56,189,248,0.10),0_20px_52px_rgba(15,23,42,0.12)]';
+    ? 'border-[#263449] bg-[#101827] shadow-sm'
+    : 'border-[#DDE3EC] bg-white shadow-sm';
 
   const stageClass = isDarkMode
-    ? 'from-slate-900 via-slate-900 to-indigo-950'
-    : 'from-slate-100 via-white to-indigo-100';
+    ? 'from-[#101827] via-[#101827] to-[#172235]'
+    : 'from-[#F1F4F8] via-white to-[#F1F4F8]';
 
   const overlayTextClass = isDarkMode ? 'text-white/80' : 'text-slate-700';
   const overlaySubtleTextClass = isDarkMode ? 'text-white/60' : 'text-slate-500';
@@ -79,7 +79,7 @@ export function CameraPreview({ isDarkMode, status, stream }: CameraPreviewProps
         : 'border-rose-200 bg-rose-50 text-rose-700'
       : isDarkMode
       ? 'border-white/10 bg-white/6 text-white/75'
-      : 'border-slate-200 bg-white text-slate-600';
+      : 'border-[#DDE3EC] bg-white text-[#5F6F84]';
 
   return (
     <div className={`relative min-w-0 max-w-full overflow-hidden rounded-[24px] border ${frameClass}`}>

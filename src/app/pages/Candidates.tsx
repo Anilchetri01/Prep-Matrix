@@ -3,6 +3,7 @@ import { toast } from 'sonner';
 import { api } from '../utils/api';
 import { User } from '../types';
 import { Navbar } from '../components/Navbar';
+import { PageHeader } from '../components/PageHeader';
 import { Footer } from '../components/Footer';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { Search, X, Github, Linkedin, Globe, MapPin, GraduationCap, Briefcase, Trophy, Star, Users } from 'lucide-react';
@@ -40,7 +41,7 @@ function UserAvatarDisplay({
       style={{
         width: size,
         height: size,
-        backgroundColor: user.avatarColor ?? '#6366F1',
+        backgroundColor: user.avatarColor ?? '#6D5EF9',
         fontSize: size * 0.35,
       }}
     >
@@ -50,15 +51,17 @@ function UserAvatarDisplay({
 }
 
 function ScoreBar({ score }: { score: number }) {
+  const isHigh = score >= 75;
+  const isMid = score >= 50;
   return (
     <div className="flex items-center gap-2">
-      <div className="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+      <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[#DDE3EC] dark:bg-[#263449]">
         <div
-          className={`h-full rounded-full ${score >= 75 ? 'bg-green-500' : score >= 50 ? 'bg-yellow-500' : 'bg-orange-500'}`}
+          className={`h-full rounded-full ${isHigh ? 'bg-[#059669] dark:bg-[#34D399]' : isMid ? 'bg-[#B45309] dark:bg-[#FBBF24]' : 'bg-[#E11D48] dark:bg-[#FB7185]'}`}
           style={{ width: `${score}%` }}
         />
       </div>
-      <span className={`text-xs font-bold ${score >= 75 ? 'text-green-600 dark:text-green-400' : score >= 50 ? 'text-yellow-600 dark:text-yellow-400' : 'text-orange-600 dark:text-orange-400'}`}>
+      <span className={`text-xs font-bold ${isHigh ? 'text-[#059669] dark:text-[#34D399]' : isMid ? 'text-[#B45309] dark:text-[#FBBF24]' : 'text-[#E11D48] dark:text-[#FB7185]'}`}>
         {score}%
       </span>
     </div>
@@ -121,21 +124,21 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
       aria-modal="true"
       aria-labelledby="candidate-profile-title"
     >
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-      <div ref={modalRef} className="relative flex h-[100dvh] w-full max-w-lg flex-col overflow-hidden border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900 sm:h-auto sm:max-h-[85vh] sm:rounded-2xl">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      <div ref={modalRef} className="relative flex h-[100dvh] w-full max-w-lg flex-col overflow-hidden border border-[#DDE3EC] bg-white shadow-2xl dark:border-[#263449] dark:bg-[#101827] sm:h-auto sm:max-h-[85vh] sm:rounded-[14px]">
         {/* Header */}
-        <div className="flex min-w-0 items-start gap-3 bg-gradient-to-r from-indigo-600 to-purple-600 px-4 pb-4 pt-[max(1rem,env(safe-area-inset-top))] sm:gap-4 sm:p-6">
+        <div className="flex min-w-0 items-start gap-3 border-b border-[#DDE3EC] bg-[#F1F4F8] px-4 pb-4 pt-[max(1rem,env(safe-area-inset-top))] dark:border-[#263449] dark:bg-[#172235] sm:gap-4 sm:p-6">
           <UserAvatarDisplay user={user} size={72} />
           <div className="flex-1 min-w-0">
-            <h2 id="candidate-profile-title" className="truncate text-xl font-bold text-white">{user.name}</h2>
-            {user.username && <p className="text-indigo-200 text-sm">@{user.username}</p>}
+            <h2 id="candidate-profile-title" className="truncate font-display text-xl font-bold text-[#142033] dark:text-[#F4F7FB]">{user.name}</h2>
+            {user.username && <p className="text-xs text-[#5B4BE7] dark:text-[#8174FF]">@{user.username}</p>}
             {user.jobTitle && (
-              <p className="text-indigo-100 text-sm flex items-center gap-1 mt-1">
-                <Briefcase className="w-3 h-3" /> {user.jobTitle}
+              <p className="mt-1 flex items-center gap-1 text-sm text-[#5F6F84] dark:text-[#AAB7CA]">
+                <Briefcase className="w-3.5 h-3.5" /> {user.jobTitle}
               </p>
             )}
             {user.location && (
-              <p className="text-indigo-200 text-xs flex items-center gap-1 mt-0.5">
+              <p className="mt-0.5 flex items-center gap-1 text-xs text-[#7F8CA0] dark:text-[#718096]">
                 <MapPin className="w-3 h-3" /> {user.location}
               </p>
             )}
@@ -144,7 +147,7 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
             ref={closeButtonRef}
             onClick={onClose}
             aria-label="Close candidate profile"
-            className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[#5F6F84] transition-colors hover:bg-black/5 hover:text-[#142033] dark:text-[#AAB7CA] dark:hover:bg-white/10 dark:hover:text-[#F4F7FB]"
           >
             <X className="w-5 h-5" />
           </button>
@@ -155,14 +158,16 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
           {/* Stats */}
           <div className="grid grid-cols-3 gap-2 sm:gap-3">
             {[
-              { label: 'Interviews', value: user.totalInterviews, icon: '📝' },
-              { label: 'Avg Score', value: `${user.averageScore}%`, icon: '⭐' },
-              { label: 'Best Score', value: `${user.bestScore}%`, icon: '🏆' },
+              { label: 'Interviews', value: user.totalInterviews, icon: Trophy },
+              { label: 'Avg Score', value: `${user.averageScore}%`, icon: Star },
+              { label: 'Best Score', value: `${user.bestScore}%`, icon: Users },
             ].map((s) => (
-              <div key={s.label} className="min-w-0 rounded-xl bg-gray-50 p-2 text-center dark:bg-gray-800 sm:p-3">
-                <div className="text-xl mb-0.5">{s.icon}</div>
-                <p className="break-words font-bold text-gray-900 dark:text-white">{s.value}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">{s.label}</p>
+              <div key={s.label} className="min-w-0 rounded-[10px] border border-[#DDE3EC] bg-[#F1F4F8] p-2.5 text-center dark:border-[#263449] dark:bg-[#172235] sm:p-3">
+                <div className="mx-auto mb-1 flex h-8 w-8 items-center justify-center rounded-lg bg-[#EEECFF] text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]">
+                  <s.icon className="h-4 w-4" />
+                </div>
+                <p className="break-words font-display font-bold text-[#142033] dark:text-[#F4F7FB]">{s.value}</p>
+                <p className="text-xs text-[#5F6F84] dark:text-[#AAB7CA]">{s.label}</p>
               </div>
             ))}
           </div>
@@ -170,8 +175,8 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
           {/* Bio */}
           {user.bio && (
             <div>
-              <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1.5">About</h4>
-              <p className="text-sm text-gray-700 dark:text-gray-300">{user.bio}</p>
+              <h4 className="mb-1.5 text-xs font-bold uppercase tracking-wider text-[#5F6F84] dark:text-[#AAB7CA]">About</h4>
+              <p className="text-sm text-[#142033] dark:text-[#F4F7FB]">{user.bio}</p>
             </div>
           )}
 
@@ -180,19 +185,19 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {user.education && (
                 <div className="flex items-start gap-2">
-                  <GraduationCap className="w-4 h-4 text-indigo-500 mt-0.5 flex-shrink-0" />
+                  <GraduationCap className="w-4 h-4 text-[#6D5EF9] mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Education</p>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">{user.education}</p>
+                    <p className="text-xs text-[#5F6F84] dark:text-[#AAB7CA]">Education</p>
+                    <p className="text-sm font-medium text-[#142033] dark:text-[#F4F7FB]">{user.education}</p>
                   </div>
                 </div>
               )}
               {user.experienceLevel && (
                 <div className="flex items-start gap-2">
-                  <Briefcase className="w-4 h-4 text-indigo-500 mt-0.5 flex-shrink-0" />
+                  <Briefcase className="w-4 h-4 text-[#6D5EF9] mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Experience</p>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">{user.experienceLevel}</p>
+                    <p className="text-xs text-[#5F6F84] dark:text-[#AAB7CA]">Experience</p>
+                    <p className="text-sm font-medium text-[#142033] dark:text-[#F4F7FB]">{user.experienceLevel}</p>
                   </div>
                 </div>
               )}
@@ -202,12 +207,12 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
           {/* Skills */}
           {skills.length > 0 && (
             <div>
-              <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Skills</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#5F6F84] dark:text-[#AAB7CA] mb-2">Skills</h4>
               <div className="flex flex-wrap gap-1.5">
                 {skills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-2.5 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-xs font-medium"
+                    className="rounded-md bg-[#EEECFF] px-2.5 py-1 text-xs font-medium text-[#6D5EF9] dark:bg-[#1D1B49] dark:text-[#8E82FA]"
                   >
                     {skill}
                   </span>
@@ -216,17 +221,17 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
             </div>
           )}
 
-          {/* Social Links */}
+          {/* Links */}
           {(user.linkedinUrl || user.githubUrl || user.portfolioUrl) && (
             <div>
-              <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Links</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#5F6F84] dark:text-[#AAB7CA] mb-2">Links</h4>
               <div className="flex flex-wrap gap-3">
                 {user.linkedinUrl && (
                   <a
                     href={user.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                    className="flex items-center gap-1.5 text-xs text-[#5B4BE7] dark:text-[#8174FF] hover:underline"
                   >
                     <Linkedin className="w-4 h-4" /> LinkedIn
                   </a>
@@ -236,7 +241,7 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
                     href={user.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm text-gray-700 dark:text-gray-300 hover:underline"
+                    className="flex items-center gap-1.5 text-xs text-[#5F6F84] dark:text-[#AAB7CA] hover:underline"
                   >
                     <Github className="w-4 h-4" /> GitHub
                   </a>
@@ -246,7 +251,7 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
                     href={user.portfolioUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm text-purple-600 dark:text-purple-400 hover:underline"
+                    className="flex items-center gap-1.5 text-xs text-[#6D5EF9] dark:text-[#8E82FA] hover:underline"
                   >
                     <Globe className="w-4 h-4" /> Portfolio
                   </a>
@@ -258,25 +263,25 @@ function ProfileModal({ user, onClose }: { user: PublicUser; onClose: () => void
           {/* Interview history (scores only) */}
           {user.totalInterviews > 0 && (
             <div>
-              <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
+              <h4 className="text-xs font-bold text-[#5F6F84] dark:text-[#AAB7CA] uppercase tracking-wide mb-2">
                 Interview Performance
               </h4>
               <div className="space-y-2">
-                <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
+                <div className="flex justify-between text-sm text-[#5F6F84] dark:text-[#AAB7CA]">
                   <span>Total Interviews</span>
-                  <span className="font-semibold">{user.totalInterviews}</span>
+                  <span className="font-semibold text-[#142033] dark:text-[#F4F7FB]">{user.totalInterviews}</span>
                 </div>
                 <div>
-                  <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-1">
+                  <div className="flex justify-between text-sm text-[#5F6F84] dark:text-[#AAB7CA] mb-1">
                     <span>Average Score</span>
-                    <span className="font-semibold">{user.averageScore}%</span>
+                    <span className="font-semibold text-[#142033] dark:text-[#F4F7FB]">{user.averageScore}%</span>
                   </div>
                   <ScoreBar score={user.averageScore} />
                 </div>
                 <div>
-                  <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-1">
+                  <div className="flex justify-between text-sm text-[#5F6F84] dark:text-[#AAB7CA] mb-1">
                     <span>Best Score</span>
-                    <span className="font-semibold">{user.bestScore}%</span>
+                    <span className="font-semibold text-[#142033] dark:text-[#F4F7FB]">{user.bestScore}%</span>
                   </div>
                   <ScoreBar score={user.bestScore} />
                 </div>
@@ -342,35 +347,31 @@ export function Candidates() {
   });
 
   return (
-    <div className="flex min-h-screen flex-col overflow-x-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950">
+    <div className="flex min-h-screen flex-col overflow-x-hidden bg-[#F7F8FC] dark:bg-[#070B14]">
       <Navbar />
 
       <main className="mx-auto w-full max-w-7xl flex-1 space-y-4 px-3 py-4 sm:space-y-6 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
         {/* Header */}
-        <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 p-4 text-white shadow-lg sm:p-6 sm:shadow-xl">
-          <div className="flex items-center gap-3 mb-2">
-            <Users className="w-7 h-7" />
-            <h1 className="text-2xl font-bold">Explore Candidates</h1>
-          </div>
-          <p className="text-indigo-100 text-sm">
-            Discover other users on the platform, view their profiles, skills, and interview performance.
-          </p>
-        </div>
+        <PageHeader
+          title="Explore Candidates"
+          eyebrow="Community Directory"
+          description="Discover other users on the platform, view their profiles, skills, and interview performance."
+        />
 
         {/* Search */}
-        <div className="rounded-2xl bg-white p-3 shadow-lg dark:bg-gray-800 sm:p-4">
+        <div className="rounded-[14px] border border-[#DDE3EC] bg-white p-4 dark:border-[#263449] dark:bg-[#101827]">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#7F8CA0] dark:text-[#718096]" />
             <input
               type="text"
               placeholder="Search by name, username, job title..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="min-h-11 w-full rounded-xl border border-gray-300 bg-white py-2.5 pl-10 pr-4 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              className="h-11 w-full rounded-[10px] border border-[#DDE3EC] bg-[#F1F4F8] pl-10 pr-4 text-sm text-[#142033] placeholder-[#7F8CA0] focus:border-[#5B4BE7] focus:outline-none focus:ring-2 focus:ring-[#6D5EF9]/20 dark:border-[#263449] dark:bg-[#172235] dark:text-[#F4F7FB] dark:placeholder-[#718096] dark:focus:border-[#8174FF]"
             />
           </div>
           {!loading && (
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+            <p className="mt-2 text-xs text-[#5F6F84] dark:text-[#AAB7CA]">
               Showing {filtered.length} of {users.length} candidate{users.length !== 1 ? 's' : ''}
             </p>
           )}
@@ -380,19 +381,19 @@ export function Candidates() {
         {loading ? (
           <LoadingSpinner message="Loading candidates..." />
         ) : filtered.length === 0 ? (
-          <div className="text-center py-16">
-            <Users className="w-12 h-12 mx-auto mb-3 text-gray-300 dark:text-gray-600" />
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
+          <div className="py-16 text-center">
+            <Users className="mx-auto mb-3 h-12 w-12 text-[#7F8CA0] dark:text-[#718096]" />
+            <h3 className="font-display font-semibold text-[#142033] dark:text-[#F4F7FB] mb-1">
               {users.length === 0 ? 'No candidates yet' : 'No results found'}
             </h3>
-            <p className="text-gray-500 dark:text-gray-400 text-sm">
+            <p className="text-sm text-[#5F6F84] dark:text-[#AAB7CA]">
               {users.length === 0
                 ? 'Be the first to create an account and set up your profile!'
                 : 'Try a different search term.'}
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((user) => {
               const skills = typeof user.skills === 'string'
                 ? (user.skills as string).split(',').map((s) => s.trim()).filter(Boolean)
@@ -403,40 +404,46 @@ export function Candidates() {
               return (
                 <div
                   key={user.id}
-                  className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-shadow"
+                  className="overflow-hidden rounded-[14px] border border-[#DDE3EC] bg-white transition-colors hover:border-[#6D5EF9]/40 dark:border-[#263449] dark:bg-[#101827] dark:hover:border-[#6D5EF9]/40"
                 >
                   {/* Card header */}
-                  <div className="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 dark:from-indigo-900/20 dark:to-purple-900/20 p-5 flex items-center gap-4">
-                    <UserAvatarDisplay user={user} size={52} />
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-gray-900 dark:text-white truncate">{user.name}</h3>
+                  <div className="flex items-center gap-3.5 border-b border-[#DDE3EC] bg-[#F1F4F8]/50 p-4 dark:border-[#263449] dark:bg-[#172235]/40">
+                    <UserAvatarDisplay user={user} size={48} />
+                    <div className="min-w-0 flex-1">
+                      <h3 className="truncate font-display text-base font-bold text-[#142033] dark:text-[#F4F7FB]">{user.name}</h3>
                       {user.username && (
-                        <p className="text-xs text-indigo-600 dark:text-indigo-400">@{user.username}</p>
+                        <p className="text-xs text-[#5B4BE7] dark:text-[#8174FF]">@{user.username}</p>
                       )}
                       {user.jobTitle && (
-                        <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 mt-0.5 truncate">
-                          <Briefcase className="w-3 h-3 flex-shrink-0" />
+                        <p className="mt-0.5 flex items-center gap-1 truncate text-xs text-[#5F6F84] dark:text-[#AAB7CA]">
+                          <Briefcase className="h-3 w-3 shrink-0" />
                           {user.jobTitle}
                         </p>
                       )}
                     </div>
                     {user.totalInterviews > 0 && (
-                      <div className="text-right flex-shrink-0">
-                        <p className={`text-sm font-bold ${user.averageScore >= 75 ? 'text-green-600 dark:text-green-400' : user.averageScore >= 50 ? 'text-yellow-600 dark:text-yellow-400' : 'text-orange-600 dark:text-orange-400'}`}>
+                      <div className="shrink-0 text-right">
+                        <p className={`font-display text-sm font-bold ${
+                          user.averageScore >= 75
+                            ? 'text-[#059669] dark:text-[#34D399]'
+                            : user.averageScore >= 50
+                            ? 'text-[#B45309] dark:text-[#FBBF24]'
+                            : 'text-[#E11D48] dark:text-[#FB7185]'
+                        }`}>
                           {user.averageScore}%
                         </p>
-                        <p className="text-xs text-gray-400">avg</p>
+                        <p className="text-xs text-[#7F8CA0] dark:text-[#718096]">avg</p>
                       </div>
                     )}
                   </div>
 
                   {/* Card body */}
-                  <div className="p-5 space-y-3">
+                  <div className="space-y-3 p-4">
                     {/* Bio */}
                     {user.bio ? (
-                      <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{user.bio}</p>
+                      <p className="line-clamp-2 text-xs leading-5 text-[#5F6F84] dark:text-[#AAB7CA]">{user.bio}</p>
                     ) : (
-                      <p className="text-sm text-gray-400 dark:text-gray-600 italic">No bio provided</p>
+                      <p className="text-xs italic text-[#7F8CA0] dark:text-[#718096]">No bio provided</p>
                     )}
 
                     {/* Skills preview */}
@@ -445,13 +452,13 @@ export function Candidates() {
                         {skills.slice(0, 3).map((skill) => (
                           <span
                             key={skill}
-                            className="px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-xs"
+                            className="rounded-md bg-[#EEECFF] px-2 py-0.5 text-xs font-medium text-[#5B4BE7] dark:bg-[#1D1B49] dark:text-[#8174FF]"
                           >
                             {skill}
                           </span>
                         ))}
                         {skills.length > 3 && (
-                          <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-full text-xs">
+                          <span className="rounded-md bg-[#F1F4F8] px-2 py-0.5 text-xs text-[#5F6F84] dark:bg-[#172235] dark:text-[#AAB7CA]">
                             +{skills.length - 3} more
                           </span>
                         )}
@@ -459,23 +466,23 @@ export function Candidates() {
                     )}
 
                     {/* Interview stats */}
-                    <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center gap-3 text-xs text-[#5F6F84] dark:text-[#AAB7CA]">
                       <span className="flex items-center gap-1">
-                        <Trophy className="w-3 h-3" />
+                        <Trophy className="h-3.5 w-3.5 text-[#5B4BE7] dark:text-[#8174FF]" />
                         {user.totalInterviews} interview{user.totalInterviews !== 1 ? 's' : ''}
                       </span>
                       {user.bestScore > 0 && (
                         <span className="flex items-center gap-1">
-                          <Star className="w-3 h-3 text-amber-500" />
+                          <Star className="h-3.5 w-3.5 text-[#FBBF24]" />
                           Best: {user.bestScore}%
                         </span>
                       )}
                     </div>
 
-                    {/* View Profile button */}
+                    {/* View Profile button - restrained secondary */}
                     <button
                       onClick={() => setSelectedUser(user)}
-                      className="mt-1 min-h-11 w-full rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 py-2.5 text-sm font-semibold text-white transition-all hover:from-indigo-700 hover:to-purple-700"
+                      className="mt-1 h-10 w-full rounded-[10px] border border-[#DDE3EC] bg-[#F1F4F8] text-xs font-semibold text-[#142033] transition-colors hover:border-[#6D5EF9] hover:bg-[#EEECFF] hover:text-[#5B4BE7] dark:border-[#263449] dark:bg-[#172235] dark:text-[#F4F7FB] dark:hover:border-[#8174FF] dark:hover:bg-[#1D1B49] dark:hover:text-[#8174FF]"
                     >
                       View Profile
                     </button>

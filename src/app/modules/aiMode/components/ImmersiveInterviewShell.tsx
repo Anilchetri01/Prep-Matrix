@@ -324,7 +324,7 @@ export function ImmersiveInterviewShell({
                   <button
                     onClick={onSubmitAnswer}
                     disabled={!currentAnswer.trim() || evaluating}
-                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(14,165,233,0.28)] transition hover:scale-[1.01] hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-55 sm:w-auto sm:min-w-[240px]"
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-[#6D5EF9] hover:bg-[#5B4BE7] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-55 sm:w-auto sm:min-w-[240px]"
                   >
                     {evaluating ? (
                       <>
@@ -428,7 +428,7 @@ export function ImmersiveInterviewShell({
                     )}
                   >
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 transition-all duration-500"
+                      className="h-full rounded-full bg-[#6D5EF9] transition-all duration-500"
                       style={{ width: `${Math.max(progress, 6)}%` }}
                     />
                   </div>

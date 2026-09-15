@@ -23,45 +23,45 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
       label: 'Overall Score',
       value: `${score}%`,
       iconClass: isDarkMode
-        ? 'bg-gradient-to-br from-emerald-500/20 to-cyan-500/10 text-emerald-100'
-        : 'bg-emerald-50 text-emerald-700',
+        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+        : 'bg-emerald-50 text-emerald-700 border border-emerald-200',
     },
     {
       icon: BrainCircuit,
       label: 'Confidence Score',
       value: `${confidence}%`,
       iconClass: isDarkMode
-        ? 'bg-gradient-to-br from-indigo-500/20 to-violet-500/10 text-indigo-100'
-        : 'bg-indigo-50 text-indigo-700',
+        ? 'bg-[#EEECFF]/10 text-[#8E82FA] border border-[#6D5EF9]/20'
+        : 'bg-[#EEECFF] text-[#6D5EF9] border border-[#6D5EF9]/20',
     },
     {
       icon: Sparkles,
       label: 'Resume Domain',
       value: session.analysis.domain,
       iconClass: isDarkMode
-        ? 'bg-gradient-to-br from-fuchsia-500/20 to-pink-500/10 text-fuchsia-100'
-        : 'bg-fuchsia-50 text-fuchsia-700',
+        ? 'border border-[#22D3EE]/30 bg-[#22D3EE]/10 text-[#22D3EE]'
+        : 'border border-[#22D3EE]/40 bg-[#22D3EE]/10 text-cyan-800',
     },
   ];
 
   const metricCardClass = isDarkMode
-    ? 'border-white/10 bg-slate-900/70 text-white shadow-xl shadow-slate-950/25'
-    : 'border-slate-200/80 bg-white/78 text-slate-900 shadow-[0_18px_44px_rgba(15,23,42,0.08)]';
+    ? 'border-[#263449] bg-[#101827] text-white shadow-sm'
+    : 'border-[#DDE3EC] bg-white text-slate-900 shadow-sm';
 
   const panelClass = isDarkMode
-    ? 'border-white/10 bg-slate-900/70 text-white shadow-xl shadow-slate-950/25'
-    : 'border-slate-200/80 bg-white/78 text-slate-900 shadow-[0_18px_44px_rgba(15,23,42,0.08)]';
+    ? 'border-[#263449] bg-[#101827] text-white shadow-sm'
+    : 'border-[#DDE3EC] bg-white text-slate-900 shadow-sm';
 
-  const mutedTextClass = isDarkMode ? 'text-slate-300/70' : 'text-slate-500';
+  const mutedTextClass = isDarkMode ? 'text-[#AAB7CA]' : 'text-[#5F6F84]';
   const accentChipClass = isDarkMode
-    ? 'border-sky-400/20 bg-sky-400/10 text-sky-100'
-    : 'border-sky-200 bg-sky-50 text-sky-700';
+    ? 'border-[#22D3EE]/30 bg-[#22D3EE]/10 text-[#22D3EE]'
+    : 'border-[#22D3EE]/40 bg-[#22D3EE]/10 text-cyan-800';
 
   return (
     <div className="min-w-0 space-y-5">
       <div className="grid min-w-0 gap-4 md:grid-cols-3">
         {metrics.map((metric) => (
-          <div key={metric.label} className={`min-w-0 rounded-2xl border p-3.5 backdrop-blur-xl sm:p-4 ${metricCardClass}`}>
+          <div key={metric.label} className={`min-w-0 rounded-[14px] border p-3.5 backdrop-blur-xl sm:p-4 ${metricCardClass}`}>
             <div className={`mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl ${metric.iconClass}`}>
               <metric.icon className="h-5 w-5" />
             </div>
@@ -73,7 +73,7 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
         ))}
       </div>
 
-      <div className={`min-w-0 rounded-2xl border p-4 backdrop-blur-xl sm:p-5 ${panelClass}`}>
+      <div className={`min-w-0 rounded-[14px] border p-4 backdrop-blur-xl sm:p-5 ${panelClass}`}>
         <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0">
             <h3 className="text-lg font-semibold sm:text-xl">Session Breakdown</h3>
@@ -97,10 +97,10 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
           {session.answers.map((answer, index) => (
             <div
               key={answer.questionId}
-              className={`min-w-0 rounded-2xl border p-3.5 sm:p-4 ${
+              className={`min-w-0 rounded-[14px] border p-3.5 sm:p-4 ${
                 isDarkMode
                   ? 'border-white/8 bg-slate-950/35'
-                  : 'border-slate-200/80 bg-slate-50/85'
+                  : 'border-[#DDE3EC] bg-slate-50/85'
               }`}
             >
               <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -109,7 +109,7 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
                     className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium ${
                       isDarkMode
                         ? 'border-white/10 bg-white/5 text-white/70'
-                        : 'border-slate-200 bg-white text-slate-600'
+                        : 'border-[#DDE3EC] bg-white text-slate-600'
                     }`}
                   >
                     <MessageSquareQuote className="h-3.5 w-3.5" />
@@ -142,10 +142,10 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
 
               <div className="mt-4 grid min-w-0 gap-4 lg:grid-cols-[1.1fr_0.9fr]">
                 <div
-                  className={`min-w-0 rounded-2xl border p-3.5 sm:p-4 ${
+                  className={`min-w-0 rounded-[14px] border p-3.5 sm:p-4 ${
                     isDarkMode
                       ? 'border-white/8 bg-white/5'
-                      : 'border-slate-200/80 bg-white/90'
+                      : 'border-[#DDE3EC] bg-white/90'
                   }`}
                 >
                   <p className={`text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em] ${mutedTextClass}`}>Answer</p>
@@ -154,10 +154,10 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
 
                 <div className="min-w-0 space-y-3">
                   <div
-                    className={`min-w-0 rounded-2xl border p-3.5 sm:p-4 ${
+                    className={`min-w-0 rounded-[14px] border p-3.5 sm:p-4 ${
                       isDarkMode
                         ? 'border-white/8 bg-white/5'
-                        : 'border-slate-200/80 bg-white/90'
+                        : 'border-[#DDE3EC] bg-white/90'
                     }`}
                   >
                     <p className={`text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em] ${mutedTextClass}`}>
@@ -168,7 +168,7 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
 
                   <div className="grid min-w-0 gap-3 md:grid-cols-2">
                     <div
-                      className={`min-w-0 rounded-2xl border p-3.5 sm:p-4 ${
+                      className={`min-w-0 rounded-[14px] border p-3.5 sm:p-4 ${
                         isDarkMode
                           ? 'border-emerald-400/12 bg-emerald-500/8'
                           : 'border-emerald-100 bg-emerald-50'
@@ -194,7 +194,7 @@ export function SessionSummary({ session, isDarkMode }: SessionSummaryProps) {
                     </div>
 
                     <div
-                      className={`min-w-0 rounded-2xl border p-3.5 sm:p-4 ${
+                      className={`min-w-0 rounded-[14px] border p-3.5 sm:p-4 ${
                         isDarkMode
                           ? 'border-amber-400/12 bg-amber-500/8'
                           : 'border-amber-100 bg-amber-50'
