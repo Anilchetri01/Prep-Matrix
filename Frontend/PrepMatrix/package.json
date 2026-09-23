@@ -8,7 +8,7 @@
     "dev": "vite",
     "preview": "vite preview",
     "validate:manual-questions": "node scripts/validateManualQuestionBank.mjs",
-    "test:gestures": "node scripts/testMobileDrawerGesture.mjs"
+    "test:gestures": "npx tsx scripts/testMobileDrawerGesture.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

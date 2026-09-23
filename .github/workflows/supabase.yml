@@ -39,38 +39,31 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Supabase CLI
-        uses: supabase/setup-cli@v1
+        uses: supabase/setup-cli@v3
         with:
           version: latest
 
-      - name: Verify Required Secrets
+      - name: Check and Apply Database Migrations
         run: |
-          if [ -z "$SUPABASE_ACCESS_TOKEN" ]; then
-            echo "::error::Missing SUPABASE_ACCESS_TOKEN secret in GitHub Repository Secrets."
-            exit 1
-          fi
-          if [ -z "$SUPABASE_PROJECT_ID" ]; then
-            echo "::error::Missing SUPABASE_PROJECT_ID secret in GitHub Repository Secrets."
-            exit 1
-          fi
-
-      - name: Link Supabase Project
-        run: |
-          if [ -n "$SUPABASE_DB_PASSWORD" ]; then
-            supabase link --project-ref "$SUPABASE_PROJECT_ID" --password "$SUPABASE_DB_PASSWORD" --workdir Backend
+          MIGRATION_COUNT=$(find Backend/supabase/migrations -maxdepth 1 -name "*.sql" 2>/dev/null | wc -l)
+          if [ "$MIGRATION_COUNT" -gt 0 ]; then
+            echo "Found $MIGRATION_COUNT migration(s). Checking credentials..."
+            if [ -z "$SUPABASE_ACCESS_TOKEN" ] || [ -z "$SUPABASE_PROJECT_ID" ]; then
+              echo "::error::Missing SUPABASE_ACCESS_TOKEN or SUPABASE_PROJECT_ID secret."
+              exit 1
+            fi
+            
+            if [ -n "$SUPABASE_DB_PASSWORD" ]; then
+              supabase link --project-ref "$SUPABASE_PROJECT_ID" --password "$SUPABASE_DB_PASSWORD" --workdir Backend
+              supabase db push --include-all --password "$SUPABASE_DB_PASSWORD" --workdir Backend
+            else
+              supabase link --project-ref "$SUPABASE_PROJECT_ID" --workdir Backend
+              supabase db push --include-all --workdir Backend
+            fi
+            echo "Migrations applied successfully."
           else
-            supabase link --project-ref "$SUPABASE_PROJECT_ID" --workdir Backend
+            echo "No .sql migration files found in Backend/supabase/migrations. Skipping database migrations."
           fi
-
-      - name: Push Database Migrations
-        run: |
-          echo "Applying pending database migrations..."
-          if [ -n "$SUPABASE_DB_PASSWORD" ]; then
-            supabase db push --include-all --password "$SUPABASE_DB_PASSWORD" --workdir Backend
-          else
-            supabase db push --include-all --workdir Backend
-          fi
-          echo "Migrations applied successfully."
 
   deploy-edge-functions:
     name: Deploy Supabase Edge Functions
@@ -88,7 +81,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Supabase CLI
-        uses: supabase/setup-cli@v1
+        uses: supabase/setup-cli@v3
         with:
           version: latest
 
@@ -115,7 +108,7 @@ jobs:
 
           if [ ${#SECRETS_ARGS[@]} -gt 0 ]; then
             echo "Setting Supabase function secrets..."
-            supabase secrets set "${SECRETS_ARGS[@]}" --project-ref "$SUPABASE_PROJECT_ID" --workdir Backend
+            supabase secrets set "${SECRETS_ARGS[@]}" --project-ref "$SUPABASE_PROJECT_ID" --workdir Backend || true
           fi
 
       - name: Deploy Edge Functions

@@ -41,15 +41,18 @@ jobs:
 
       - name: Run Gesture Physics Tests
         working-directory: ./Frontend/PrepMatrix
-        run: npm run test:gestures
+        run: npx --yes tsx scripts/testMobileDrawerGesture.mjs
 
       - name: Build Frontend Application
         working-directory: ./Frontend/PrepMatrix
         env:
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL || 'https://placeholder.supabase.co' }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY || 'placeholder-anon-key' }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY || 'placeholder-gemini-key' }}
-        run: npm run build
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          export VITE_SUPABASE_URL="${VITE_SUPABASE_URL:-https://placeholder.supabase.co}"
+          export VITE_SUPABASE_ANON_KEY="${VITE_SUPABASE_ANON_KEY:-placeholder-anon-key}"
+          npm run build
 
   supabase-validation:
     name: Supabase Migrations & Edge Functions Validation
@@ -60,7 +63,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Supabase CLI
-        uses: supabase/setup-cli@v1
+        uses: supabase/setup-cli@v3
         with:
           version: latest
 
@@ -71,22 +74,18 @@ jobs:
 
       - name: Validate SQL Migrations Syntax
         run: |
-          echo "Checking Supabase SQL migration files..."
           MIGRATIONS_DIR="Backend/supabase/migrations"
           if [ -d "$MIGRATIONS_DIR" ]; then
             for file in "$MIGRATIONS_DIR"/*.sql; do
               if [ -f "$file" ]; then
                 echo "Validating syntax of $file"
-                # Ensure migration is non-empty
                 if [ ! -s "$file" ]; then
                   echo "Error: Migration $file is empty"
                   exit 1
                 fi
               fi
             done
-            echo "All migration files validated successfully."
-          else
-            echo "No migrations directory found."
+            echo "Migration check completed."
           fi
 
       - name: Lint and Check Supabase Edge Functions
