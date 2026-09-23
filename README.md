@@ -16,6 +16,7 @@ PrepMatrix is an AI-powered interview preparation platform built for candidates 
 ## Table of Contents
 
 - [Project Overview](#project-overview)
+- [Technical Documentation](#technical-documentation)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Project Architecture](#project-architecture)
@@ -30,6 +31,26 @@ PrepMatrix is an AI-powered interview preparation platform built for candidates 
 - [Future Improvements](#future-improvements)
 - [Contributing](#contributing)
 - [License](#license)
+
+---
+
+## Technical Documentation
+
+A comprehensive, evidence-backed 21-document technical documentation suite reverse-engineered directly from this codebase is available in the [`docs/`](./docs/) directory.
+
+👉 **[Master Technical Documentation Portal](./docs/README_DOCUMENTATION.md)**
+
+Key documents include:
+- [Product Requirements Document (PRD)](./docs/01_PRD.md)
+- [Software Requirements Specification (SRS)](./docs/02_SRS.md)
+- [Software Architecture Document (SAD)](./docs/03_ARCHITECTURE.md)
+- [Database Schema & RPC Reference](./docs/04_DATABASE.md)
+- [API & Gemini Proxy Specifications](./docs/05_API.md)
+- [UI/UX & Design System](./docs/06_UI_UX.md)
+- [Security Review & Vulnerabilities](./docs/09_SECURITY.md)
+- [AI System & Rubric Grading](./docs/11_AI_SYSTEM.md)
+- [Requirements Traceability Matrix](./docs/17_REQUIREMENTS_TRACEABILITY.md)
+- [Technical Debt & Known Issues](./docs/18_TECHNICAL_DEBT.md)
 
 ---
 
@@ -106,10 +127,16 @@ PrepMatrix solves the common problem of scattered interview preparation by combi
 Prep-Matrix/
 ├── .github/                 # GitHub Actions automated workflows (CI/CD)
 │   └── workflows/
-│       └── ci.yml           # Automated lint, question validation, and build checks
+│       ├── ci.yml           # Automated lint, question validation, build & Edge checks
+│       └── supabase.yml     # Automated Supabase migrations & Edge Functions deployment
 ├── Backend/                 # Backend databases, migrations, and server architecture
 │   └── supabase/
-│       ├── migrations/      # Supabase SQL migrations
+│       ├── functions/       # Supabase Edge Functions (Deno / TypeScript)
+│       │   ├── _shared/     # Shared Edge helpers (CORS)
+│       │   ├── gemini-proxy/# Resilient Gemini AI proxy function
+│       │   └── health-check/# Diagnostic uptime & health function
+│       ├── migrations/      # Supabase SQL migrations (timestamped)
+│       ├── config.toml      # Supabase CLI project configuration
 │       ├── schema.sql       # Full production database schema, RLS policies, triggers
 │       └── README.md        # Supabase setup and local dev guide
 ├── Frontend/                # User interface and client application
@@ -129,17 +156,19 @@ Prep-Matrix/
 │   │   └── PRD.md
 │   ├── SRS/                 # Software Requirements Specification
 │   │   └── SRS.md
+│   ├── CI_CD_PIPELINE_GUIDE.md # Comprehensive CI/CD and deployment manual
 │   └── README.md            # Documentation directory index
+├── .env.example             # Complete environment variables and secrets template
 ├── package.json             # Root monorepo workspace manifest & delegation scripts
 └── README.md                # Root project overview and guide
 ```
 
 ### Important Folders
 
-- **`.github/workflows`**: Automated CI pipelines executing build, test, and question integrity checks.
-- **`Backend/supabase`**: Complete database schema, migration scripts, Row Level Security (RLS) policies, and helper triggers for profiles, sessions, interviews, resumes, and history.
+- **`.github/workflows`**: Automated CI/CD pipelines executing build validation, test checks, question integrity checks, Supabase database migrations, and Supabase Edge Functions deployment.
+- **`Backend/supabase`**: Complete database schema, migration scripts, Row Level Security (RLS) policies, Edge Functions (`gemini-proxy`, `health-check`), and helper triggers.
 - **`Frontend/PrepMatrix`**: The main Vite + React 18 frontend dashboard, including pages, components, client-side resume parsing, and Gemini proxy integration.
-- **`Documentation`**: Comprehensive technical specs including the **PRD**, **SRS**, Mobile UX plans, and interaction audit logs.
+- **`Documentation`**: Comprehensive technical specs including the **PRD**, **SRS**, **CI/CD Pipeline Guide**, and interaction audit logs.
 
 ---
 

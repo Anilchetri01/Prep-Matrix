@@ -1,0 +1,37 @@
+# Supabase CLI configuration file for PrepMatrix
+# Documentation: https://supabase.com/docs/guides/cli/config
+
+project_id = "prep-matrix"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[api.tls]
+enabled = false
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 17
+
+[db.pooler]
+enabled = false
+port = 54329
+pool_mode = "transaction"
+
+[auth]
+enabled = true
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["https://*.vercel.app", "http://localhost:5173/**"]
+jwt_expiry = 3600
+enable_signup = true
+
+[functions.gemini-proxy]
+verify_jwt = false
+
+[functions.health-check]
+verify_jwt = false
