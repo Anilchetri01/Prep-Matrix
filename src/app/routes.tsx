@@ -12,6 +12,7 @@ import { Profile } from './pages/Profile';
 import { AdminPanel } from './pages/AdminPanel';
 import { ResumeAnalysis } from './pages/ResumeAnalysis';
 import { Candidates } from './pages/Candidates';
+import { Settings } from './pages/Settings';
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { ProtectedRoute, AdminRoute } from './components/ProtectedRoute';
 
@@ -128,6 +129,14 @@ export const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Profile />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/settings',
+    element: (
+      <ProtectedRoute>
+        <Settings />
       </ProtectedRoute>
     ),
   },

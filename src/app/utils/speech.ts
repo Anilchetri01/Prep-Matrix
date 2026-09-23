@@ -8,23 +8,37 @@ export class TextToSpeech {
   }
 
   speak(text: string, onEnd?: () => void): void {
+    if (typeof window === 'undefined' || !window.speechSynthesis) {
+      onEnd?.();
+      return;
+    }
+
     // Cancel any ongoing speech
     this.cancel();
 
-    this.utterance = new SpeechSynthesisUtterance(text);
-    this.utterance.rate = 0.9;
-    this.utterance.pitch = 1;
-    this.utterance.volume = 1;
+    try {
+      this.utterance = new SpeechSynthesisUtterance(text);
+      this.utterance.rate = 0.9;
+      this.utterance.pitch = 1;
+      this.utterance.volume = 1;
 
-    if (onEnd) {
-      this.utterance.onend = onEnd;
+      if (onEnd) {
+        this.utterance.onend = onEnd;
+        this.utterance.onerror = () => {
+          onEnd();
+        };
+      }
+
+      this.synth.speak(this.utterance);
+    } catch {
+      onEnd?.();
     }
-
-    this.synth.speak(this.utterance);
   }
 
   cancel(): void {
-    this.synth.cancel();
+    if (typeof window !== 'undefined' && window.speechSynthesis?.cancel) {
+      window.speechSynthesis.cancel();
+    }
   }
 
   pause(): void {

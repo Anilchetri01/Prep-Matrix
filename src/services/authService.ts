@@ -220,7 +220,7 @@ class AuthService {
     );
   }
 
-  async getSettings() {
+  async getSettings(): Promise<AppSettings | null> {
     return runLoggedOperation(
       'authService',
       'getSettings',
@@ -232,7 +232,10 @@ class AuthService {
         } = await supabase.auth.getUser();
 
         assertNoError(error, 'Unable to load your preferences.');
-        return normalizeSettings(user?.user_metadata?.app_settings);
+        if (!user?.user_metadata?.app_settings) {
+          return null;
+        }
+        return normalizeSettings(user.user_metadata.app_settings);
       },
     );
   }

@@ -1,9 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { authService } from '../../services/authService';
-import { DEFAULT_APP_SETTINGS } from '../../services/serviceUtils';
+import { DEFAULT_APP_SETTINGS, normalizeSettings } from '../../services/serviceUtils';
 import { useAuth } from './AuthContext';
 import { AppSettings } from '../types';
+import { safeGet, safeSet } from '../../lib/browserStorage';
+
+const SETTINGS_STORAGE_KEY = 'prepmatrix_app_settings';
 
 interface SettingsContextType {
   settings: AppSettings;
@@ -17,29 +20,47 @@ const SettingsContext = createContext<SettingsContextType | undefined>(undefined
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
-  const [settings, setSettings] = useState<AppSettings>(DEFAULT_APP_SETTINGS);
+  const [settings, setSettings] = useState<AppSettings>(() => {
+    const cached = safeGet<AppSettings>(SETTINGS_STORAGE_KEY);
+    const initial = cached ? normalizeSettings(cached) : DEFAULT_APP_SETTINGS;
+    if (typeof document !== 'undefined') {
+      if (initial.darkMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+    return initial;
+  });
 
   useEffect(() => {
     let isMounted = true;
 
     const loadSettings = async () => {
       if (!isAuthenticated) {
-        setSettings(DEFAULT_APP_SETTINGS);
         return;
       }
 
       try {
         console.log('[SettingsContext] load:start');
-        const nextSettings = await authService.getSettings();
+        const cloudSettings = await authService.getSettings();
         if (isMounted) {
-          setSettings(nextSettings);
+          if (cloudSettings) {
+            setSettings(cloudSettings);
+            safeSet(SETTINGS_STORAGE_KEY, cloudSettings);
+            console.log('[SettingsContext] load:cloud-applied', cloudSettings);
+          } else {
+            // User has no cloud-saved settings yet: preserve active local preferences and sync to Supabase
+            const localCached = safeGet<AppSettings>(SETTINGS_STORAGE_KEY);
+            const activeSettings = localCached ? normalizeSettings(localCached) : settings;
+            authService.updateSettings(activeSettings).catch((err) => {
+              console.warn('[SettingsContext] Initial cloud sync warning:', err);
+            });
+            console.log('[SettingsContext] load:synced-local-to-cloud', activeSettings);
+          }
         }
-        console.log('[SettingsContext] load:success', nextSettings);
-      } catch {
-        console.error('[SettingsContext] load:error');
-        if (isMounted) {
-          setSettings(DEFAULT_APP_SETTINGS);
-        }
+      } catch (error) {
+        console.error('[SettingsContext] load:error', error);
       }
     };
 
@@ -61,6 +82,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
   const updateSettings = (newSettings: Partial<AppSettings>) => {
     const nextSettings = { ...settings, ...newSettings };
     setSettings(nextSettings);
+    safeSet(SETTINGS_STORAGE_KEY, nextSettings);
     console.log('[SettingsContext] update:start', nextSettings);
 
     if (isAuthenticated) {

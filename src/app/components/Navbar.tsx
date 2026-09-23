@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
-import { useSettings } from '../contexts/SettingsContext';
 import type { User as AppUser } from '../types';
 import { AppLogo } from './AppLogo';
 import { APP_NAME } from '../constants/branding';
@@ -20,11 +19,8 @@ import {
   Trophy,
   User,
   ShieldCheck,
+  Settings,
   LogOut,
-  Moon,
-  Sun,
-  Volume2,
-  VolumeX,
   Menu,
   X,
   FileText,
@@ -119,7 +115,7 @@ function NavLink({
 
 // ── Main Navbar ───────────────────────────────────────────────────────────────
 
-function LogoutConfirmationDialog({
+export function LogoutConfirmationDialog({
   error,
   isSigningOut,
   onConfirm,
@@ -200,7 +196,6 @@ function LogoutConfirmationDialog({
 
 export function Navbar() {
   const { user, logout } = useAuth();
-  const { settings, toggleDarkMode, toggleVoice } = useSettings();
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -251,14 +246,32 @@ export function Navbar() {
     { to: '/leaderboard', icon: Trophy, label: 'Leaderboard' },
     { to: '/candidates', icon: Users, label: 'Candidates' },
     { to: '/profile', icon: User, label: 'Profile' },
+    { to: '/settings', icon: Settings, label: 'Settings' },
     ...(user?.role === 'admin'
       ? [{ to: '/admin', icon: ShieldCheck, label: 'Admin' }]
       : []),
   ];
 
-  const primaryItems = navItems.slice(0, 4);
-  const exploreItems = navItems.slice(4, 7);
-  const accountItems = navItems.slice(7);
+  const practiceItems = [
+    { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+    { to: '/ai-mode', icon: Sparkles, label: 'AI Interview' },
+    { to: '/manual-mode', icon: ClipboardList, label: 'Manual Interview' },
+    { to: '/resume-analysis', icon: FileText, label: 'Resume Analysis' },
+  ];
+
+  const exploreItems = [
+    { to: '/history', icon: History, label: 'Previous Sessions' },
+    { to: '/leaderboard', icon: Trophy, label: 'Leaderboard' },
+    { to: '/candidates', icon: Users, label: 'Candidates' },
+  ];
+
+  const preferenceItems = [
+    { to: '/profile', icon: User, label: 'Profile' },
+    { to: '/settings', icon: Settings, label: 'Settings' },
+    ...(user?.role === 'admin'
+      ? [{ to: '/admin', icon: ShieldCheck, label: 'Admin' }]
+      : []),
+  ];
 
   useEffect(() => {
     setMobileOpen(false);
@@ -268,58 +281,46 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-[#DDE3EC] bg-white/90 backdrop-blur-md dark:border-[#263449] dark:bg-[#101827]/90">
       <div className="mx-auto max-w-[92rem] px-3 sm:px-6 lg:px-8">
         <div className="flex h-[60px] items-center justify-between sm:h-16">
-          {/* Logo */}
-          <Link to="/dashboard" className="flex items-center gap-3 flex-shrink-0">
-            <AppLogo variant="dark" className="h-9 w-9" />
-            <span className="hidden font-display text-lg font-bold text-[#142033] dark:text-[#F4F7FB] sm:block xl:hidden 2xl:block">
-              {APP_NAME}
-            </span>
-          </Link>
+          {/* Left: [Hamburger] [Logo] [PrepMatrix] */}
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+            {/* Mobile Hamburger Button */}
+            <button
+              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-[#5F6F84] transition-colors hover:bg-[#F1F4F8] hover:text-[#142033] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8174FF] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-[#AAB7CA] dark:hover:bg-[#172235] dark:hover:text-[#F4F7FB] dark:focus-visible:ring-offset-[#101827] xl:hidden"
+            >
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+
+            {/* Logo immediately followed by PrepMatrix */}
+            <Link
+              to="/dashboard"
+              className="flex items-center gap-2 sm:gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8174FF] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#101827]"
+              aria-label={`${APP_NAME} Dashboard`}
+            >
+              <AppLogo variant="dark" className="h-8 w-8 sm:h-9 sm:w-9 shrink-0" />
+              <span className="font-display text-base font-bold tracking-tight text-[#142033] dark:text-[#F4F7FB] sm:text-lg">
+                {APP_NAME}
+              </span>
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-1">
+          <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-1">
             {navItems.map((item) => (
               <NavLink key={item.to} {...item} />
             ))}
           </nav>
 
-          {/* Right Controls */}
-          <div className="flex items-center gap-1.5">
-            {/* Voice toggle */}
-            <button
-              onClick={toggleVoice}
-              title={settings.voiceEnabled ? 'Disable voice' : 'Enable voice'}
-              aria-label={settings.voiceEnabled ? 'Disable voice' : 'Enable voice'}
-              aria-pressed={settings.voiceEnabled}
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-[#5F6F84] transition-colors hover:bg-[#F1F4F8] hover:text-[#142033] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8174FF] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-[#AAB7CA] dark:hover:bg-[#172235] dark:hover:text-[#F4F7FB] dark:focus-visible:ring-offset-[#101827]"
-            >
-              {settings.voiceEnabled ? (
-                <Volume2 className="h-4 w-4" />
-              ) : (
-                <VolumeX className="h-4 w-4" />
-              )}
-            </button>
-
-            {/* Dark mode toggle */}
-            <button
-              onClick={toggleDarkMode}
-              title={settings.darkMode ? 'Light mode' : 'Dark mode'}
-              aria-label={settings.darkMode ? 'Use light theme' : 'Use dark theme'}
-              aria-pressed={settings.darkMode}
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-[#5F6F84] transition-colors hover:bg-[#F1F4F8] hover:text-[#142033] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8174FF] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-[#AAB7CA] dark:hover:bg-[#172235] dark:hover:text-[#F4F7FB] dark:focus-visible:ring-offset-[#101827]"
-            >
-              {settings.darkMode ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-            </button>
-
-            {/* User avatar → profile */}
+          {/* Desktop Right Controls (no standalone voice/theme toggles) */}
+          <div className="hidden xl:flex items-center gap-2">
             {user && (
               <Link
                 to="/profile"
-                className="hidden xl:flex items-center gap-2 rounded-lg p-1 pl-1.5 transition-colors hover:bg-[#F1F4F8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8174FF] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:hover:bg-[#172235] dark:focus-visible:ring-offset-[#101827]"
+                className="flex items-center gap-2 rounded-lg p-1 pl-1.5 transition-colors hover:bg-[#F1F4F8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8174FF] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:hover:bg-[#172235] dark:focus-visible:ring-offset-[#101827]"
               >
                 <UserAvatar
                   name={user.name}
@@ -337,28 +338,16 @@ export function Navbar() {
               </Link>
             )}
 
-            {/* Logout (desktop) */}
             {user && (
               <button
                 onClick={openLogoutDialog}
                 title="Sign out"
                 aria-label="Open sign out confirmation"
-                className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-lg text-[#5F6F84] transition-colors hover:bg-rose-50 hover:text-[#E11D48] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB7185] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-[#AAB7CA] dark:hover:bg-rose-950/20 dark:hover:text-[#FB7185] dark:focus-visible:ring-offset-[#101827] xl:flex"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-[#5F6F84] transition-colors hover:bg-rose-50 hover:text-[#E11D48] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB7185] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-[#AAB7CA] dark:hover:bg-rose-950/20 dark:hover:text-[#FB7185] dark:focus-visible:ring-offset-[#101827]"
               >
                 <LogOut className="h-4 w-4" />
               </button>
             )}
-
-            {/* Mobile menu toggle */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-navigation"
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-[#5F6F84] transition-colors hover:bg-[#F1F4F8] hover:text-[#142033] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8174FF] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-[#AAB7CA] dark:hover:bg-[#172235] dark:hover:text-[#F4F7FB] dark:focus-visible:ring-offset-[#101827] xl:hidden"
-            >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
           </div>
         </div>
       </div>
@@ -366,37 +355,23 @@ export function Navbar() {
       <Dialog open={mobileOpen} onOpenChange={setMobileOpen}>
         <DialogContent
           id="mobile-navigation"
-          className="!bottom-0 !left-auto !right-0 !top-0 z-[60] flex h-[100dvh] w-[min(92vw,360px)] max-w-none !translate-x-0 !translate-y-0 flex-col gap-0 overflow-hidden rounded-none border-y-0 border-r-0 border-l border-[#DDE3EC] bg-white p-0 shadow-2xl dark:border-[#263449] dark:bg-[#101827] xl:hidden [&_[data-slot=dialog-close]]:hidden"
+          className="!bottom-0 !left-0 !right-auto !top-0 z-[60] flex h-[100dvh] w-[min(90vw,340px)] max-w-none !translate-x-0 !translate-y-0 flex-col gap-0 overflow-hidden rounded-none border-y-0 border-l-0 border-r border-[#DDE3EC] bg-white p-0 shadow-2xl duration-200 ease-out data-[state=open]:animate-in data-[state=open]:slide-in-from-left data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left data-[state=open]:zoom-in-100 data-[state=closed]:zoom-out-100 dark:border-[#263449] dark:bg-[#101827] xl:hidden [&_[data-slot=dialog-close]]:hidden"
         >
           <DialogHeader className="border-b border-[#DDE3EC] px-4 pb-4 pt-[max(1rem,env(safe-area-inset-top))] text-left dark:border-[#263449]">
-            <div className="flex items-start justify-between gap-3">
-              {user ? (
-                <div className="flex min-w-0 items-center gap-3">
-                  <UserAvatar
-                    name={user.name}
-                    color={user.avatarColor}
-                    imageUrl={avatarUrl(user)}
-                    size="lg"
-                  />
-                  <div className="min-w-0">
-                    <DialogTitle className="truncate font-display text-base font-semibold text-[#142033] dark:text-[#F4F7FB]">
-                      {user.name}
-                    </DialogTitle>
-                    <DialogDescription className="truncate text-xs text-[#5F6F84] dark:text-[#AAB7CA]">
-                      {user.email}
-                    </DialogDescription>
-                  </div>
-                </div>
-              ) : (
-                <div className="min-w-0">
-                  <DialogTitle className="font-display text-base font-semibold text-[#142033] dark:text-[#F4F7FB]">
-                    Navigation
-                  </DialogTitle>
-                  <DialogDescription className="text-xs text-[#5F6F84] dark:text-[#AAB7CA]">
-                    PrepMatrix menu
-                  </DialogDescription>
-                </div>
-              )}
+            <div className="flex items-center justify-between gap-3">
+              <Link
+                to="/dashboard"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8174FF] focus-visible:ring-offset-2"
+                aria-label={`${APP_NAME} Dashboard`}
+              >
+                <AppLogo variant="dark" className="h-7 w-7 shrink-0" />
+                <DialogTitle className="font-display text-base font-bold text-[#142033] dark:text-[#F4F7FB]">
+                  {APP_NAME}
+                </DialogTitle>
+                <DialogDescription className="sr-only">PrepMatrix Navigation</DialogDescription>
+              </Link>
+
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
@@ -406,17 +381,40 @@ export function Navbar() {
                 <X className="h-5 w-5" />
               </button>
             </div>
+
+            {user && (
+              <Link
+                to="/profile"
+                onClick={() => setMobileOpen(false)}
+                className="mt-3 flex items-center gap-3 rounded-xl bg-[#F7F8FC] p-2.5 transition hover:bg-[#EEECFF]/40 dark:bg-[#172235]/60 dark:hover:bg-[#1D1B49]/40"
+              >
+                <UserAvatar
+                  name={user.name}
+                  color={user.avatarColor}
+                  imageUrl={avatarUrl(user)}
+                  size="sm"
+                />
+                <div className="min-w-0 flex-1 text-left">
+                  <p className="truncate text-xs font-semibold text-[#142033] dark:text-[#F4F7FB]">
+                    {user.name}
+                  </p>
+                  <p className="truncate text-[11px] text-[#5F6F84] dark:text-[#AAB7CA]">
+                    {user.email}
+                  </p>
+                </div>
+              </Link>
+            )}
           </DialogHeader>
 
-          <nav className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-3 py-4">
+          <nav aria-label="Mobile Navigation Links" className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-3 py-4">
             {[
-              { label: 'Practice', items: primaryItems },
+              { label: 'Practice', items: practiceItems },
               { label: 'Explore', items: exploreItems },
-              { label: 'Account', items: accountItems },
-            ].map((group) => (
-              group.items.length > 0 && (
+              { label: 'Preferences', items: preferenceItems },
+            ].map((group) =>
+              group.items.length > 0 ? (
                 <div key={group.label} className="mb-5 last:mb-0">
-                  <p className="mb-1 px-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#7F8CA0] dark:text-[#718096]">
+                  <p className="mb-1.5 px-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#7F8CA0] dark:text-[#718096]">
                     {group.label}
                   </p>
                   <div className="space-y-1">
@@ -425,13 +423,14 @@ export function Navbar() {
                     ))}
                   </div>
                 </div>
-              )
-            ))}
+              ) : null,
+            )}
           </nav>
 
           {user && (
             <div className="border-t border-[#DDE3EC] px-3 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 dark:border-[#263449]">
               <button
+                type="button"
                 onClick={openLogoutDialog}
                 aria-label="Open sign out confirmation"
                 className="flex min-h-11 w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-[#E11D48] transition-colors hover:bg-rose-50 hover:text-[#E11D48] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB7185] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-[#FB7185] dark:hover:bg-rose-950/20 dark:hover:text-[#FB7185] dark:focus-visible:ring-offset-[#101827]"
