@@ -1,10 +1,12 @@
 // Mobile Drawer Physics, Geometry, and Gesture Decision Calibration
 // All values are tuned to ChatGPT-like drawer interaction feel
 
-export const EDGE_ZONE = 24; // Width in px from left edge of screen to initiate open gesture
+export const EDGE_ZONE = 24; // Width in px from left edge of screen (retained for extreme bezel edge detection)
+export const SWIPE_INITIATION_ZONE_RATIO = 0.8; // Expanded swipe initiation zone (up to 80% of viewport width)
+export const SWIPE_INITIATION_MIN_PX = 240; // Minimum initiation width in px from left edge
 export const ACTIVATION_DISTANCE = 10; // px of movement before committing to gesture direction
-export const OPEN_THRESHOLD = 0.4; // Drag progress ratio (0..1) above which drawer snaps open
-export const VELOCITY_THRESHOLD = 500; // px/s flick velocity threshold to force open/close
+export const OPEN_THRESHOLD = 0.35; // Drag progress ratio (0..1) above which drawer snaps open
+export const VELOCITY_THRESHOLD = 350; // px/s flick velocity threshold to force open/close
 export const FLICK_BACK_THRESHOLD = 300; // px/s flick velocity back towards start to cancel gesture
 export const SPRING_STIFFNESS = 380; // Tuned spring stiffness for fast, controlled motion
 export const SPRING_DAMPING = 32; // Tuned damping for minimal settling overshoot, zero oscillating bounce
@@ -15,6 +17,12 @@ export const XL_BREAKPOINT = 1280; // Desktop breakpoint (xl) where drawer is hi
 export const BOUNDARY_RESISTANCE_FACTOR = 0.18; // Rubber-band resistance damping ratio
 export const CLOSE_DIRECTION_RATIO = 1.3; // Dominance factor required to close vs vertical scroll inside drawer
 export const OPEN_DIRECTION_RATIO = 1.1; // Dominance factor required to open vs vertical scroll on page
+
+export function isWithinSwipeZone(clientX: number, viewportWidth: number): boolean {
+  if (clientX < 0) return false;
+  const maxZone = Math.max(SWIPE_INITIATION_MIN_PX, viewportWidth * SWIPE_INITIATION_ZONE_RATIO);
+  return clientX <= maxZone;
+}
 
 export function calculateEffectiveX(rawX: number, drawerWidth: number): number {
   if (rawX > 0) {
@@ -59,7 +67,7 @@ export function checkDirectionLock(
   }
 
   // When drawer is closed, must swipe primarily rightward from left edge
-  if (dx > ACTIVATION_DISTANCE && dx > Math.abs(dy) * OPEN_DIRECTION_RATIO) {
+  if (dx > 0 && dx > Math.abs(dy) * OPEN_DIRECTION_RATIO) {
     return 'horizontal';
   }
   return 'vertical';

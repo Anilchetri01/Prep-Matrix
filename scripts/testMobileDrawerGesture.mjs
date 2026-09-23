@@ -20,6 +20,7 @@ import {
   simulateSpringStep,
   isSpringSettled,
   calculateVelocity,
+  isWithinSwipeZone,
 } from '../src/app/components/drawerGesturePhysics.ts';
 
 console.log('--- Testing Mobile Navbar Swipe Drawer Physics & Logic ---');
@@ -45,6 +46,10 @@ function testDirectionalLocking() {
   assert.equal(checkDirectionLock(-15, 0, false), 'vertical', 'Leftward swipe when closed locks to vertical/ignore');
   assert.equal(checkDirectionLock(15, 5, false), 'horizontal', 'Rightward swipe > activation threshold locks to horizontal');
   assert.equal(checkDirectionLock(25, 10, false), 'horizontal', 'Horizontal dominance locks to horizontal');
+  assert.equal(checkDirectionLock(10, 1, false), 'horizontal', 'Rightward swipe at activation threshold with slight angle locks to horizontal');
+  assert.equal(checkDirectionLock(9.5, 3.5, false), 'horizontal', 'Dominant horizontal swipe with slight vertical angle locks to horizontal');
+  assert.equal(checkDirectionLock(9, 5, false), 'horizontal', 'Dominant horizontal swipe at dist >= 10 locks to horizontal');
+  assert.equal(checkDirectionLock(6, 8, false), 'vertical', 'Vertical dominant movement at dist >= 10 locks to vertical');
 
   // Open drawer (swiping to close vs scrolling nav links):
   // When open, nav list scrolling should NOT accidentally trigger horizontal close
@@ -52,6 +57,7 @@ function testDirectionalLocking() {
   assert.equal(checkDirectionLock(5, 30, true), 'vertical', 'Downward scroll on nav list locks to vertical');
   assert.equal(checkDirectionLock(-12, -10, true), 'vertical', 'Diagonal thumb scroll locks to vertical (protects nav list)');
   assert.equal(checkDirectionLock(-25, 5, true), 'horizontal', 'Deliberate left swipe locks to horizontal close');
+  assert.equal(checkDirectionLock(-10, 1, true), 'horizontal', 'Deliberate left swipe with slight vertical tilt locks to horizontal close');
   console.log('  Passed.');
 }
 
@@ -166,6 +172,21 @@ function testSpringConvergence() {
   console.log(`  Passed: Settled smoothly in ${(time * 1000).toFixed(0)}ms with zero oscillation.`);
 }
 
+// Test 9: Expanded Swipe Zone Initiation Detection
+function testExpandedSwipeZone() {
+  console.log('Test 9: Expanded Swipe Zone Initiation Detection');
+  const viewportWidth = 390;
+  assert.equal(isWithinSwipeZone(0, viewportWidth), true, '0px should be allowed');
+  assert.equal(isWithinSwipeZone(20, viewportWidth), true, '20px should be allowed');
+  assert.equal(isWithinSwipeZone(40, viewportWidth), true, '40px should be allowed');
+  assert.equal(isWithinSwipeZone(100, viewportWidth), true, '100px should be allowed');
+  assert.equal(isWithinSwipeZone(200, viewportWidth), true, '200px should be allowed');
+  assert.equal(isWithinSwipeZone(300, viewportWidth), true, '300px should be allowed');
+  assert.equal(isWithinSwipeZone(360, viewportWidth), false, 'Extreme right edge should not initiate swipe to open');
+  assert.equal(isWithinSwipeZone(-10, viewportWidth), false, 'Negative coordinates should not be allowed');
+  console.log('  Passed.');
+}
+
 testEdgeDetection();
 testDirectionalLocking();
 testBoundaryResistance();
@@ -174,5 +195,6 @@ testBackdropSynchronization();
 testGestureDecision();
 testVelocityCalculation();
 testSpringConvergence();
+testExpandedSwipeZone();
 
-console.log('\nALL 8 PRODUCTION GESTURE TEST SUITES PASSED CLEANLY!');
+console.log('\nALL 9 PRODUCTION GESTURE TEST SUITES PASSED CLEANLY!');

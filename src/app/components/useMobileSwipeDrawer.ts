@@ -12,11 +12,50 @@ import {
   simulateSpringStep,
   isSpringSettled,
   calculateVelocity,
+  isWithinSwipeZone,
 } from './drawerGesturePhysics';
 
 interface HistoryPoint {
   x: number;
   time: number;
+}
+
+function isConflictingElement(target: EventTarget | null): boolean {
+  if (!target) return false;
+
+  const element =
+    target instanceof Element
+      ? target
+      : (target as Node)?.parentElement instanceof Element
+      ? (target as Node).parentElement
+      : null;
+
+  if (!element) return false;
+
+  // Form controls & editable elements
+  if (
+    element.closest(
+      'input, textarea, select, [contenteditable="true"], [contenteditable=""], [role="slider"], [data-no-swipe], [data-no-drawer-swipe], video, audio'
+    )
+  ) {
+    return true;
+  }
+
+  // Check if inside a horizontally scrollable container
+  let current: Element | null = target;
+  while (current && current !== document.body && current !== document.documentElement) {
+    const style = window.getComputedStyle(current);
+    const overflowX = style.overflowX;
+    if (
+      (overflowX === 'auto' || overflowX === 'scroll') &&
+      current.scrollWidth > current.clientWidth + 2
+    ) {
+      return true;
+    }
+    current = current.parentElement;
+  }
+
+  return false;
 }
 
 export function useMobileSwipeDrawer() {
@@ -29,6 +68,7 @@ export function useMobileSwipeDrawer() {
 
   const currentXRef = useRef<number>(-340);
   const isDraggingRef = useRef(false);
+  const justDraggedRef = useRef(false);
   const rafIdRef = useRef<number | null>(null);
 
   const trackingRef = useRef<{
@@ -219,8 +259,10 @@ export function useMobileSwipeDrawer() {
       const isStartingOpen = isOpenRef.current || isVisiblyOpen;
 
       if (!isStartingOpen) {
-        // Drawer is fully closed off-screen: only initiate within left edge zone
-        if (clientX > EDGE_ZONE) return false;
+        // Drawer is fully closed off-screen:
+        // Respect non-conflicting elements and allow swiping across generous left zone / screen
+        if (isConflictingElement(target)) return false;
+        if (!isWithinSwipeZone(clientX, window.innerWidth)) return false;
       } else {
         // Drawer is open or mid-motion: only initiate drag directly on the drawer element
         // (Do NOT initiate drag on backdrop; backdrop is reserved for tap-to-close)
@@ -259,6 +301,15 @@ export function useMobileSwipeDrawer() {
       const dy = clientY - tracking.startY;
 
       if (tracking.status === 'tracking') {
+        // Early preventDefault if moving with horizontal dominance to prevent mobile browser scroll hijack
+        const isHorizontalDominant =
+          (!tracking.isStartingOpen && dx > 4 && dx > Math.abs(dy) * 1.1) ||
+          (tracking.isStartingOpen && dx < -4 && Math.abs(dx) > Math.abs(dy) * 1.1);
+
+        if (cancelable && isHorizontalDominant) {
+          preventDefault();
+        }
+
         const lock = checkDirectionLock(dx, dy, tracking.isStartingOpen);
         if (lock === 'idle') return;
         if (lock === 'vertical') {
@@ -267,6 +318,9 @@ export function useMobileSwipeDrawer() {
         }
         tracking.status = 'horizontal';
         isDraggingRef.current = true;
+        if (typeof document !== 'undefined') {
+          document.body.style.userSelect = 'none';
+        }
       }
 
       if (tracking.status === 'horizontal') {
@@ -291,6 +345,19 @@ export function useMobileSwipeDrawer() {
 
   const endGesture = useCallback(() => {
     const tracking = trackingRef.current;
+    const wasDragging = isDraggingRef.current;
+
+    if (typeof document !== 'undefined') {
+      document.body.style.userSelect = '';
+    }
+
+    if (wasDragging) {
+      justDraggedRef.current = true;
+      window.setTimeout(() => {
+        justDraggedRef.current = false;
+      }, 300);
+    }
+
     if (!tracking || tracking.status !== 'horizontal') {
       trackingRef.current = {
         startX: 0,
@@ -306,7 +373,15 @@ export function useMobileSwipeDrawer() {
 
     isDraggingRef.current = false;
     const width = getDrawerWidth();
-    const velocity = calculateVelocity(historyRef.current);
+    const now = performance.now();
+    let velocity = calculateVelocity(historyRef.current);
+    // If the finger paused/rested before release, decay velocity to zero
+    if (
+      historyRef.current.length > 0 &&
+      now - historyRef.current[historyRef.current.length - 1].time > 100
+    ) {
+      velocity = 0;
+    }
     const progress = calculateProgress(currentXRef.current, width);
 
     const outcome = decideGestureOutcome(progress, velocity, tracking.isStartingOpen);
@@ -327,6 +402,11 @@ export function useMobileSwipeDrawer() {
     };
   }, [closeDrawer, getDrawerWidth, openDrawer]);
 
+  const handleBackdropClick = useCallback(() => {
+    if (justDraggedRef.current) return;
+    closeDrawer();
+  }, [closeDrawer]);
+
   // Touch event listeners for mobile devices
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
@@ -344,14 +424,16 @@ export function useMobileSwipeDrawer() {
       });
     };
 
-    const handleTouchEnd = () => {
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (e.touches.length > 0) return;
       endGesture();
       window.setTimeout(() => {
         isTouchActiveRef.current = false;
       }, 300);
     };
 
-    const handleTouchCancel = () => {
+    const handleTouchCancel = (e: TouchEvent) => {
+      if (e.touches.length > 0) return;
       // System cancelled gesture (e.g. native iOS back navigation swipe or incoming call)
       isDraggingRef.current = false;
       const tracking = trackingRef.current;
@@ -370,15 +452,18 @@ export function useMobileSwipeDrawer() {
         isStartingOpen: false,
         status: 'idle',
       };
+      if (typeof document !== 'undefined') {
+        document.body.style.userSelect = '';
+      }
       window.setTimeout(() => {
         isTouchActiveRef.current = false;
       }, 300);
     };
 
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: false });
     window.addEventListener('touchmove', handleTouchMove, { passive: false });
-    window.addEventListener('touchend', handleTouchEnd, { passive: true });
-    window.addEventListener('touchcancel', handleTouchCancel, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: false });
+    window.addEventListener('touchcancel', handleTouchCancel, { passive: false });
 
     return () => {
       window.removeEventListener('touchstart', handleTouchStart);
@@ -398,6 +483,12 @@ export function useMobileSwipeDrawer() {
 
     const handlePointerMove = (e: PointerEvent) => {
       if (isTouchActiveRef.current || e.pointerType === 'touch') return;
+      if (e.pointerType === 'mouse' && e.buttons === 0) {
+        if (trackingRef.current.status !== 'idle') {
+          endGesture();
+        }
+        return;
+      }
       moveGesture(e.clientX, e.clientY, e.cancelable, () => {
         if (e.cancelable) e.preventDefault();
       });
@@ -410,21 +501,57 @@ export function useMobileSwipeDrawer() {
 
     const handlePointerCancel = (e: PointerEvent) => {
       if (isTouchActiveRef.current || e.pointerType === 'touch') return;
-      endGesture();
+      isDraggingRef.current = false;
+      const tracking = trackingRef.current;
+      if (tracking && tracking.status === 'horizontal') {
+        if (!tracking.isStartingOpen) {
+          closeDrawer(0, false);
+        } else {
+          openDrawer(0);
+        }
+      }
+      trackingRef.current = {
+        startX: 0,
+        startY: 0,
+        startTime: 0,
+        startDrawerX: -getDrawerWidth(),
+        isStartingOpen: false,
+        status: 'idle',
+      };
+      if (typeof document !== 'undefined') {
+        document.body.style.userSelect = '';
+      }
     };
 
-    window.addEventListener('pointerdown', handlePointerDown);
-    window.addEventListener('pointermove', handlePointerMove);
-    window.addEventListener('pointerup', handlePointerUp);
-    window.addEventListener('pointercancel', handlePointerCancel);
+    const handleClickCapture = (e: MouseEvent) => {
+      if (justDraggedRef.current) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    const handleDragStart = (e: DragEvent) => {
+      if (trackingRef.current.status !== 'idle') {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener('pointerdown', handlePointerDown, { passive: false });
+    window.addEventListener('pointermove', handlePointerMove, { passive: false });
+    window.addEventListener('pointerup', handlePointerUp, { passive: false });
+    window.addEventListener('pointercancel', handlePointerCancel, { passive: false });
+    window.addEventListener('click', handleClickCapture, { capture: true });
+    window.addEventListener('dragstart', handleDragStart);
 
     return () => {
       window.removeEventListener('pointerdown', handlePointerDown);
       window.removeEventListener('pointermove', handlePointerMove);
       window.removeEventListener('pointerup', handlePointerUp);
       window.removeEventListener('pointercancel', handlePointerCancel);
+      window.removeEventListener('click', handleClickCapture, { capture: true });
+      window.removeEventListener('dragstart', handleDragStart);
     };
-  }, [endGesture, moveGesture, startGesture]);
+  }, [closeDrawer, endGesture, getDrawerWidth, moveGesture, openDrawer, startGesture]);
 
   // Prevent background page scrolling when drawer is fully open
   useEffect(() => {
@@ -528,5 +655,6 @@ export function useMobileSwipeDrawer() {
     openDrawer,
     closeDrawer,
     toggleDrawer,
+    handleBackdropClick,
   };
 }

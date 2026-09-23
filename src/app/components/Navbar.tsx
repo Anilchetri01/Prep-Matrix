@@ -206,6 +206,7 @@ export function Navbar() {
     hamburgerButtonRef,
     closeDrawer,
     toggleDrawer,
+    handleBackdropClick,
   } = useMobileSwipeDrawer();
 
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
@@ -372,7 +373,7 @@ export function Navbar() {
       {/* Mobile Backdrop Overlay (GPU opacity synchronized directly with finger swipe) */}
       <div
         ref={backdropRef}
-        onClick={() => closeDrawer()}
+        onClick={handleBackdropClick}
         aria-hidden="true"
         className="fixed inset-0 z-50 bg-[#070B14] backdrop-blur-[2px] xl:hidden pointer-events-none transition-none"
         style={{ opacity: 0, touchAction: 'none' }}
