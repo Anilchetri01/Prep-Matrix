@@ -104,30 +104,42 @@ PrepMatrix solves the common problem of scattered interview preparation by combi
 
 ```bash
 Prep-Matrix/
-├── api/                 # Vercel serverless API routes
-├── public/              # Static public assets
-├── scripts/             # Project utility and validation scripts
-├── server/              # Shared server-side logic for API handlers
-├── src/                 # Main React application source
-│   ├── app/             # App shell, routes, components, pages, contexts, data
-│   ├── assets/          # Branding and image assets
-│   ├── lib/             # Shared client libraries and browser utilities
-│   ├── services/        # Supabase-backed app services
-│   └── styles/          # Global styles, Tailwind entry, theme styles
-├── supabase/            # Supabase SQL setup and database schema
-├── index.html           # Vite HTML entrypoint
-├── package.json         # Scripts and dependencies
-├── vercel.json          # Vercel routing, caching, and SPA fallback
-└── vite.config.ts       # Vite, React, Tailwind, aliases, and local API middleware
+├── .github/                 # GitHub Actions automated workflows (CI/CD)
+│   └── workflows/
+│       └── ci.yml           # Automated lint, question validation, and build checks
+├── Backend/                 # Backend databases, migrations, and server architecture
+│   └── supabase/
+│       ├── migrations/      # Supabase SQL migrations
+│       ├── schema.sql       # Full production database schema, RLS policies, triggers
+│       └── README.md        # Supabase setup and local dev guide
+├── Frontend/                # User interface and client application
+│   └── PrepMatrix/          # React 18 + Vite SPA application
+│       ├── api/             # Vercel serverless API routes (Gemini proxy)
+│       ├── public/          # Static public assets, favicons, branding
+│       ├── scripts/         # Utility and question bank validation scripts
+│       ├── server/          # Server-side proxy logic
+│       ├── src/             # Main React application source
+│       ├── index.html       # Vite HTML entrypoint
+│       ├── package.json     # Frontend dependencies and npm scripts
+│       ├── vercel.json      # Vercel routing, caching, and SPA fallback
+│       ├── vite.config.ts   # Vite configuration, aliases, and local proxy
+│       └── README.md        # Frontend documentation
+├── Documentation/           # Platform documentation and specifications
+│   ├── PRD/                 # Product Requirements Document
+│   │   └── PRD.md
+│   ├── SRS/                 # Software Requirements Specification
+│   │   └── SRS.md
+│   └── README.md            # Documentation directory index
+├── package.json             # Root monorepo workspace manifest & delegation scripts
+└── README.md                # Root project overview and guide
 ```
 
 ### Important Folders
 
-- **`src/app`** contains the primary dashboard application, pages, route definitions, reusable UI, contexts, and interview data.
-- **`src/services`** contains the Supabase-backed service layer for authentication, profiles, resumes, interviews, history, and leaderboard data.
-- **`api`** contains Vercel serverless entrypoints such as the Gemini proxy endpoint.
-- **`server`** contains server-only logic shared between local development middleware and production API routes.
-- **`supabase`** contains SQL needed to configure the database, functions, policies, and related backend setup.
+- **`.github/workflows`**: Automated CI pipelines executing build, test, and question integrity checks.
+- **`Backend/supabase`**: Complete database schema, migration scripts, Row Level Security (RLS) policies, and helper triggers for profiles, sessions, interviews, resumes, and history.
+- **`Frontend/PrepMatrix`**: The main Vite + React 18 frontend dashboard, including pages, components, client-side resume parsing, and Gemini proxy integration.
+- **`Documentation`**: Comprehensive technical specs including the **PRD**, **SRS**, Mobile UX plans, and interaction audit logs.
 
 ---
 
